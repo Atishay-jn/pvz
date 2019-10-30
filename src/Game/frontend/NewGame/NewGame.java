@@ -1,5 +1,6 @@
 package Game.frontend.NewGame;
 
+import Game.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ public class NewGame
 		Parent root = loader.load();
 		NewGameController controller = loader.getController();
 		controller.setPrimaryStage(primaryStage);
-		primaryStage.setScene(new Scene(root, 1500, 750));
+		primaryStage.setScene(new Scene(root, Main.width, Main.height));
 		primaryStage.show();
 	}
 }

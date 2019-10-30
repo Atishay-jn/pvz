@@ -1,18 +1,10 @@
 package Game.frontend.MainMenu;
 
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class MainMenuController implements Initializable
+public class MainMenuController
 {
-	public Button NewGameButton;
-	public Button ResumeButton;
-	public Button HelpButton;
-	public Button ExitButton;
 	private Stage primaryStage;
 
 	void setPrimaryStage(Stage primaryStage)
@@ -20,29 +12,28 @@ public class MainMenuController implements Initializable
 		this.primaryStage = primaryStage;
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
-
-	}
-
-	public void resumeClick()
+	@FXML
+	private void resumeClick()
 	{
 		System.out.println("resume click");
 	}
 
-	public void helpClick()
+	@FXML
+	private void helpClick()
 	{
 		System.out.println("Help click");
 	}
 
-	public void exitClick()
+	@FXML
+	private void exitClick()
 	{
 		primaryStage.close();
 	}
 
-	public void newGameClick()
+	@FXML
+	private void newGameClick() throws Exception
 	{
+		Game.frontend.NewGame.NewGame.run(primaryStage);
 		System.out.println("new Game");
 	}
 }

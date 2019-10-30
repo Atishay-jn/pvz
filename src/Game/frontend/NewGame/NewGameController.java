@@ -1,48 +1,42 @@
 package Game.frontend.NewGame;
 
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class NewGameController implements Initializable
+public class NewGameController
 {
-	public Button NewGameButton;
-	public Button ResumeButton;
-	public Button HelpButton;
-	public Button ExitButton;
+	@FXML
+	private Button addUserButton;
+	@FXML
+	private TextField usernameTextBox;
 	private Stage primaryStage;
 
 	void setPrimaryStage(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
+		addUserButton.setDisable(true);
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources)
+	@FXML
+	private void newUserClick()
 	{
+		System.out.println("New user by the name: " + usernameTextBox.getText());
 	}
 
-	public void resumeClick()
+	@FXML
+	private void mainMenuClick() throws Exception
 	{
-		System.out.println("resume click");
+		Game.frontend.MainMenu.MainMenu.run(primaryStage);
 	}
 
-	public void helpClick()
+	@FXML
+	private void usernameKeyRelease()
 	{
-		System.out.println("Help click");
-	}
-
-	public void exitClick()
-	{
-		primaryStage.close();
-	}
-
-	public void newGameClick()
-	{
-		System.out.println("new Game");
+		String input = usernameTextBox.getText();
+		boolean isDisabled = input.isEmpty() || !input.matches("[a-zA-Z0-9]+");
+		addUserButton.setDisable(isDisabled);
 	}
 }
 

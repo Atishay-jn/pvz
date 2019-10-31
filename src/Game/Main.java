@@ -4,6 +4,11 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
+
 public class Main extends Application
 {
 	public static final int width = 1300;
@@ -19,6 +24,16 @@ public class Main extends Application
 		primaryStage.setTitle("Plants vs Zombies");
 		primaryStage.setResizable(false);
 		primaryStage.initStyle(StageStyle.UNDECORATED);
+		playMusic();
 		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+	}
+
+	private void playMusic() throws Exception
+	{
+		AudioInputStream music = AudioSystem.getAudioInputStream(new File("src/Game/assets/sounds/music.wav"));
+		Clip clip = AudioSystem.getClip();
+		clip.open(music);
+		clip.loop(Clip.LOOP_CONTINUOUSLY);
+		clip.start();
 	}
 }

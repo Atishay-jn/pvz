@@ -2,6 +2,7 @@ package Game;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application
 {
@@ -17,6 +18,7 @@ public class Main extends Application
 	{
 		primaryStage.setTitle("Plants vs Zombies");
 		primaryStage.setResizable(false);
+		primaryStage.initStyle(StageStyle.UNDECORATED);
 		Game.frontend.MainMenu.MainMenu.run(primaryStage);
 	}
 }

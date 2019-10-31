@@ -7,14 +7,13 @@ public class MainMenuController
 {
 	private Stage primaryStage;
 
-	void setPrimaryStage(Stage primaryStage)
-	{
+	void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
 
 	@FXML
-	private void resumeClick()
-	{
+	private void resumeClick() throws Exception {
+		Game.frontend.Pause.PauseScreen.run(primaryStage);
 		System.out.println("resume click");
 	}
 

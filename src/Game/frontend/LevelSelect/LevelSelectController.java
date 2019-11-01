@@ -21,7 +21,7 @@ public class LevelSelectController
 	@FXML
 	private void level1Click()
 	{
-		//TODO
+		//TODO: connect
 		System.out.println("level 1");
 	}
 

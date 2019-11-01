@@ -7,8 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.Timer;
-
 public class NewGameController
 {
 	@FXML
@@ -16,26 +14,16 @@ public class NewGameController
 	@FXML
 	private TextField usernameTextBox;
 	private Stage primaryStage;
-	private Timer timer;
 	@FXML
 	private ImageView zombieImage;
 	@FXML
 	private AnchorPane pane;
 
-	void setTimer(Timer timer)
-	{
-		this.timer = timer;
-	}
 
 	void setPrimaryStage(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
 		addUserButton.setDisable(true);
-	}
-
-	ImageView getZombieImage()
-	{
-		return zombieImage;
 	}
 
 	@FXML
@@ -47,7 +35,6 @@ public class NewGameController
 	@FXML
 	private void mainMenuClick() throws Exception
 	{
-		timer.cancel();
 		Game.frontend.MainMenu.MainMenu.run(primaryStage);
 	}
 
@@ -57,11 +44,6 @@ public class NewGameController
 		String input = usernameTextBox.getText();
 		boolean isDisabled = input.isEmpty() || !input.matches("[a-zA-Z0-9]+");
 		addUserButton.setDisable(isDisabled);
-	}
-
-	void removeZombie()
-	{
-		pane.getChildren().remove(zombieImage);
 	}
 }
 

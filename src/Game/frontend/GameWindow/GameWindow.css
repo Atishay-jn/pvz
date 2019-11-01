@@ -1,0 +1,7 @@
+#pane
+{
+	-fx-background-image: url("./../../assets/frontend/GameWindowAssets/backyard.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: stretch;
+}

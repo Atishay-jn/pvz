@@ -26,9 +26,9 @@ public class PauseScreenController
 	}
 
 	@FXML
-	private void resumeClick()
+	private void resumeClick() throws Exception
 	{
-		System.out.println("Resume from pause screen clicked");
+		Game.frontend.GameWindow.GameWindow.run(primaryStage, false);
 	}
 
 	@FXML

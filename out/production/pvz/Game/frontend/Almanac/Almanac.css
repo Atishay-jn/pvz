@@ -1,0 +1,7 @@
+#pane
+{
+	-fx-background-image: url("./../../assets/frontend/AlamanacAssets/almanac_bg.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: stretch;
+}

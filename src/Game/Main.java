@@ -30,7 +30,7 @@ public class Main extends Application
 
 	private void playMusic() throws Exception
 	{
-		AudioInputStream music = AudioSystem.getAudioInputStream(new File("src/music.wav"));
+		AudioInputStream music = AudioSystem.getAudioInputStream(new File("src/Game/assets/songs/music.wav"));
 		Clip clip = AudioSystem.getClip();
 		clip.open(music);
 		clip.loop(Clip.LOOP_CONTINUOUSLY);

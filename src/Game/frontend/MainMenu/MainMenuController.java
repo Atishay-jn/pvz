@@ -20,7 +20,8 @@ public class MainMenuController
 	@FXML
 	private void helpClick() throws Exception
 	{
-		Game.frontend.Help.Help.run(primaryStage);
+		Game.frontend.Loose.Loose.run(primaryStage);
+		//		Game.frontend.Help.Help.run(primaryStage);
 	}
 
 	@FXML

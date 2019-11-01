@@ -1,0 +1,13 @@
+#pane
+{
+	-fx-background-image: url("./../../assets/frontend/PlantListAssets/plant_list_bg.jpg");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: stretch;
+}
+
+#backButton
+{
+	-fx-background-color: linear-gradient(darkred, #FF0000);
+	-fx-background-radius: 20;
+}

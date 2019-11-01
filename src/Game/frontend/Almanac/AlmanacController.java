@@ -14,9 +14,9 @@ public class AlmanacController
 	}
 
 	@FXML
-	private void plantClick()
+	private void plantClick() throws Exception
 	{
-		System.out.println("PlantClick");
+		Game.frontend.PlantList.PlantList.run(primaryStage);
 	}
 
 	@FXML

@@ -20,9 +20,9 @@ public class AlmanacController
 	}
 
 	@FXML
-	private void zombieClick()
+	private void zombieClick() throws Exception
 	{
-		System.out.println("ZombieClick");
+		Game.frontend.ZombieList.ZombieList.run(primaryStage);
 	}
 
 	public void setPrimaryStage(Stage primaryStage)

@@ -1,0 +1,31 @@
+#pane
+{
+	-fx-background-image: url("./../../assets/frontend/MainMenuAssets/plants_vs_zombies_main_menu_bg.jpeg");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: stretch;
+}
+
+#NewGame
+{
+	-fx-background-color: linear-gradient(darkred, #FF0000);
+	-fx-background-radius: 20;
+}
+
+#ResumeGame
+{
+	-fx-background-color: linear-gradient(darkred, #FF0000);
+	-fx-background-radius: 20;
+}
+
+#Help
+{
+	-fx-background-color: linear-gradient(darkred, #FF0000);
+	-fx-background-radius: 20;
+}
+
+#Exit
+{
+	-fx-background-color: linear-gradient(darkred, #FF0000);
+	-fx-background-radius: 20;
+}

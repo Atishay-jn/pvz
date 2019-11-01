@@ -1,9 +1,9 @@
-package Game.frontend.Help;
+package Game.frontend.Almanac;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class HelpController
+public class AlmanacController
 {
 	private Stage primaryStage;
 
@@ -14,9 +14,15 @@ public class HelpController
 	}
 
 	@FXML
-	private void almanacClicked() throws Exception
+	private void plantClick()
 	{
-		Game.frontend.Almanac.Almanac.run(primaryStage);
+		System.out.println("PlantClick");
+	}
+
+	@FXML
+	private void zombieClick()
+	{
+		System.out.println("ZombieClick");
 	}
 
 	public void setPrimaryStage(Stage primaryStage)

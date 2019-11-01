@@ -14,7 +14,7 @@
         </font>
     </Label>
     <Button id="menuButton" layoutX="409.0" layoutY="575.0" mnemonicParsing="false" onMouseClicked="#menuCLick"
-            prefHeight="62.0" prefWidth="132.0" text="Menu" textFill="WHITE"/>
+            prefHeight="62.0" prefWidth="132.0" text="Main Menu" textFill="WHITE"/>
     <Button id="nextButton" fx:id="nextButton" disable="true" layoutX="780.0" layoutY="575.0" mnemonicParsing="false"
             onMouseClicked="#nextClick" prefHeight="62.0" prefWidth="111.0" text="Next" textFill="WHITE"/>
     <ChoiceBox fx:id="choiceBox" layoutX="409.0" layoutY="257.0" prefHeight="62.0" prefWidth="482.0"/>

@@ -1,0 +1,19 @@
+#pane
+{
+	-fx-background-image: url("./../../assets/frontend/ResumeGameAssets/resume_game_bg.jpg");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: stretch;
+}
+
+#menuButton
+{
+	-fx-background-color: linear-gradient(darkred, #FF0000);
+	-fx-background-radius: 20;
+}
+
+#nextButton
+{
+	-fx-background-color: linear-gradient(darkred, #FF0000);
+	-fx-background-radius: 20;
+}

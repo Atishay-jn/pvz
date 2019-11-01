@@ -13,7 +13,7 @@ public class MainMenuController
 
 	@FXML
 	private void resumeClick() throws Exception {
-		Game.frontend.Pause.PauseScreen.run(primaryStage);
+		Game.frontend.ResumeGame.ResumeGame.run(primaryStage);
 		System.out.println("resume click");
 	}
 

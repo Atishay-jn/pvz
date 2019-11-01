@@ -7,12 +7,14 @@ public class MainMenuController
 {
 	private Stage primaryStage;
 
-	void setPrimaryStage(Stage primaryStage) {
+	void setPrimaryStage(Stage primaryStage)
+	{
 		this.primaryStage = primaryStage;
 	}
 
 	@FXML
-	private void resumeClick() throws Exception {
+	private void resumeClick() throws Exception
+	{
 		Game.frontend.ResumeGame.ResumeGame.run(primaryStage);
 		System.out.println("resume click");
 	}
@@ -20,8 +22,7 @@ public class MainMenuController
 	@FXML
 	private void helpClick() throws Exception
 	{
-		Game.frontend.Loose.Loose.run(primaryStage);
-		//		Game.frontend.Help.Help.run(primaryStage);
+		Game.frontend.Help.Help.run(primaryStage);
 	}
 
 	@FXML

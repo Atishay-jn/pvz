@@ -19,6 +19,7 @@ public class NewGame
 
 	public static void run(Stage primaryStage) throws Exception
 	{
+		//TODO: remove animation
 		FXMLLoader loader = new FXMLLoader(NewGame.class.getResource("NewGame.fxml"));
 		Parent root = loader.load();
 		controller = loader.getController();

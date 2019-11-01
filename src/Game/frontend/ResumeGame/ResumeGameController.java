@@ -21,15 +21,13 @@ public class ResumeGameController
 	@FXML
 	private void menuCLick() throws Exception
 	{
-		System.out.println("Returning to menu");
 		Game.frontend.MainMenu.MainMenu.run(primaryStage);
 	}
 
 	@FXML
-	private void nextClick()
+	private void nextClick() throws Exception
 	{
-		System.out.println(choiceBox.getValue() + " selected");
-		System.out.println("Going to level select");
+		Game.frontend.LevelSelect.LevelSelect.run(primaryStage);
 	}
 
 	ChoiceBox<String> getChoiceBox()

@@ -21,7 +21,7 @@ public class LooseController
 	@FXML
 	private void restartClick()
 	{
-		//TODO
+		//TODO: connect
 		System.out.println("restarting");
 	}
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="pane" prefHeight="710.0" prefWidth="1300.0"
+            stylesheets="@PlantList.css" xmlns="http://javafx.com/javafx/8.0.192"
+            fx:controller="Game.frontend.PlantList.PlantListController">
+    <Label layoutX="327.0" layoutY="22.0" prefHeight="103.0" prefWidth="541.0" text="Choose Plant...">
+        <font>
+            <Font name="Comic Sans MS" size="70.0"/>
+        </font>
+    </Label>
+    <ChoiceBox fx:id="plantChoice" layoutX="312.0" layoutY="145.0" prefHeight="50.0" prefWidth="571.0"/>
+    <ImageView fx:id="plantImage" fitHeight="183.0" fitWidth="200.0" layoutX="327.0" layoutY="260.0" pickOnBounds="true"
+               preserveRatio="true"/>
+    <Button id="backButton" layoutX="496.0" layoutY="532.0" mnemonicParsing="false" onMouseClicked="#backClick"
+            prefHeight="58.0" prefWidth="212.0" text="Back"/>
+    <TextArea fx:id="plantDescription" editable="false" layoutX="624.0" layoutY="242.0" prefHeight="210.0"
+              prefWidth="231.0" visible="false"/>
+</AnchorPane>

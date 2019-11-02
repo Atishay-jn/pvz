@@ -98,14 +98,14 @@ public class GameWindow
 				if(demoPea.getX() < 1290)
 					demoPea.setX(demoPea.getX() + 1);
 				else
-					Platform.runLater(() -> pane.getChildren().remove(demoPea));
+					demoPea.setX(458.0);
+//					Platform.runLater(() -> pane.getChildren().remove(demoPea));
 			}
 			if(demoZombie.isVisible())
 			{
 				if(demoZombie.getX() > 250)
 					demoZombie.setX(demoZombie.getX() - 1);
-				else
-				{
+				else {
 					Platform.runLater(() -> pane.getChildren().remove(demoZombie));
 					mover4en = true;
 				}

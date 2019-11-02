@@ -54,7 +54,7 @@ public class GameWindowController
 		demoPea.setX(458.0);
 		demoZombie.setX(1200);
 		demoSun.setY(-73);
-		demoCoin.setY(-62);
+		demoCoin.setY(-500);
 	}
 
 	void setPrimaryStage(Stage primaryStage)
@@ -155,14 +155,17 @@ public class GameWindowController
 	{
 		coinCounter.setText("50");
 		demoCoin.setVisible(false);
-		//		demoCoin.setDisable(true);
+		demoCoin.setDisable(true);
+		GameWindow.coinen = false;
 	}
 
 	@FXML
 	private void sunClick()
 	{
+		//		System.out.println("duhhhhhhhhhhhhhhhhh");
 		sunCounter.setText("50");
 		demoSun.setVisible(false);
-		//		demoSun.setDisable(true);
+		demoSun.setDisable(true);
+		GameWindow.sunen = false;
 	}
 }

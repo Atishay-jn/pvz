@@ -5,3 +5,9 @@
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: stretch;
 }
+
+#playButton
+{
+	-fx-background-color: linear-gradient(#2ADE13, #2DED13);
+	-fx-background-radius: 20;
+}

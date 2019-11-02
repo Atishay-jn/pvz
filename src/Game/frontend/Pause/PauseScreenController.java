@@ -26,10 +26,11 @@ public class PauseScreenController
 	}
 
 	@FXML
-	private void resumeClick() throws Exception
+	private void resumeClick()
 	{
+		Game.frontend.GameWindow.GameWindow.resumeTimer();
 		this.window.close();
-		Game.frontend.GameWindow.GameWindow.run(primaryStage);
+		//		Game.frontend.GameWindow.GameWindow.run(primaryStage);
 	}
 
 	@FXML

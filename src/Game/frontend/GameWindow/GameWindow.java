@@ -1,6 +1,7 @@
 package Game.frontend.GameWindow;
 
 import Game.Main;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,9 +35,21 @@ public class GameWindow
 	private static ImageView demoCoin = null;
 	private static AnchorPane pane = null;
 	private static Timer timer;
+	static boolean sunen = true;
+	static boolean coinen = true;
+
+	public static void resumeTimer()
+	{
+		timer = new Timer();
+		controller.setTimer(timer);
+		timer.schedule(new Game.frontend.GameWindow.GameWindow.updater(), 0, 10);
+	}
 
 	public static void run(Stage primaryStage) throws Exception
 	{
+		mover4en = false;
+		sunen = true;
+		coinen = true;
 		FXMLLoader loader = new FXMLLoader(GameWindow.class.getResource("GameWindow.fxml"));
 		Parent root = loader.load();
 		controller = loader.getController();
@@ -78,33 +91,30 @@ public class GameWindow
 		@Override
 		public void run()
 		{
-			//			System.out.println(demoZombie.getX());
 			count++;
-			if(count >= 10000)
-				timer.cancel();
 			if(count > 100)
 				demoPea.setVisible(true);
-			if(count > 150)
-				demoZombie.setVisible(true);
-			if(count > 200)
-				demoSun.setVisible(true);
-			if(count > 400)
-				demoCoin.setVisible(true);
+			if(count > 150 && !mover4en)
+				Platform.runLater(() -> demoZombie.setVisible(true));
+			if(count > 200 && sunen)
+				Platform.runLater(() -> demoSun.setVisible(true));
+			if(count > 400 && coinen)
+				Platform.runLater(() -> demoCoin.setVisible(true));
 			if(demoPea.isVisible())
 			{
 				if(demoPea.getX() < 1290)
-					demoPea.setX(demoPea.getX() + 1);
+					Platform.runLater(() -> demoPea.setX(demoPea.getX() + 1));
 				else
-					demoPea.setX(458.0);
+					Platform.runLater(() -> demoPea.setX(458.0));
 				//					Platform.runLater(() -> pane.getChildren().remove(demoPea));
 			}
 			if(demoZombie.isVisible())
 			{
 				if(demoZombie.getX() > 250)
-					demoZombie.setX(demoZombie.getX() - 1);
+					Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));
 				else
 				{
-					demoZombie.setVisible(false);
+					Platform.runLater(() -> demoZombie.setVisible(false));
 					//					demoZombie.setDisable(true);
 					mover4en = true;
 				}
@@ -112,23 +122,23 @@ public class GameWindow
 			if(demoSun.isVisible())
 			{
 				if(demoSun.getY() < 600)
-					demoSun.setY(demoSun.getY() + 1);
+					Platform.runLater(() -> demoSun.setY(demoSun.getY() + 1));
 			}
 			if(demoCoin.isVisible())
 			{
 				if(demoCoin.getY() < 600)
-					demoCoin.setY(demoCoin.getY() + 1);
+					Platform.runLater(() -> demoCoin.setY(demoCoin.getY() + 1));
 			}
 			if(mover4en)
 			{
-				waveProgress.setProgress(1.0);
+				Platform.runLater(() -> waveProgress.setProgress(1.0));
 				if(mover4.getX() < 1250)
-					mover4.setX(mover4.getX() + 5);
+					Platform.runLater(() -> mover4.setX(mover4.getX() + 5));
 				else
-					mover4.setVisible(false);
+					Platform.runLater(() -> mover4.setVisible(false));
 			}
 			else
-				waveProgress.setProgress(1 - (demoZombie.getX() / 1300));
+				Platform.runLater(() -> waveProgress.setProgress(1 - (demoZombie.getX() / 1300)));
 		}
 	}
 }

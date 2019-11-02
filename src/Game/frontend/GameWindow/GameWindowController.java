@@ -155,14 +155,17 @@ public class GameWindowController
 	{
 		coinCounter.setText("50");
 		demoCoin.setVisible(false);
-		//		demoCoin.setDisable(true);
+		demoCoin.setDisable(true);
+		GameWindow.coinen = false;
 	}
 
 	@FXML
 	private void sunClick()
 	{
+		//		System.out.println("duhhhhhhhhhhhhhhhhh");
 		sunCounter.setText("50");
 		demoSun.setVisible(false);
-		//		demoSun.setDisable(true);
+		demoSun.setDisable(true);
+		GameWindow.sunen = false;
 	}
 }

@@ -22,6 +22,7 @@ public class MainMenuController
 	@FXML
 	private void helpClick() throws Exception
 	{
+		//TODO: connect
 		Game.frontend.GameWindow.GameWindow.run(primaryStage);
 		//		Game.frontend.Help.Help.run(primaryStage);
 	}

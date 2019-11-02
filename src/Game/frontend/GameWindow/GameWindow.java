@@ -84,6 +84,8 @@ public class GameWindow
 		demoZombie = controller.getDemoZombie();
 		demoSun = controller.getDemoSun();
 		pane = controller.getPane();
+		demoSun.setVisible(true);
+		demoCoin.setVisible(true);
 	}
 
 	static class updater extends TimerTask
@@ -96,10 +98,10 @@ public class GameWindow
 				demoPea.setVisible(true);
 			if(count > 150 && !mover4en)
 				Platform.runLater(() -> demoZombie.setVisible(true));
-			if(count > 200 && sunen)
-				Platform.runLater(() -> demoSun.setVisible(true));
-			if(count > 400 && coinen)
-				Platform.runLater(() -> demoCoin.setVisible(true));
+			if(coinCounter.getText().equals("50"))
+				Platform.runLater(() -> demoCoin.setVisible(false));
+			if(sunCounter.getText().equals("50"))
+				Platform.runLater(() -> demoSun.setVisible(false));
 			if(demoPea.isVisible())
 			{
 				if(demoPea.getX() < 1290)
@@ -127,7 +129,7 @@ public class GameWindow
 			if(demoCoin.isVisible())
 			{
 				if(demoCoin.getY() < 600)
-					Platform.runLater(() -> demoCoin.setY(demoCoin.getY() + 1));
+					Platform.runLater(() -> demoCoin.setY(demoCoin.getY() + 2));
 			}
 			if(mover4en)
 			{

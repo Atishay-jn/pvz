@@ -54,7 +54,7 @@ public class GameWindowController
 		demoPea.setX(458.0);
 		demoZombie.setX(1200);
 		demoSun.setY(-73);
-		demoCoin.setY(-62);
+		demoCoin.setY(-500);
 	}
 
 	void setPrimaryStage(Stage primaryStage)

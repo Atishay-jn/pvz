@@ -23,4 +23,10 @@ public class PlantSelectController
 	{
 		Game.frontend.Shop.Shop.run(primaryStage);
 	}
+
+	@FXML
+	private void playClick() throws Exception
+	{
+		Game.frontend.GameWindow.GameWindow.run(primaryStage);
+	}
 }

@@ -27,9 +27,9 @@ public class NewGameController
 	}
 
 	@FXML
-	private void newUserClick()
+	private void newUserClick() throws Exception
 	{
-		System.out.println("New user by the name: " + usernameTextBox.getText());
+		Game.frontend.LevelSelect.LevelSelect.run(primaryStage);
 	}
 
 	@FXML

@@ -24,7 +24,7 @@ public class MainMenuController
 	{
 		//TODO: connect
 		//		Game.frontend.GameWindow.GameWindow.run(primaryStage, true);
-		//		Game.frontend.Help.Help.run(primaryStage);
+		Game.frontend.Help.Help.run(primaryStage);
 	}
 
 	@FXML

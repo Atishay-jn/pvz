@@ -19,10 +19,10 @@ public class LevelSelectController
 	}
 
 	@FXML
-	private void level1Click()
+	private void level1Click() throws Exception
 	{
-		//TODO: connect
 		System.out.println("level 1");
+		Game.frontend.PlantSelect.PlantSelect.run(primaryStage);
 	}
 
 	@FXML

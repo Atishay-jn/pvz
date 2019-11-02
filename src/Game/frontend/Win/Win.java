@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 public class Win
 {
-	//TODO: Partial code
 	public static void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(Win.class.getResource("Win.fxml"));

@@ -23,7 +23,7 @@ public class MainMenuController
 	private void helpClick() throws Exception
 	{
 		//TODO: connect
-		Game.frontend.GameWindow.GameWindow.run(primaryStage, true);
+		//		Game.frontend.GameWindow.GameWindow.run(primaryStage, true);
 		//		Game.frontend.Help.Help.run(primaryStage);
 	}
 
@@ -31,6 +31,7 @@ public class MainMenuController
 	private void exitClick()
 	{
 		primaryStage.close();
+		System.exit(0);
 	}
 
 	@FXML

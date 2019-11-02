@@ -1,5 +1,6 @@
 package Game.frontend.Win;
 
+import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 public class WinController
@@ -9,5 +10,23 @@ public class WinController
 	void setPrimaryStage(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
+	}
+
+	@FXML
+	private void mainClick() throws Exception
+	{
+		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+	}
+
+	@FXML
+	private void restartClick()
+	{
+		//TODO
+	}
+
+	@FXML
+	private void nextLevelClick()
+	{
+		//TODO
 	}
 }

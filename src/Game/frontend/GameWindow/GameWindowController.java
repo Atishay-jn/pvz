@@ -1,6 +1,5 @@
 package Game.frontend.GameWindow;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -155,17 +154,15 @@ public class GameWindowController
 	private void coinClick()
 	{
 		coinCounter.setText("50");
-		demoCoin.setDisable(true);
 		demoCoin.setVisible(false);
-		Platform.runLater(() -> pane.getChildren().remove(demoCoin));
+		//		demoCoin.setDisable(true);
 	}
 
 	@FXML
 	private void sunClick()
 	{
 		sunCounter.setText("50");
-		demoSun.setDisable(true);
 		demoSun.setVisible(false);
-		Platform.runLater(() -> pane.getChildren().remove(demoSun));
+		//		demoSun.setDisable(true);
 	}
 }

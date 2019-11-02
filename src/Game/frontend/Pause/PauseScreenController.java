@@ -28,12 +28,14 @@ public class PauseScreenController
 	@FXML
 	private void resumeClick() throws Exception
 	{
-		Game.frontend.GameWindow.GameWindow.run(primaryStage, false);
+		this.window.close();
+		Game.frontend.GameWindow.GameWindow.run(primaryStage);
 	}
 
 	@FXML
-	private void restartClick()
+	private void restartClick() throws Exception
 	{
-		System.out.println("restart clicked");
+		this.window.close();
+		Game.frontend.PlantSelect.PlantSelect.run(primaryStage);
 	}
 }

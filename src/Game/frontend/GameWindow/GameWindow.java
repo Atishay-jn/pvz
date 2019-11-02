@@ -1,7 +1,6 @@
 package Game.frontend.GameWindow;
 
 import Game.Main;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -36,17 +35,15 @@ public class GameWindow
 	private static AnchorPane pane = null;
 	private static Timer timer;
 
-	public static void run(Stage primaryStage, boolean restart) throws Exception
+	public static void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(GameWindow.class.getResource("GameWindow.fxml"));
 		Parent root = loader.load();
 		controller = loader.getController();
 		controller.setPrimaryStage(primaryStage);
-		if(restart)
-		{
-			controller.setUp();
-			count = 0;
-		}
+
+		controller.setUp();
+		count = 0;
 		fetchObjects();
 
 		timer = new Timer();
@@ -99,14 +96,16 @@ public class GameWindow
 					demoPea.setX(demoPea.getX() + 1);
 				else
 					demoPea.setX(458.0);
-//					Platform.runLater(() -> pane.getChildren().remove(demoPea));
+				//					Platform.runLater(() -> pane.getChildren().remove(demoPea));
 			}
 			if(demoZombie.isVisible())
 			{
 				if(demoZombie.getX() > 250)
 					demoZombie.setX(demoZombie.getX() - 1);
-				else {
-					Platform.runLater(() -> pane.getChildren().remove(demoZombie));
+				else
+				{
+					demoZombie.setVisible(false);
+					//					demoZombie.setDisable(true);
 					mover4en = true;
 				}
 			}
@@ -126,7 +125,7 @@ public class GameWindow
 				if(mover4.getX() < 1250)
 					mover4.setX(mover4.getX() + 5);
 				else
-					Platform.runLater(() -> pane.getChildren().remove(mover4));
+					mover4.setVisible(false);
 			}
 			else
 				waveProgress.setProgress(1 - (demoZombie.getX() / 1300));

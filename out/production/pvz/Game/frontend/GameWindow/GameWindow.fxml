@@ -69,8 +69,8 @@
     <ImageView fx:id="slot1" fitHeight="81.0" fitWidth="131.0" layoutX="25.0" layoutY="52.0"
                onMouseClicked="#slot1click" pickOnBounds="true" preserveRatio="true"/>
 
-    <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="415.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../../assets/backend/shovel.png" />
-        </image></ImageView>
+    <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="415.0" layoutY="636.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../assets/backend/shovel.png"/>
+    </ImageView>
 </AnchorPane>

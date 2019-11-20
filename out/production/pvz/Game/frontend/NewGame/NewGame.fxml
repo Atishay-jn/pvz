@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="pane" fx:id="pane" pickOnBounds="false" prefHeight="710"
@@ -19,8 +17,4 @@
             onMouseClicked="#newUserClick" prefHeight="56.0" prefWidth="129.0" text="Add User"/>
     <Button id="mainMenu" layoutX="716.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#mainMenuClick"
             prefHeight="56.0" prefWidth="129.0" text="Main Menu"/>
-    <ImageView fx:id="zombieImage" fitHeight="79.0" fitWidth="48.0" layoutY="631.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/zombie_normal.gif"/>
-    </ImageView>
 </AnchorPane>

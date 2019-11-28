@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public final class WallNut extends Barrier implements Serializable
 {
+	private static final long serialVersionUID = 1;
 	private static final int cost = 50;
 	private static final int maxCooldown = 100;
 	private static int cooldown;

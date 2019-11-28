@@ -6,12 +6,14 @@ import java.io.Serializable;
 
 public final class Jalapeno extends Bomb implements Serializable
 {
+	private static final long serialVersionUID = 1;
 	private static final int cost = 50;
 	private static final int maxCooldown = 300;
 	private static int cooldown;
 
-	public Jalapeno()
+	public Jalapeno(int _xVal)
 	{
+		super(_xVal);
 		this.health = 100;
 		this.counter = 0;
 	}
@@ -50,7 +52,7 @@ public final class Jalapeno extends Bomb implements Serializable
 		if(this.counter >= 100)
 			this.counter = 0;
 		if(this.counter == 0)
-			return null;
+			return new Game.backend.Projectiles.Bomb.RowBlast(this.xVal);
 		return null;
 	}
 

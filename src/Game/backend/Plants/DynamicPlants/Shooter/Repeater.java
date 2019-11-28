@@ -6,12 +6,14 @@ import java.io.Serializable;
 
 public final class Repeater extends Shooter implements Serializable
 {
+	private static final long serialVersionUID = 1;
 	private static final int cost = 50;
 	private static final int maxCooldown = 300;
 	private static int cooldown;
 
-	public Repeater()
+	public Repeater(int _xVal)
 	{
+		super(_xVal);
 		this.health = 100;
 		this.counter = 0;
 	}
@@ -47,10 +49,10 @@ public final class Repeater extends Shooter implements Serializable
 	public Projectile produce()
 	{
 		this.counter++;
-		if(this.counter >= 100)
+		if(this.counter >= 50)
 			this.counter = 0;
 		if(this.counter == 0)
-			return null;
+			return new Game.backend.Projectiles.Warhead.Normal(this.xVal);
 		return null;
 	}
 

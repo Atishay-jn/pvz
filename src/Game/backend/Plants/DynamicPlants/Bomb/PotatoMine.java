@@ -6,13 +6,15 @@ import java.io.Serializable;
 
 public final class PotatoMine extends Bomb implements Serializable
 {
+	private static final long serialVersionUID = 1;
 	private static final int cost = 25;
 	private static final int maxCooldown = 300;
 	private static int cooldown;
 	private boolean armed;
 
-	public PotatoMine()
+	public PotatoMine(int _xVal)
 	{
+		super(_xVal);
 		this.health = 100;
 		this.counter = 0;
 		this.armed = false;
@@ -53,7 +55,7 @@ public final class PotatoMine extends Bomb implements Serializable
 		if(this.counter >= 100)
 			this.armed = true;
 		if(this.armed)
-			return null;
+			return new Game.backend.Projectiles.Bomb.CellBlast(this.xVal);
 		return null;
 	}
 

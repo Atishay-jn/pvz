@@ -6,12 +6,14 @@ import java.io.Serializable;
 
 public final class TwinSunflower extends Collector implements Serializable
 {
+	private static final long serialVersionUID = 1;
 	private static final int cost = 50;
 	private static final int maxCooldown = 300;
 	private static int cooldown;
 
-	public TwinSunflower()
+	public TwinSunflower(int _xVal)
 	{
+		super(_xVal);
 		this.health = 100;
 		this.counter = 0;
 	}
@@ -50,7 +52,7 @@ public final class TwinSunflower extends Collector implements Serializable
 		if(this.counter >= 100)
 			this.counter = 0;
 		if(this.counter == 0)
-			return null;
+			return new Game.backend.Projectiles.Produce.TwinSun(this.xVal);
 		return null;
 	}
 

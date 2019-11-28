@@ -1,7 +1,11 @@
 package Game.backend;
 
-public final class LawnMover implements Displayable
+import java.io.Serializable;
+
+public final class LawnMover implements Displayable, Serializable
 {
+	private static final long serialVersionUID = 1;
+
 	private int position;
 
 	public LawnMover(int _position)

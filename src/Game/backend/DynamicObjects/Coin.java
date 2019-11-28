@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public final class Coin extends DynamicObject implements Serializable
 {
+	private static final long serialVersionUID = 1;
+
 	public Coin(int _x, int _y)
 	{
 		this.xVal = _x;

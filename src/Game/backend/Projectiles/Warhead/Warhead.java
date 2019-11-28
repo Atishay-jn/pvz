@@ -15,7 +15,7 @@ public abstract class Warhead extends Projectile implements Serializable
 		super(_xVal);
 	}
 
-	protected int getDamage()
+	public int getDamage()
 	{
 		return damage;
 	}

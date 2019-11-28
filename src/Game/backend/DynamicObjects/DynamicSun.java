@@ -2,7 +2,7 @@ package Game.backend.DynamicObjects;
 
 import java.io.Serializable;
 
-public class DynamicSun extends DynamicObject implements Serializable
+public final class DynamicSun extends DynamicObject implements Serializable
 {
 	public DynamicSun(int _x, int _y)
 	{

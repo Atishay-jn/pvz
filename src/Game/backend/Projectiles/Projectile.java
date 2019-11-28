@@ -14,12 +14,12 @@ public abstract class Projectile implements Displayable, Serializable
 		this.xVal = _xVal;
 	}
 
-	protected int getxVal()
+	public int getxVal()
 	{
 		return xVal;
 	}
 
-	protected void setxVal(int xVal)
+	public void setxVal(int xVal)
 	{
 		this.xVal = xVal;
 	}

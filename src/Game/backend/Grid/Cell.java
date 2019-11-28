@@ -26,7 +26,7 @@ public final class Cell implements Serializable
 		this.plant = null;
 	}
 
-	public void Plant(Plant p) throws CellOccupiedException
+	public void plant(Plant p) throws CellOccupiedException
 	{
 		if(this.plant != null)
 			throw new CellOccupiedException("Cell already has a plant!");

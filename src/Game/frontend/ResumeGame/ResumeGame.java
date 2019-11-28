@@ -1,13 +1,14 @@
 package Game.frontend.ResumeGame;
 
 import Game.Main;
+import Game.backend.User.CurrentUser;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
-public class ResumeGame
+public class ResumeGame extends CurrentUser
 {
 	private static ChoiceBox<String> userChoice = null;
 	private static ResumeGameController controller = null;

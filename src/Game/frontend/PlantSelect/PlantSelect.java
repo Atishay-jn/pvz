@@ -1,12 +1,13 @@
 package Game.frontend.PlantSelect;
 
 import Game.Main;
+import Game.backend.User.CurrentUser;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class PlantSelect
+public class PlantSelect extends CurrentUser
 {
 	public static void run(Stage primaryStage) throws Exception
 	{

@@ -1,5 +1,6 @@
 package Game.frontend.Pause;
 
+import Game.backend.User.SaveGame;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,7 +8,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class PauseScreen
+public class PauseScreen extends SaveGame
 {
 	public static void run(Stage primaryStage) throws Exception
 	{

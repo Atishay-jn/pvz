@@ -1,12 +1,13 @@
 package Game.frontend.Loose;
 
 import Game.Main;
+import Game.backend.User.SaveGame;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Loose
+public class Loose extends SaveGame
 {
 	public static void run(Stage primaryStage) throws Exception
 	{

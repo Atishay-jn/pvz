@@ -1,6 +1,7 @@
 package Game.frontend.GameWindow;
 
 import Game.Main;
+import Game.backend.User.SaveGame;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ import javafx.stage.Stage;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameWindow
+public class GameWindow extends SaveGame
 {
 	private static boolean mover4en = false;
 	private static long count = 0;

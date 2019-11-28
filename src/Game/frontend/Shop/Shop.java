@@ -1,12 +1,13 @@
 package Game.frontend.Shop;
 
 import Game.Main;
+import Game.backend.User.SaveGame;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Shop
+public class Shop extends SaveGame
 {
 	public static void run(Stage primaryStage) throws Exception
 	{

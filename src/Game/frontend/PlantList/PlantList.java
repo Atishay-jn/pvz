@@ -49,7 +49,7 @@ public class PlantList
 				plantDescription.setVisible(true);
 				break;
 			case "Tallnut":
-				plantImage.setImage(new Image("./Game/assets/backend/Plants/Barrier/Wallnut/Tallnut.gif"));
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Barrier/Tallnut/Tallnut.gif"));
 				plantImage.setVisible(true);
 				plantDescription.setText("Big brother of Wallnut with life's motto: You shall not pass");
 				plantDescription.setVisible(true);

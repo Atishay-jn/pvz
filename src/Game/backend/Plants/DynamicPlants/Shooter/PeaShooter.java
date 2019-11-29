@@ -58,12 +58,12 @@ public final class PeaShooter extends Shooter implements Serializable
 
 	public static String getCostImage()
 	{
-		return "Game/assets/backend/Plants/Shooters/PeasShooter/PeashooterCost.gif";
+		return "Game/assets/backend/Plants/Shooters/PeaShooter/PeashooterCost.gif";
 	}
 
 	@Override
 	public String getImage()
 	{
-		return "Game/assets/backend/Plants/Shooters/PeasShooter/PeaShooter.gif";
+		return "Game/assets/backend/Plants/Shooters/PeaShooter/PeaShooter.gif";
 	}
 }

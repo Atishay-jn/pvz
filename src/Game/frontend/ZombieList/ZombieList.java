@@ -1,6 +1,7 @@
 package Game.frontend.ZombieList;
 
 import Game.Main;
+import Game.backend.Zombies.Zombie;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,11 +13,18 @@ import javafx.stage.Stage;
 
 public class ZombieList
 {
-	private static ImageView zombieImage = null;
-	private static ChoiceBox<String> zombieChoice = null;
-	private static TextArea zombieDescription = null;
+	private static ZombieList uniqueInstance = null;
+	private ZombieList() {}
+	public static ZombieList getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new ZombieList();
+		return uniqueInstance;
+	}
+	private ImageView zombieImage = null;
+	private ChoiceBox<String> zombieChoice = null;
+	private TextArea zombieDescription = null;
 
-	public static void run(Stage primaryStage) throws Exception
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(ZombieList.class.getResource("ZombieList.fxml"));
 		Parent root = loader.load();
@@ -32,14 +40,14 @@ public class ZombieList
 		primaryStage.show();
 	}
 
-	private static void setUpChoices()
+	private void setUpChoices()
 	{
 		zombieChoice.getItems().addAll("Lawn Zombie", "Traffic Zombie", "Bucket Zombie", "Rugby Zombie", "Runner Zombie", "Boss Zombie", "---");
 		zombieChoice.setValue("---");
 		zombieChoice.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> newChoice(newValue));
 	}
 
-	private static void newChoice(String value)
+	private void newChoice(String value)
 	{
 		switch(value) {
 			case "Lawn Zombie":

@@ -9,7 +9,14 @@ import javafx.stage.Stage;
 
 public class Win extends SaveGame
 {
-	public static void run(Stage primaryStage) throws Exception
+	private static Win uniqueInstance = null;
+	private Win() {}
+	public static Win getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new Win();
+		return uniqueInstance;
+	}
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(Win.class.getResource("Win.fxml"));
 		Parent root = loader.load();

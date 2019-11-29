@@ -103,7 +103,6 @@ public class PlantList
 				plantDescription.setVisible(true);
 				break;
 			case "Twin Sunflower":
-				System.out.println("SUNFLOWER");
 				plantImage.setImage(new Image("./Game/assets/backend/Plants/Collector/TwinSunflower/TwinSunflower.gif"));
 				plantImage.setVisible(true);
 				plantDescription.setText("Sunflower on steroids. \nIt's sun tokens are worth twice that \nof the normal Sunflower.");

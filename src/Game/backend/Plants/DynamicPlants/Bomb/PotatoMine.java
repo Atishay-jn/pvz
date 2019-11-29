@@ -59,14 +59,16 @@ public final class PotatoMine extends Bomb implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Bomb/PotatoMine/PotatoCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		if(this.armed)
+			return "Game/assets/backend/Plants/Bomb/PotatoMine/PotatoMineArmed.gif";
+		return "Game/assets/backend/Plants/Bomb/PotatoMine/PotatoMineUnArmed.gif";
 	}
 }

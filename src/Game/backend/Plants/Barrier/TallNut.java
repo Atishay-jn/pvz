@@ -41,14 +41,14 @@ public final class TallNut extends Barrier implements Serializable
 			cooldown = maxCooldown;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Barrier/Tallnut/TallnutCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Barrier/Tallnut/Tallnut.gif";
 	}
 }

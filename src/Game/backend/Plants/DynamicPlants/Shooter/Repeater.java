@@ -56,14 +56,14 @@ public final class Repeater extends Shooter implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Shooters/Repeater/RepeaterCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Shooters/Repeater/Repeater.gif";
 	}
 }

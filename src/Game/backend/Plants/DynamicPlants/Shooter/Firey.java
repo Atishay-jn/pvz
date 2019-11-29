@@ -56,14 +56,14 @@ public final class Firey extends Shooter implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Shooters/Firey/FireyCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Shooters/Firey/Firey.gif";
 	}
 }

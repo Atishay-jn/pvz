@@ -56,14 +56,14 @@ public final class Frosty extends Shooter implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Shooters/Frosty/FrostyCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Shooters/Frosty/Frosty.gif";
 	}
 }

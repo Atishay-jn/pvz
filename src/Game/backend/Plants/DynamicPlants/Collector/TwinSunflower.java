@@ -56,14 +56,14 @@ public final class TwinSunflower extends Collector implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Collector/TwinSunflower/TwinsunflowerCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Collector/TwinSunflower/TwinSunflower.gif";
 	}
 }

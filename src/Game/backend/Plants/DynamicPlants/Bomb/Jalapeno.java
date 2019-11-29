@@ -56,14 +56,14 @@ public final class Jalapeno extends Bomb implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Bomb/Jalapeno/JalapenoCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Bomb/Jalapeno/Jalapeno.gif";
 	}
 }

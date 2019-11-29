@@ -56,14 +56,14 @@ public final class Sunflower extends Collector implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Collector/Sunflower/SunflowerCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Collector/Sunflower/Sunflower.gif";
 	}
 }

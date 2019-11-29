@@ -56,14 +56,14 @@ public final class Gun extends Shooter implements Serializable
 		return null;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Shooters/Gun/GunCost.gif";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Shooters/Gun/Gun.gif";
 	}
 }

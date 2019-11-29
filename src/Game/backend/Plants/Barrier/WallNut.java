@@ -41,14 +41,14 @@ public final class WallNut extends Barrier implements Serializable
 			cooldown = maxCooldown;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Barrier/Wallnut/WallnutCost.svg";
+	}
+
 	@Override
 	public String getImage()
 	{
-		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return null;
+		return "Game/assets/backend/Plants/Barrier/Wallnut/Wallnut.gif";
 	}
 }

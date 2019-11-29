@@ -20,6 +20,26 @@ public final class Wave
 		this.nextCountdown = nextCountdown;
 	}
 
+	public void setRow0Zombie(Zombie z) {
+		row0Zombie.add(z);
+	}
+
+	public void setRow1Zombie(Zombie z) {
+		row0Zombie.add(z);
+	}
+
+	public void setRow2Zombie(Zombie z) {
+		row0Zombie.add(z);
+	}
+
+	public void setRow3Zombie(Zombie z) {
+		row0Zombie.add(z);
+	}
+
+	public void setRow4Zombie(Zombie z) {
+		row0Zombie.add(z);
+	}
+
 	public ArrayList<Zombie> getZombies(int idx)
 	{
 		switch(idx)

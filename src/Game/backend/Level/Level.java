@@ -10,6 +10,10 @@ public final class Level
 	private int number;
 	private Plant reward;
 
+	public void addWave(Wave w) {
+		wave.add(w);
+	}
+
 	public Wave getWave(int idx)
 	{
 		return wave.get(idx);

@@ -8,7 +8,7 @@ public final class RunnerZombie extends Zombie implements Serializable
 
 	public RunnerZombie(int xVal)
 	{
-		super(100, 7, xVal);
+		super(100, 7, xVal, 1);
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public final class RugbyZombie extends Zombie implements Serializable
 
 	public RugbyZombie(int xVal)
 	{
-		super(300, 5, xVal);
+		super(300, 5, xVal, 2);
 	}
 
 	@Override

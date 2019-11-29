@@ -8,7 +8,7 @@ public final class BossZombie extends Zombie implements Serializable
 
 	public BossZombie(int xVal)
 	{
-		super(1000, 2, xVal);
+		super(1000, 2, xVal, 3);
 	}
 
 	@Override

@@ -11,9 +11,9 @@ public final class Gun extends Shooter implements Serializable
 	private static final int maxCooldown = 800;
 	private static int cooldown;
 
-	public Gun(int _xVal)
+	public Gun(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 		this.health = 250;
 		this.counter = 0;
 	}
@@ -52,7 +52,7 @@ public final class Gun extends Shooter implements Serializable
 		if(this.counter >= 50)
 			this.counter = 0;
 		if(this.counter == 0)
-			return new Game.backend.Projectiles.Warhead.Firey(this.xVal);
+			return new Game.backend.Projectiles.Warhead.Firey(this.xVal, this.yVal);
 		return null;
 	}
 

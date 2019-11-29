@@ -8,8 +8,8 @@ abstract class Shooter extends DynamicPlant implements Serializable
 {
 	private static final long serialVersionUID = 1;
 
-	public Shooter(int _xVal)
+	public Shooter(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 	}
 }

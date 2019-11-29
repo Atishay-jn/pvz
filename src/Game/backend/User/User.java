@@ -26,7 +26,8 @@ public final class User implements Serializable
 		this.name = name;
 		this.levels = 1;
 		this.coins = 0;
-		this.plantUnlocked[0] = true;
+		this.plantUnlocked[4] = true;
+		this.plantUnlocked[9] = true;
 		this.currentWaveNumber = -1;
 		this.waveCountdown = 0;
 		this.currentSuns = -1;

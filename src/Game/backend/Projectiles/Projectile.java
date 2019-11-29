@@ -8,9 +8,11 @@ public abstract class Projectile implements Displayable, Serializable
 {
 	private static final long serialVersionUID = 1;
 	protected int xVal;
+	protected int yVal;
 
-	public Projectile(int _xVal)
+	public Projectile(int _xVal, int _yVal)
 	{
+		this.yVal = _yVal;
 		this.xVal = _xVal;
 	}
 
@@ -22,5 +24,10 @@ public abstract class Projectile implements Displayable, Serializable
 	public void setxVal(int xVal)
 	{
 		this.xVal = xVal;
+	}
+
+	public int getyVal()
+	{
+		return yVal;
 	}
 }

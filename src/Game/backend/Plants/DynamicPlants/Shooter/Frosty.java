@@ -11,9 +11,9 @@ public final class Frosty extends Shooter implements Serializable
 	private static final int maxCooldown = 100;
 	private static int cooldown;
 
-	public Frosty(int _xVal)
+	public Frosty(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 		this.health = 250;
 		this.counter = 0;
 	}
@@ -52,7 +52,7 @@ public final class Frosty extends Shooter implements Serializable
 		if(this.counter >= 100)
 			this.counter = 0;
 		if(this.counter == 0)
-			return new Game.backend.Projectiles.Warhead.Icy(this.xVal);
+			return new Game.backend.Projectiles.Warhead.Icy(this.xVal, this.yVal);
 		return null;
 	}
 

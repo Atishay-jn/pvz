@@ -24,8 +24,13 @@ public final class LawnMover implements Displayable, Serializable
 	{
 		if(this.activated)
 			this.xVal += 5;
-		if(this.xVal >= 1200)
-			this.xVal = 1200;
+		if(this.xVal >= 1400)
+			this.xVal = 1400;
+	}
+
+	public boolean outOfFrame()
+	{
+		return this.xVal >= 1400;
 	}
 
 	public int getxVal()
@@ -42,7 +47,9 @@ public final class LawnMover implements Displayable, Serializable
 	@Override
 	public String getImage()
 	{
-		return null;
+		if(this.activated)
+			return "Game/assets/backend/Object/LawnMover/Lawnmower_Activated.gif";
+		return "Game/assets/backend/Object/LawnMover/Lawnmower.gif";
 	}
 
 	public boolean isImageUpdated()

@@ -5,15 +5,17 @@ import java.io.Serializable;
 public final class RowBlast extends Bomb implements Serializable
 {
 	private static final long serialVersionUID = 1;
+	public static final int height = 105;
+	public static final int width = 895;
 
-	public RowBlast(int _xVal)
+	public RowBlast(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 	}
 
 	@Override
 	public String getImage()
 	{
-		return null;
+		return "Game/assets/backend/Projectiles/Bomb/RowFire.gif";
 	}
 }

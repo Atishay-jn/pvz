@@ -7,12 +7,12 @@ import java.io.Serializable;
 public abstract class Bomb extends Projectile implements Serializable
 {
 	private static final long serialVersionUID = 1;
-	private int counter = 5;
+	private int counter = 60;
 	private boolean activated = false;
 
-	public Bomb(int _xVal)
+	public Bomb(int _xVal, int _yval)
 	{
-		super(_xVal);
+		super(_xVal, _yval);
 	}
 
 	public boolean isActivated()

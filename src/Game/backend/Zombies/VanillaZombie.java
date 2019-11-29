@@ -14,9 +14,7 @@ public final class VanillaZombie extends Zombie implements Serializable
 	@Override
 	public String getImage()
 	{
-		if(this.frozen)
-			return null;
-		return null;
+		return "Game/assets/backend/Zombies/LawnZombie.gif";
 	}
 
 	public VanillaZombie clone()

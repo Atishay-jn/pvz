@@ -11,9 +11,9 @@ public final class TwinSunflower extends Collector implements Serializable
 	private static final int maxCooldown = 500;
 	private static int cooldown;
 
-	public TwinSunflower(int _xVal)
+	public TwinSunflower(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 		this.health = 250;
 		this.counter = 0;
 	}
@@ -45,6 +45,11 @@ public final class TwinSunflower extends Collector implements Serializable
 			cooldown = maxCooldown;
 	}
 
+	public static String getCostImage()
+	{
+		return "Game/assets/backend/Plants/Collector/TwinSunflower/TwinSunflowerCost.gif";
+	}
+
 	@Override
 	public Projectile produce()
 	{
@@ -52,13 +57,8 @@ public final class TwinSunflower extends Collector implements Serializable
 		if(this.counter >= 100)
 			this.counter = 0;
 		if(this.counter == 0)
-			return new Game.backend.Projectiles.Produce.TwinSun(this.xVal);
+			return new Game.backend.Projectiles.Produce.TwinSun(this.xVal, this.yVal);
 		return null;
-	}
-
-	public static String getCostImage()
-	{
-		return "Game/assets/backend/Plants/Collector/TwinSunflower/TwinsunflowerCost.gif";
 	}
 
 	@Override

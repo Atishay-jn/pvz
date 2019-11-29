@@ -6,16 +6,16 @@ public final class Normal extends Warhead implements Serializable
 {
 	private static final long serialVersionUID = 1;
 
-	public Normal(int _xVal)
+	public Normal(int _xVal, int _yVal)
 	{
-		super(_xVal);
-		this.speed = 5;
+		super(_xVal, _yVal);
+		this.speed = 3;
 		this.damage = 50;
 	}
 
 	@Override
 	public String getImage()
 	{
-		return null;
+		return "Game/assets/backend/Projectiles/Warhead/Pea.png";
 	}
 }

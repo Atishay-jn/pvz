@@ -13,9 +13,9 @@ public final class PotatoMine extends Bomb implements Serializable
 	private boolean armed;
 	private boolean imageUpdated;
 
-	public PotatoMine(int _xVal)
+	public PotatoMine(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 		this.health = 250;
 		this.counter = 0;
 		this.armed = false;
@@ -60,7 +60,7 @@ public final class PotatoMine extends Bomb implements Serializable
 			this.imageUpdated = true;
 		}
 		if(this.armed)
-			return new Game.backend.Projectiles.Bomb.CellBlast(this.xVal);
+			return new Game.backend.Projectiles.Bomb.CellBlast(this.xVal, this.yVal);
 		return null;
 	}
 

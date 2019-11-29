@@ -11,9 +11,9 @@ public final class Firey extends Shooter implements Serializable
 	private static final int maxCooldown = 400;
 	private static int cooldown;
 
-	public Firey(int _xVal)
+	public Firey(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 		this.health = 250;
 		this.counter = 0;
 	}
@@ -52,7 +52,7 @@ public final class Firey extends Shooter implements Serializable
 		if(this.counter >= 100)
 			this.counter = 0;
 		if(this.counter == 0)
-			return new Game.backend.Projectiles.Warhead.Firey(this.xVal);
+			return new Game.backend.Projectiles.Warhead.Firey(this.xVal, this.yVal);
 		return null;
 	}
 

@@ -7,12 +7,14 @@ import java.io.Serializable;
 public abstract class Warhead extends Projectile implements Serializable
 {
 	private static final long serialVersionUID = 1;
+	public final static int height = 30;
+	public final static int width = 30;
 	int speed;
 	int damage;
 
-	public Warhead(int _xVal)
+	public Warhead(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 	}
 
 	public int getDamage()
@@ -23,7 +25,7 @@ public abstract class Warhead extends Projectile implements Serializable
 	public void update()
 	{
 		this.xVal += this.speed;
-		if(this.xVal >= 500)
-			this.xVal = 500;
+		if(this.xVal >= 1400)
+			this.xVal = 1400;
 	}
 }

@@ -11,9 +11,9 @@ public final class Jalapeno extends Bomb implements Serializable
 	private static final int maxCooldown = 500;
 	private static int cooldown;
 
-	public Jalapeno(int _xVal)
+	public Jalapeno(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 		this.health = 500;
 		this.counter = 0;
 	}
@@ -52,7 +52,7 @@ public final class Jalapeno extends Bomb implements Serializable
 		if(this.counter >= 100)
 			this.counter = 0;
 		if(this.counter == 0)
-			return new Game.backend.Projectiles.Bomb.RowBlast(this.xVal);
+			return new Game.backend.Projectiles.Bomb.RowBlast(this.xVal, this.yVal);
 		return null;
 	}
 

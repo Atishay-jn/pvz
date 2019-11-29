@@ -5,15 +5,17 @@ import java.io.Serializable;
 public final class CellBlast extends Bomb implements Serializable
 {
 	private static final long serialVersionUID = 1;
+	public static final int height = 95;
+	public static final int width = 95;
 
-	public CellBlast(int _xVal)
+	public CellBlast(int _xVal, int _yVal)
 	{
-		super(_xVal);
+		super(_xVal, _yVal);
 	}
 
 	@Override
 	public String getImage()
 	{
-		return null;
+		return "Game/assets/backend/Projectiles/Bomb/CellFire.gif";
 	}
 }

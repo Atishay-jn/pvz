@@ -6,16 +6,16 @@ public final class Firey extends Warhead implements Serializable
 {
 	private static final long serialVersionUID = 1;
 
-	public Firey(int _xVal)
+	public Firey(int _xVal, int _yVal)
 	{
-		super(_xVal);
-		this.speed = 5;
+		super(_xVal, _yVal);
+		this.speed = 3;
 		this.damage = 100;
 	}
 
 	@Override
 	public String getImage()
 	{
-		return null;
+		return "Game/assets/backend/Projectiles/Warhead/Firey.png";
 	}
 }

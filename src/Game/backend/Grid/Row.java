@@ -23,7 +23,7 @@ public final class Row implements Serializable
 	private ArrayList<Cell> cells;
 	private ArrayList<Zombie> incoming;
 	private ArrayList<Projectile> projectiles;
-	private static int[] cellXVal = {150, 200, 300, 400, 450, 500, 550, 600, 650};
+	private static int[] cellXVal = {360, 460, 575, 667, 767, 870, 963, 1066, 1179};
 	private LawnMover lawnMover;
 	private int number;
 	private int yVal;
@@ -104,8 +104,8 @@ public final class Row implements Serializable
 		this.projectiles.forEach((Projectile p) ->
 		{
 			if(p instanceof Warhead)
-				p.setxVal(p.getxVal() + 2);
-			if(p.getxVal() > 1000)
+				((Warhead) p).update();
+			if(p.getxVal() >= 1400)
 			{
 				this.toRemove.add(p);
 				this.projectiles.remove(p);
@@ -115,7 +115,7 @@ public final class Row implements Serializable
 		//Move mover
 		{
 			this.lawnMover.update();
-			if(this.lawnMover.getxVal() >= 500)
+			if(this.lawnMover.getxVal() >= 1400)
 				this.lawnMover = null;
 		}
 

@@ -40,4 +40,19 @@ public final class Cell implements Serializable
 		DynamicPlant d = (DynamicPlant) this.plant;
 		return d.produce();
 	}
+
+	public boolean hasPlant()
+	{
+		return this.plant != null;
+	}
+
+	public boolean takeDamage(int damage)
+	{
+		if(this.plant.takeDamage(damage))
+		{
+			this.plant = null;
+			return true;
+		}
+		return false;
+	}
 }

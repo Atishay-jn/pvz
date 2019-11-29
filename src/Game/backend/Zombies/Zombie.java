@@ -15,21 +15,23 @@ public abstract class Zombie implements Displayable, Serializable, Cloneable
 	private int speed;
 	private int xVal;
 	private int frozenTime;
+	private int damage;
+	private boolean eating;
 
-	protected Zombie(int health, int speed, int xVal)
+	public Zombie(int health, int speed, int xVal, int damage)
 	{
 		this.health = health;
 		this.speed = speed;
 		this.xVal = xVal;
 		this.frozen = false;
 		this.frozenTime = 0;
+		this.damage = damage;
+		this.eating = false;
 	}
 
 	public boolean takeDamage(Projectile p)
 	{
-		if(p instanceof Game.backend.Projectiles.Bomb.Bomb)
-			this.health = 0;
-		else if(p instanceof Game.backend.Projectiles.Warhead.Icy)
+		if(p instanceof Game.backend.Projectiles.Warhead.Icy)
 		{
 			this.frozen = true;
 			Warhead w = (Game.backend.Projectiles.Warhead.Warhead) p;
@@ -55,8 +57,21 @@ public abstract class Zombie implements Displayable, Serializable, Cloneable
 		return xVal;
 	}
 
+	public int getDamage()
+	{
+		return damage;
+	}
+
+	public void setEating(boolean eating)
+	{
+		this.eating = eating;
+	}
+
 	public void update() throws ZombiesAteYourBrainsException
 	{
+		int curSpeed = this.speed;
+		if(this.eating)
+			curSpeed = 0;
 		if(this.frozen)
 			this.frozenTime++;
 		if(this.frozenTime >= 50)
@@ -65,9 +80,9 @@ public abstract class Zombie implements Displayable, Serializable, Cloneable
 			this.frozen = false;
 		}
 		if(this.frozen)
-			this.xVal -= speed / 2;
+			this.xVal -= curSpeed / 2;
 		else
-			this.xVal -= this.speed;
+			this.xVal -= curSpeed;
 		if(this.xVal < 100)
 			throw new ZombiesAteYourBrainsException("You Loose");
 	}

@@ -1,6 +1,7 @@
 package Game.frontend.Shop;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -18,6 +19,8 @@ public class ShopController
 	private ImageView op3;
 	@FXML
 	private ImageView op4;
+	@FXML
+	private Button buyButton;
 
 	void setPrimaryStage(Stage primaryStage)
 	{
@@ -61,4 +64,8 @@ public class ShopController
 		return op4;
 	}
 
+	public Button getBuyButton()
+	{
+		return buyButton;
+	}
 }

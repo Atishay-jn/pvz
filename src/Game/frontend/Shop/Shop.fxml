@@ -15,8 +15,8 @@
     </Label>
     <Button layoutX="393.0" layoutY="592.0" mnemonicParsing="false" onMouseClicked="#backClick" opacity="0.0"
             prefHeight="61.0" prefWidth="280.0" text="Button"/>
-    <Button layoutX="741.0" layoutY="592.0" mnemonicParsing="false" onMouseClicked="#buyClick" opacity="0.0"
-            prefHeight="61.0" prefWidth="280.0" text="Button"/>
+    <Button fx:id="buyButton" layoutX="741.0" layoutY="592.0" mnemonicParsing="false" onMouseClicked="#buyClick"
+            opacity="0.0" prefHeight="61.0" prefWidth="280.0" text="Button"/>
     <ImageView fx:id="op1" fitHeight="119.0" fitWidth="150.0" layoutX="163.0" layoutY="263.0" pickOnBounds="true"
                preserveRatio="true"/>
     <ImageView fx:id="op2" fitHeight="119.0" fitWidth="150.0" layoutX="452.0" layoutY="263.0" pickOnBounds="true"

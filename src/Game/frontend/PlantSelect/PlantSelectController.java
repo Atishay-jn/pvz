@@ -21,7 +21,7 @@ public class PlantSelectController
 	@FXML
 	private void shopClick() throws Exception
 	{
-		Game.frontend.Shop.Shop.run(primaryStage);
+		Game.frontend.Shop.Shop.getInstance().run(primaryStage);
 	}
 
 	@FXML

@@ -34,53 +34,84 @@ public class PlantList
 
 	private static void setUpChoices()
 	{
-		plantChoice.getItems().addAll("Pea Shooter", "---");
+		plantChoice.getItems().addAll("Pea Shooter", "---", "Wallnut", "Tallnut", "Firey", "Frosty", "Gun", "Repeater", "Jalapeno", "Potato Mine", "Sunflower", "Twin Sunflower");
 		plantChoice.setValue("---");
 		plantChoice.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> newChoice(newValue));
 	}
 
 	private static void newChoice(String value)
 	{
-//		switch(value) {
-//			case "Wallnut":
-//				plantImage.setImage(new Image("./Game/assets/backend/Plants/Barrier/Wallnut/Wallnut.gif"));
-//				plantImage.setVisible(true);
-//				plantDescription.setText("");
-//				break;
-//			case "Traffic Zombie":
-//				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/TrafficZombie.gif"));
-//				zombieImage.setVisible(true);
-//				zombieDescription.setText("Traffic Zombie. This one crossed a road to get to your home. Please let him through");
-//				zombieDescription.setVisible(true);
-//				break;
-//			case "Bucket Zombie":
-//				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BucketZommbie.gif "));
-//				zombieImage.setVisible(true);
-//				zombieDescription.setText("Bucket Zombie. Ran out of water? Can I please finish bathing");
-//				zombieDescription.setVisible(true);
-//				break;
-//			case "Rugby Zombie":
-//				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/RugbyZombie.png"));
-//				zombieImage.setVisible(true);
-//				zombieDescription.setText("Rugby Zombie. This zombie has played in the NFL, the best quarterback of all. Can take a hit or more ");
-//				zombieDescription.setVisible(true);
-//				break;
-//			case "Runner Zombie":
-//				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/RunnerZombie.gif "));
-//				zombieImage.setVisible(true);
-//				zombieDescription.setText("Runner Zombie. This zombie will roll his through your yard before you even realize");
-//				zombieDescription.setVisible(true);
-//				break;
-//			case "Boss Zombie":
-//				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BossZombie.gif "));
-//				zombieImage.setVisible(true);
-//				zombieDescription.setText("Boss Zombie. The name is enough.");
-//				zombieDescription.setVisible(true);
-//				break;
-//			default:
-//				zombieImage.setVisible(false);
-//				zombieDescription.setVisible(false);
-//
-//		}
+		switch(value) {
+			case "Wallnut":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Barrier/Wallnut/Wallnut.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("A small barrier. Won't let anyone through while its alive");
+				plantDescription.setVisible(true);
+				break;
+			case "Tallnut":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Barrier/Wallnut/Tallnut.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("Big brother of Wallnut with life's motto: You shall not pass");
+				plantDescription.setVisible(true);
+				break;
+			case "Pea Shooter":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Shooters/PeaShooter/PeaShooter.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("Shoots peas to damage zombies");
+				plantDescription.setVisible(true);
+				break;
+			case "Firey":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Shooters/Firey/Firey.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("Pea shooter with a fire inside. Fire peas cause twice the damage and unfreeze any frozen zombies");
+				plantDescription.setVisible(true);
+				break;
+			case "Frosty":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Shooters/Frosty/Frosty.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("Pea shooter for the cold. Slows down all zombies hit by it by 0.5x");
+				plantDescription.setVisible(true);
+				break;
+			case "Gun":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Shooters/Gun/Gun.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("The repeater got even faster, 4 peas in the same time pea shooter shoots one");
+				plantDescription.setVisible(true);
+				break;
+			case "Repeater":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Shooters/Repeater/Repeater.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("The pea shooter just got faster. Shoots twice the number of peas");
+				plantDescription.setVisible(true);
+				break;
+			case "Jalapeno":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Bomb/Jalapeno/Jalapeno.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("Is that smoke? Jalapeno burns the entire row at once sparing none");
+				plantDescription.setVisible(true);
+				break;
+			case "Potato Mine":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Bomb/PotatoMine/PotatoMineArmed.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("Yikes! Potato mine is the perfect old school mine. Come too close and that's the last time you do. But remember it takes a while to activate");
+				plantDescription.setVisible(true);
+				break;
+			case "Sunflower":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Collector/Sunflower/Sunflower.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("The perfect source continuous stream of inputs. Gives you extra sun tokens");
+				plantDescription.setVisible(true);
+				break;
+			case "Twin Sunflower":
+				plantImage.setImage(new Image("./Game/assets/backend/Plants/Collector/TwinSunflower/TwinSunflower.gif"));
+				plantImage.setVisible(true);
+				plantDescription.setText("Sunflower on steroids. It's sun tokens are worth twice that of the normal Sunflower. ");
+				plantDescription.setVisible(true);
+				break;
+			default:
+				plantImage.setVisible(false);
+				plantDescription.setVisible(false);
+
+		}
 	}
 }

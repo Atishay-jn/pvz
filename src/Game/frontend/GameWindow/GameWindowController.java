@@ -1,9 +1,9 @@
 package Game.frontend.GameWindow;
 
-import Game.backend.Grid.Grid;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -24,6 +24,13 @@ public class GameWindowController
 	@FXML
 	private AnchorPane pane;
 	private Timer timer;
+	@FXML
+	private ImageView demoZombie;
+
+	public ImageView getDemoZombie()
+	{
+		return demoZombie;
+	}
 
 	void setUp()
 	{

@@ -1,6 +1,7 @@
 package Game.frontend.GameWindow;
 
 import Game.Main;
+import Game.backend.Displayable;
 import Game.backend.User.SaveGame;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -12,13 +13,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameWindow extends SaveGame
 {
 	private static GameWindow uniqueInstance = null;
-	private long count = 0;
 	private GameWindowController controller = null;
 	private Label coinCounter = null;
 	private Label sunCounter = null;
@@ -26,6 +28,8 @@ public class GameWindow extends SaveGame
 	private AnchorPane pane = null;
 	private Timer timer;
 	private ImageView demoZombie;
+	private ArrayList<ImageView> standby = new ArrayList<>();
+	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 	private GameWindow() {}
 
 	public static GameWindow getInstance() {
@@ -50,7 +54,6 @@ public class GameWindow extends SaveGame
 		controller.setPrimaryStage(primaryStage);
 
 		controller.setUp();
-		count = 0;
 		fetchObjects();
 
 		timer = new Timer();

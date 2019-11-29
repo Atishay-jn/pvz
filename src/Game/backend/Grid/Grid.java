@@ -28,7 +28,7 @@ public final class Grid implements Serializable
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			this.rows.get(i).getIncoming().addAll(wave.getZombies(i));
+			//TODO
 		}
 	}
 

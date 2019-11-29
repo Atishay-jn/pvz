@@ -10,12 +10,18 @@ import javafx.stage.Stage;
 public class LevelSelect extends CurrentUser
 {
 	private static LevelSelect uniqueInstance = null;
-	private LevelSelect() {}
-	public static LevelSelect getInstance() {
+
+	private LevelSelect()
+	{
+	}
+
+	public static LevelSelect getInstance()
+	{
 		if(uniqueInstance == null)
 			uniqueInstance = new LevelSelect();
 		return uniqueInstance;
 	}
+
 	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(LevelSelect.class.getResource("LevelSelect.fxml"));

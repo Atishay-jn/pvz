@@ -5,36 +5,58 @@ import java.io.Serializable;
 public final class LawnMover implements Displayable, Serializable
 {
 	private static final long serialVersionUID = 1;
-	private int position;
+	public static final int height = 90;
+	public static final int width = 110;
+	private int xVal;
+	private int _yVal;
 	private boolean activated;
+	private boolean imageUpdated;
 
-	public LawnMover(int _position)
+	public LawnMover(int _xVal, int _yVal)
 	{
 		this.activated = false;
-		this.position = _position;
+		this.xVal = _xVal - width;
+		this._yVal = _yVal - height;
+		this.imageUpdated = false;
 	}
 
 	public void update()
 	{
 		if(this.activated)
-			this.position += 5;
-		if(this.position >= 500)
-			this.position = 500;
+			this.xVal += 5;
+		if(this.xVal >= 1200)
+			this.xVal = 1200;
 	}
 
-	public int getPosition()
+	public int getxVal()
 	{
-		return position;
+		return xVal;
 	}
 
 	public void setActivated(boolean activated)
 	{
 		this.activated = activated;
+		this.imageUpdated = true;
 	}
 
 	@Override
 	public String getImage()
 	{
 		return null;
+	}
+
+	public boolean isImageUpdated()
+	{
+		return imageUpdated;
+	}
+
+	public void setImageUpdated(boolean imageUpdated)
+	{
+		this.imageUpdated = imageUpdated;
+	}
+
+	public int get_yVal()
+	{
+		return _yVal;
 	}
 }

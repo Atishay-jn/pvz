@@ -11,6 +11,7 @@ public final class PotatoMine extends Bomb implements Serializable
 	private static final int maxCooldown = 150;
 	private static int cooldown;
 	private boolean armed;
+	private boolean imageUpdated;
 
 	public PotatoMine(int _xVal)
 	{
@@ -18,6 +19,7 @@ public final class PotatoMine extends Bomb implements Serializable
 		this.health = 250;
 		this.counter = 0;
 		this.armed = false;
+		this.imageUpdated = false;
 	}
 
 	public static int getMaxCooldown()
@@ -52,8 +54,11 @@ public final class PotatoMine extends Bomb implements Serializable
 	{
 		if(!this.armed)
 			this.counter++;
-		if(this.counter >= 100)
+		if(this.counter >= 100 && !this.armed)
+		{
 			this.armed = true;
+			this.imageUpdated = true;
+		}
 		if(this.armed)
 			return new Game.backend.Projectiles.Bomb.CellBlast(this.xVal);
 		return null;
@@ -70,5 +75,15 @@ public final class PotatoMine extends Bomb implements Serializable
 		if(this.armed)
 			return "Game/assets/backend/Plants/Bomb/PotatoMine/PotatoMineArmed.gif";
 		return "Game/assets/backend/Plants/Bomb/PotatoMine/PotatoMineUnArmed.gif";
+	}
+
+	public boolean isImageUpdated()
+	{
+		return imageUpdated;
+	}
+
+	public void setImageUpdated(boolean imageUpdated)
+	{
+		this.imageUpdated = imageUpdated;
 	}
 }

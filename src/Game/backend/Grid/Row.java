@@ -38,7 +38,7 @@ public final class Row implements Serializable
 		this.incoming = new ArrayList<>();
 		this.projectiles = new ArrayList<>();
 		this.toRemove = new ArrayList<>();
-		this.lawnMover = new LawnMover(_boundary - 50);
+		this.lawnMover = new LawnMover(_boundary, _yVal);
 		this.boundary = _boundary;
 		this.number = _num;
 		this.yVal = _yVal;
@@ -115,7 +115,7 @@ public final class Row implements Serializable
 		//Move mover
 		{
 			this.lawnMover.update();
-			if(this.lawnMover.getPosition() >= 500)
+			if(this.lawnMover.getxVal() >= 500)
 				this.lawnMover = null;
 		}
 
@@ -187,7 +187,7 @@ public final class Row implements Serializable
 		//Handle collision with mover
 		for(Zombie z : this.incoming)
 		{
-			if(this.lawnMover.getPosition() > z.getxVal())
+			if(this.lawnMover.getxVal() > z.getxVal())
 			{
 				this.toRemove.add(z);
 				this.incoming.remove(z);

@@ -10,19 +10,23 @@ import java.io.Serializable;
 public abstract class Zombie implements Displayable, Serializable, Cloneable
 {
 	private static final long serialVersionUID = 1;
+	public static final int width = 200;
+	public static final int height = 150;
 	boolean frozen;
 	private int health;
 	private int speed;
 	private int xVal;
+	private int yVal;
 	private int frozenTime;
 	private int damage;
 	private boolean eating;
 
-	public Zombie(int health, int speed, int xVal, int damage)
+	public Zombie(int health, int speed, int _yVal, int damage)
 	{
 		this.health = health;
 		this.speed = speed;
-		this.xVal = xVal;
+		this.xVal = 1200;
+		this.yVal = _yVal - height;
 		this.frozen = false;
 		this.frozenTime = 0;
 		this.damage = damage;
@@ -97,5 +101,15 @@ public abstract class Zombie implements Displayable, Serializable, Cloneable
 		{
 			return null;
 		}
+	}
+
+	protected int getyVal()
+	{
+		return yVal;
+	}
+
+	protected void setyVal(int yVal)
+	{
+		this.yVal = yVal;
 	}
 }

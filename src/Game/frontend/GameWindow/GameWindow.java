@@ -66,7 +66,7 @@ public class GameWindow extends SaveGame
 		demoZombie = controller.getDemoZombie();
 		demoZombie.toFront();
 		demoZombie.setX(1200);
-		demoZombie.setY(200);
+		demoZombie.setY(0);
 		coinCounter = controller.getCoinCounter();
 		sunCounter = controller.getSunCounter();
 		waveProgress = controller.getWaveProgress();
@@ -77,9 +77,10 @@ public class GameWindow extends SaveGame
 		@Override
 		public void run()
 		{
-			System.out.println(demoZombie.getX());
+			//			System.out.println(demoZombie.getImage().equals(new Image("Game/assets/backend/Zombies/LawnZombie.gif")));
+			//			System.out.println(demoZombie.getX());
 			Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));
-			if(demoZombie.getX() < 200)
+			if(demoZombie.getX() < 360)
 				Platform.runLater(() -> pane.getChildren().remove(demoZombie));
 		}
 	}

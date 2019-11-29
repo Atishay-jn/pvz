@@ -6,9 +6,9 @@ public final class TrafficZombie extends Zombie implements Serializable
 {
 	private static final long serialVersionUID = 1;
 
-	public TrafficZombie(int xVal)
+	public TrafficZombie(int yVal)
 	{
-		super(400, 2, xVal, 1);
+		super(400, 2, yVal, 1);
 	}
 
 	@Override

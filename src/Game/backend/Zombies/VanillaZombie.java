@@ -6,9 +6,9 @@ public final class VanillaZombie extends Zombie implements Serializable
 {
 	private static final long serialVersionUID = 1;
 
-	public VanillaZombie(int xVal)
+	public VanillaZombie(int yVal)
 	{
-		super(200, 2, xVal, 1);
+		super(200, 2, yVal, 1);
 	}
 
 	@Override

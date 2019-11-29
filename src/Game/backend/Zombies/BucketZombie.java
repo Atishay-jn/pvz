@@ -6,9 +6,9 @@ public final class BucketZombie extends Zombie implements Serializable
 {
 	private static final long serialVersionUID = 1;
 
-	public BucketZombie(int xVal)
+	public BucketZombie(int yVal)
 	{
-		super(500, 2, xVal, 1);
+		super(500, 2, yVal, 1);
 	}
 
 	@Override

@@ -6,9 +6,9 @@ public final class RugbyZombie extends Zombie implements Serializable
 {
 	private static final long serialVersionUID = 1;
 
-	public RugbyZombie(int xVal)
+	public RugbyZombie(int yVal)
 	{
-		super(400, 3, xVal, 2);
+		super(400, 3, yVal, 2);
 	}
 
 	@Override

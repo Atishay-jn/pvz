@@ -7,14 +7,14 @@ import java.io.Serializable;
 public final class Repeater extends Shooter implements Serializable
 {
 	private static final long serialVersionUID = 1;
-	private static final int cost = 50;
+	private static final int cost = 100;
 	private static final int maxCooldown = 300;
 	private static int cooldown;
 
 	public Repeater(int _xVal)
 	{
 		super(_xVal);
-		this.health = 100;
+		this.health = 250;
 		this.counter = 0;
 	}
 

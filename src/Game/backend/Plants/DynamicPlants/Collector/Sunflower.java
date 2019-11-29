@@ -8,13 +8,13 @@ public final class Sunflower extends Collector implements Serializable
 {
 	private static final long serialVersionUID = 1;
 	private static final int cost = 50;
-	private static final int maxCooldown = 300;
+	private static final int maxCooldown = 100;
 	private static int cooldown;
 
 	public Sunflower(int _xVal)
 	{
 		super(_xVal);
-		this.health = 100;
+		this.health = 250;
 		this.counter = 0;
 	}
 

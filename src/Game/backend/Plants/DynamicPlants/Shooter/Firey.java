@@ -7,14 +7,14 @@ import java.io.Serializable;
 public final class Firey extends Shooter implements Serializable
 {
 	private static final long serialVersionUID = 1;
-	private static final int cost = 50;
-	private static final int maxCooldown = 300;
+	private static final int cost = 150;
+	private static final int maxCooldown = 400;
 	private static int cooldown;
 
 	public Firey(int _xVal)
 	{
 		super(_xVal);
-		this.health = 100;
+		this.health = 250;
 		this.counter = 0;
 	}
 

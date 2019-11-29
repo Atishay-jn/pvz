@@ -7,14 +7,14 @@ import java.io.Serializable;
 public final class Frosty extends Shooter implements Serializable
 {
 	private static final long serialVersionUID = 1;
-	private static final int cost = 50;
-	private static final int maxCooldown = 300;
+	private static final int cost = 125;
+	private static final int maxCooldown = 100;
 	private static int cooldown;
 
 	public Frosty(int _xVal)
 	{
 		super(_xVal);
-		this.health = 100;
+		this.health = 250;
 		this.counter = 0;
 	}
 

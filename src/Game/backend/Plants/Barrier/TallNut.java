@@ -5,13 +5,13 @@ import java.io.Serializable;
 public final class TallNut extends Barrier implements Serializable
 {
 	private static final long serialVersionUID = 1;
-	private static final int cost = 50;
+	private static final int cost = 75;
 	private static final int maxCooldown = 300;
 	private static int cooldown;
 
 	public TallNut()
 	{
-		this.health = 300;
+		this.health = 1500;
 	}
 
 	public static int getMaxCooldown()

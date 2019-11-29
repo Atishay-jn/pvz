@@ -55,7 +55,7 @@ public class ZombieList
 				zombieDescription.setVisible(true);
 				break;
 			case "Bucket Zombie":
-				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BucketZommbie.gif "));
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BucketZommbie.gif"));
 				zombieImage.setVisible(true);
 				zombieDescription.setText("Bucket Zombie. Ran out of water? Can I please finish bathing");
 				zombieDescription.setVisible(true);
@@ -67,13 +67,13 @@ public class ZombieList
 				zombieDescription.setVisible(true);
 				break;
 			case "Runner Zombie":
-				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/RunnerZombie.gif "));
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/RunnerZombie.gif"));
 				zombieImage.setVisible(true);
 				zombieDescription.setText("Runner Zombie. This zombie will roll his through your yard before you even realize");
 				zombieDescription.setVisible(true);
 				break;
 			case "Boss Zombie":
-				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BossZombie.gif "));
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BossZombie.gif"));
 				zombieImage.setVisible(true);
 				zombieDescription.setText("Boss Zombie. The name is enough.");
 				zombieDescription.setVisible(true);

@@ -64,7 +64,7 @@ public class GameWindow extends SaveGame
 	private void fetchObjects()
 	{
 		demoZombie = controller.getDemoZombie();
-		demoZombie.setX(1200);
+		demoZombie.toFront();
 		coinCounter = controller.getCoinCounter();
 		sunCounter = controller.getSunCounter();
 		waveProgress = controller.getWaveProgress();

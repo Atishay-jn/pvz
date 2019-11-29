@@ -163,8 +163,8 @@
                        GridPane.columnIndex="8" GridPane.rowIndex="4"/>
         </children>
     </GridPane>
-    <ImageView fx:id="demoZombie" fitHeight="150.0" fitWidth="200.0" layoutX="1300.0" layoutY="66.0" pickOnBounds="true"
-               preserveRatio="true">
+    <ImageView fx:id="demoZombie" fitHeight="150.0" fitWidth="200.0" layoutX="1200.0" layoutY="117.0"
+               pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../assets/backend/Zombies/LawnZombie.gif"/>
         </image>

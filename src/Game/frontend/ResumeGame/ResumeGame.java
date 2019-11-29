@@ -10,10 +10,17 @@ import javafx.stage.Stage;
 
 public class ResumeGame extends CurrentUser
 {
-	private static ChoiceBox<String> userChoice = null;
-	private static ResumeGameController controller = null;
+	private static ResumeGame uniqueInstance = null;
+	private ResumeGame() {}
+	public static ResumeGame getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new ResumeGame();
+		return uniqueInstance;
+	}
+	private ChoiceBox<String> userChoice = null;
+	private ResumeGameController controller = null;
 
-	public static void run(Stage primaryStage) throws Exception
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(ResumeGame.class.getResource("ResumeGame.fxml"));
 		Parent root = loader.load();
@@ -27,13 +34,13 @@ public class ResumeGame extends CurrentUser
 		primaryStage.show();
 	}
 
-	private static void setUpChoices()
+	private void setUpChoices()
 	{
 		userChoice.getItems().addAll("User1", "User2", "User3", "User4", "User5", "---");
 		userChoice.setValue("---");
 	}
 
-	private static void newChoice(String value)
+	private void newChoice(String value)
 	{
 		if(value.equals("---"))
 			controller.updateButtonState(true);

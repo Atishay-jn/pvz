@@ -15,22 +15,31 @@ import java.util.TimerTask;
 
 public class GameWindow extends SaveGame
 {
-	private static long count = 0;
-	private static GameWindowController controller = null;
-	private static Label coinCounter = null;
-	private static Label sunCounter = null;
-	private static ProgressBar waveProgress = null;
-	private static AnchorPane pane = null;
-	private static Timer timer;
+	private static GameWindow uniqueInstance = null;
+	private long count = 0;
+	private GameWindowController controller = null;
+	private Label coinCounter = null;
+	private Label sunCounter = null;
+	private ProgressBar waveProgress = null;
+	private AnchorPane pane = null;
+	private Timer timer;
 
-	public static void resumeTimer()
+	private GameWindow() {}
+
+	public static GameWindow getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new GameWindow();
+		return uniqueInstance;
+	}
+
+	public void resumeTimer()
 	{
 		timer = new Timer();
 		controller.setTimer(timer);
-		timer.schedule(new Game.frontend.GameWindow.GameWindow.updater(), 0, 10);
+		timer.schedule(new updater(), 0, 10);
 	}
 
-	public static void run(Stage primaryStage) throws Exception
+	public void run(Stage primaryStage) throws Exception
 	{
 
 		FXMLLoader loader = new FXMLLoader(GameWindow.class.getResource("GameWindow.fxml"));
@@ -50,7 +59,7 @@ public class GameWindow extends SaveGame
 		primaryStage.show();
 	}
 
-	private static void fetchObjects()
+	private void fetchObjects()
 	{
 		coinCounter = controller.getCoinCounter();
 		sunCounter = controller.getSunCounter();
@@ -58,11 +67,8 @@ public class GameWindow extends SaveGame
 		pane = controller.getPane();
 	}
 
-	static class updater extends TimerTask
-	{
+	public class updater extends TimerTask {
 		@Override
-		public void run()
-		{
-		}
+		public void run() {}
 	}
 }

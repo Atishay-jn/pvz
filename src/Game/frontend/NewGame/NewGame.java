@@ -9,7 +9,14 @@ import javafx.stage.Stage;
 
 public class NewGame extends CurrentUser
 {
-	public static void run(Stage primaryStage) throws Exception
+	private static NewGame uniqueInstance = null;
+	private NewGame() {}
+	public static NewGame getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new NewGame();
+		return uniqueInstance;
+	}
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(NewGame.class.getResource("NewGame.fxml"));
 		Parent root = loader.load();

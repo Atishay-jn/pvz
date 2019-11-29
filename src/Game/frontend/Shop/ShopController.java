@@ -30,7 +30,7 @@ public class ShopController
 	@FXML
 	private void backClick() throws Exception
 	{
-		Game.frontend.PlantSelect.PlantSelect.run(primaryStage);
+		Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
 	}
 
 	@FXML

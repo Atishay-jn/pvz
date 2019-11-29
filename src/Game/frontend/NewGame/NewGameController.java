@@ -29,13 +29,13 @@ public class NewGameController
 	@FXML
 	private void newUserClick() throws Exception
 	{
-		Game.frontend.LevelSelect.LevelSelect.run(primaryStage);
+		Game.frontend.LevelSelect.LevelSelect.getInstance().run(primaryStage);
 	}
 
 	@FXML
 	private void mainMenuClick() throws Exception
 	{
-		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 
 	@FXML

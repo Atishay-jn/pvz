@@ -10,7 +10,7 @@ public class HelpController
 	@FXML
 	private void mainMenuClick() throws Exception
 	{
-		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 
 	@FXML

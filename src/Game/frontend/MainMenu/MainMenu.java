@@ -8,7 +8,14 @@ import javafx.stage.Stage;
 
 public class MainMenu
 {
-	public static void run(Stage primaryStage) throws Exception
+	private static MainMenu uniqueInstance = null;
+	private MainMenu() {}
+	public static MainMenu getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new MainMenu();
+		return uniqueInstance;
+	}
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(MainMenu.class.getResource("MainMenu.fxml"));
 		Parent root = loader.load();

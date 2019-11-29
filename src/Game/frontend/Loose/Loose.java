@@ -9,7 +9,14 @@ import javafx.stage.Stage;
 
 public class Loose extends SaveGame
 {
-	public static void run(Stage primaryStage) throws Exception
+	private static Loose uniqueInstance = null;
+	private Loose() {}
+	public static Loose getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new Loose();
+		return uniqueInstance;
+	}
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(Loose.class.getResource("Loose.fxml"));
 		Parent root = loader.load();

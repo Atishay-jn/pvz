@@ -22,13 +22,13 @@ public class PauseScreenController
 	private void mainMenuClick() throws Exception
 	{
 		this.window.close();
-		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 
 	@FXML
 	private void resumeClick()
 	{
-		Game.frontend.GameWindow.GameWindow.resumeTimer();
+		Game.frontend.GameWindow.GameWindow.getInstance().resumeTimer();
 		this.window.close();
 		//		Game.frontend.GameWindow.GameWindow.run(primaryStage);
 	}
@@ -37,6 +37,6 @@ public class PauseScreenController
 	private void restartClick() throws Exception
 	{
 		this.window.close();
-		Game.frontend.PlantSelect.PlantSelect.run(primaryStage);
+		Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
 	}
 }

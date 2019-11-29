@@ -40,7 +40,7 @@ public class GameWindowController
 	private void pauseClick() throws Exception
 	{
 		timer.cancel();
-		Game.frontend.Pause.PauseScreen.run(primaryStage);
+		Game.frontend.Pause.PauseScreen.getInstance().run(primaryStage);
 	}
 
 	@FXML

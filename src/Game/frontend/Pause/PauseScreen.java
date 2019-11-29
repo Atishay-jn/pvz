@@ -10,7 +10,14 @@ import javafx.stage.StageStyle;
 
 public class PauseScreen extends SaveGame
 {
-	public static void run(Stage primaryStage) throws Exception
+	private static PauseScreen uniqueInstance = null;
+	private PauseScreen() {}
+	public static PauseScreen getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new PauseScreen();
+		return uniqueInstance;
+	}
+	public void run(Stage primaryStage) throws Exception
 	{
 		Stage pauseWindow = new Stage();
 		pauseWindow.initModality(Modality.APPLICATION_MODAL);

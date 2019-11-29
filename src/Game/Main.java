@@ -25,7 +25,7 @@ public class Main extends Application
 		primaryStage.setResizable(false);
 		primaryStage.initStyle(StageStyle.UNDECORATED);
 		playMusic();
-		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 
 	private void playMusic() throws Exception

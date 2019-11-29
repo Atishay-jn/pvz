@@ -9,7 +9,14 @@ import javafx.stage.Stage;
 
 public class PlantSelect extends CurrentUser
 {
-	public static void run(Stage primaryStage) throws Exception
+	private static PlantSelect uniqueInstance = null;
+	private PlantSelect() {}
+	public static PlantSelect getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new PlantSelect();
+		return uniqueInstance;
+	}
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(PlantSelect.class.getResource("PlantSelect.fxml"));
 		Parent root = loader.load();

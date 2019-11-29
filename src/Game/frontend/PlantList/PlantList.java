@@ -12,11 +12,18 @@ import javafx.stage.Stage;
 
 public class PlantList
 {
-	private static ImageView plantImage = null;
-	private static ChoiceBox<String> plantChoice = null;
-	private static TextArea plantDescription = null;
+	private static PlantList uniqueInstance = null;
+	private PlantList() {}
+	public static PlantList getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new PlantList();
+		return uniqueInstance;
+	}
+	private ImageView plantImage = null;
+	private ChoiceBox<String> plantChoice = null;
+	private TextArea plantDescription = null;
 
-	public static void run(Stage primaryStage) throws Exception
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(PlantList.class.getResource("PlantList.fxml"));
 		Parent root = loader.load();
@@ -32,14 +39,14 @@ public class PlantList
 		primaryStage.show();
 	}
 
-	private static void setUpChoices()
+	private void setUpChoices()
 	{
 		plantChoice.getItems().addAll( "---", "Pea Shooter", "Wallnut", "Tallnut", "Firey", "Frosty", "Gun", "Repeater", "Jalapeno", "Potato Mine", "Sunflower", "Twin Sunflower");
 		plantChoice.setValue("---");
 		plantChoice.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> newChoice(newValue));
 	}
 
-	private static void newChoice(String value)
+	private void newChoice(String value)
 	{
 		switch(value) {
 			case "Wallnut":

@@ -15,7 +15,7 @@ public class LooseController
 	@FXML
 	private void menuClick() throws Exception
 	{
-		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 
 	@FXML

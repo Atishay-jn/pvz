@@ -15,7 +15,7 @@ public class PlantSelectController
 	@FXML
 	private void backClick() throws Exception
 	{
-		Game.frontend.LevelSelect.LevelSelect.run(primaryStage);
+		Game.frontend.LevelSelect.LevelSelect.getInstance().run(primaryStage);
 	}
 
 	@FXML
@@ -27,6 +27,6 @@ public class PlantSelectController
 	@FXML
 	private void playClick() throws Exception
 	{
-		Game.frontend.GameWindow.GameWindow.run(primaryStage);
+		Game.frontend.GameWindow.GameWindow.getInstance().run(primaryStage);
 	}
 }

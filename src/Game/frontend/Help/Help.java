@@ -8,7 +8,14 @@ import javafx.stage.Stage;
 
 public class Help
 {
-	public static void run(Stage primaryStage) throws Exception
+	private static Help uniqueInstance = null;
+	private Help() {}
+	public static Help getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new Help();
+		return uniqueInstance;
+	}
+	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(Help.class.getResource("Help.fxml"));
 		Parent root = loader.load();

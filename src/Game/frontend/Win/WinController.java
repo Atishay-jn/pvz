@@ -15,7 +15,7 @@ public class WinController
 	@FXML
 	private void mainClick() throws Exception
 	{
-		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 
 	@FXML

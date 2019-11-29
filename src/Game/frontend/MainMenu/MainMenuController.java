@@ -15,14 +15,14 @@ public class MainMenuController
 	@FXML
 	private void resumeClick() throws Exception
 	{
-		Game.frontend.ResumeGame.ResumeGame.run(primaryStage);
+		Game.frontend.ResumeGame.ResumeGame.getInstance().run(primaryStage);
 		System.out.println("resume click");
 	}
 
 	@FXML
 	private void helpClick() throws Exception
 	{
-		Game.frontend.Help.Help.run(primaryStage);
+		Game.frontend.Help.Help.getInstance().run(primaryStage);
 	}
 
 	@FXML
@@ -35,7 +35,7 @@ public class MainMenuController
 	@FXML
 	private void newGameClick() throws Exception
 	{
-		Game.frontend.NewGame.NewGame.run(primaryStage);
+		Game.frontend.NewGame.NewGame.getInstance().run(primaryStage);
 		System.out.println("new Game");
 	}
 }

@@ -10,13 +10,13 @@ public class AlmanacController
 	@FXML
 	private void mainMenuClick() throws Exception
 	{
-		Game.frontend.MainMenu.MainMenu.run(primaryStage);
+		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 
 	@FXML
 	private void plantClick() throws Exception
 	{
-		Game.frontend.PlantList.PlantList.run(primaryStage);
+		Game.frontend.PlantList.PlantList.getInstance().run(primaryStage);
 	}
 
 	@FXML

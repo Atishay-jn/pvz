@@ -8,6 +8,13 @@ import javafx.stage.Stage;
 
 public class Almanac
 {
+	private static Almanac uniqueInstance = null;
+	private Almanac() {}
+	public static Almanac getInstance() {
+		if(uniqueInstance == null)
+			uniqueInstance = new Almanac();
+		return uniqueInstance;
+	}
 	public static void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(Almanac.class.getResource("Almanac.fxml"));

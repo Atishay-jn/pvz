@@ -15,14 +15,14 @@ public class LevelSelectController
 	@FXML
 	private void backClick() throws Exception
 	{
-		Game.frontend.ResumeGame.ResumeGame.run(primaryStage);
+		Game.frontend.ResumeGame.ResumeGame.getInstance().run(primaryStage);
 	}
 
 	@FXML
 	private void level1Click() throws Exception
 	{
 		System.out.println("level 1");
-		Game.frontend.PlantSelect.PlantSelect.run(primaryStage);
+		Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
 	}
 
 	@FXML

@@ -34,7 +34,7 @@ public class ZombieList
 
 	private static void setUpChoices()
 	{
-		zombieChoice.getItems().addAll("Lawn Zombie", "---");
+		zombieChoice.getItems().addAll("Lawn Zombie", "Traffic Zombie", "Bucket Zombie", "Rugby Zombie", "Runner Zombie", "Boss Zombie", "---");
 		zombieChoice.setValue("---");
 		zombieChoice.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> newChoice(newValue));
 	}
@@ -43,12 +43,18 @@ public class ZombieList
 	{
 		switch(value) {
 			case "Lawn Zombie":
-				zombieImage.setImage(new Image("./Game/assets/backend/zombie_normal.gif"));
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/LawnZombie.gif"));
 				zombieImage.setVisible(true);
-				zombieDescription.setText("Give me brains!!!!");
+				zombieDescription.setText("");
 				zombieDescription.setVisible(true);
 				break;
-			case "":
+			case "Traffic Zombie":
+			case "Bucket Zombie":
+			case "Rugby Zombie":
+			case "Runner Zombie":
+			case "Boss Zombie":
+			default:
+
 		}
 		if(value.equals("---"))
 		{

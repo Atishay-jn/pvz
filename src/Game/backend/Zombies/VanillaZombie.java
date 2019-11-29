@@ -8,7 +8,7 @@ public final class VanillaZombie extends Zombie implements Serializable
 
 	public VanillaZombie(int xVal)
 	{
-		super(100, 5, xVal, 1);
+		super(200, 2, xVal, 1);
 	}
 
 	@Override

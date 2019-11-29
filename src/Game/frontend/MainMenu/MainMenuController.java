@@ -22,7 +22,8 @@ public class MainMenuController
 	@FXML
 	private void helpClick() throws Exception
 	{
-		Game.frontend.Help.Help.getInstance().run(primaryStage);
+		Game.frontend.GameWindow.GameWindow.getInstance().run(primaryStage);
+		//		Game.frontend.Help.Help.getInstance().run(primaryStage);
 	}
 
 	@FXML

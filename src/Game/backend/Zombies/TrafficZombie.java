@@ -8,7 +8,7 @@ public final class TrafficZombie extends Zombie implements Serializable
 
 	public TrafficZombie(int xVal)
 	{
-		super(150, 5, xVal, 1);
+		super(400, 2, xVal, 1);
 	}
 
 	@Override

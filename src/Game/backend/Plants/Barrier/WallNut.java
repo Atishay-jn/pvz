@@ -11,7 +11,7 @@ public final class WallNut extends Barrier implements Serializable
 
 	public WallNut()
 	{
-		this.health = 750;
+		this.health = 500;
 	}
 
 	public static int getMaxCooldown()

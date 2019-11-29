@@ -8,7 +8,7 @@ public final class BucketZombie extends Zombie implements Serializable
 
 	public BucketZombie(int xVal)
 	{
-		super(200, 5, xVal, 1);
+		super(500, 2, xVal, 1);
 	}
 
 	@Override

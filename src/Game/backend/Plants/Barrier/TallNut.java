@@ -11,7 +11,7 @@ public final class TallNut extends Barrier implements Serializable
 
 	public TallNut()
 	{
-		this.health = 1500;
+		this.health = 1000;
 	}
 
 	public static int getMaxCooldown()

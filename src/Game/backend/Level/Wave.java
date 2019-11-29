@@ -4,13 +4,21 @@ import Game.backend.Zombies.Zombie;
 
 import java.util.ArrayList;
 
-public class Wave
+public final class Wave
 {
+	private int number;
+	private int nextCountdown;
 	private ArrayList<Zombie> row0Zombie = new ArrayList<>();
 	private ArrayList<Zombie> row1Zombie = new ArrayList<>();
 	private ArrayList<Zombie> row2Zombie = new ArrayList<>();
 	private ArrayList<Zombie> row3Zombie = new ArrayList<>();
 	private ArrayList<Zombie> row4Zombie = new ArrayList<>();
+
+	public Wave(int number, int nextCountdown)
+	{
+		this.number = number;
+		this.nextCountdown = nextCountdown;
+	}
 
 	public ArrayList<Zombie> getZombies(int idx)
 	{

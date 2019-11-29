@@ -17,6 +17,7 @@ public final class User implements Serializable
 	private boolean[] plantUnlocked = new boolean[11];
 	private HashMap<Integer, Integer> selectedPlants = new HashMap<>();
 	private int currentWaveNumber;
+	private int waveCountdown;
 	private int currentSuns;
 	private ArrayList<DynamicObject> currentDynamicObjects = new ArrayList<>();
 
@@ -27,6 +28,7 @@ public final class User implements Serializable
 		this.coins = 0;
 		this.plantUnlocked[0] = true;
 		this.currentWaveNumber = -1;
+		this.waveCountdown = 0;
 		this.currentSuns = -1;
 	}
 
@@ -82,5 +84,21 @@ public final class User implements Serializable
 		if(this.currentSuns < _suns)
 			throw new InsufficientSunsException("Not enough suns!");
 		this.currentSuns -= _suns;
+	}
+
+	public void updateWaveCountdown()
+	{
+		if(this.waveCountdown > 0)
+			this.waveCountdown--;
+	}
+
+	public int getWaveCountdown()
+	{
+		return waveCountdown;
+	}
+
+	public void setWaveCountdown(int waveCountdown)
+	{
+		this.waveCountdown = waveCountdown;
 	}
 }

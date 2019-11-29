@@ -44,7 +44,7 @@ public class GameWindow extends SaveGame
 
 		timer = new Timer();
 		controller.setTimer(timer);
-		timer.schedule(new Game.frontend.GameWindow.GameWindow.updater(), 0, 10);
+		timer.schedule(new Game.frontend.GameWindow.GameWindow.updater(), 0, 20);
 
 		primaryStage.setScene(new Scene(root, Main.width, Main.height));
 		primaryStage.show();

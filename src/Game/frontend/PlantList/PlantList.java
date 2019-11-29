@@ -111,7 +111,6 @@ public class PlantList
 			default:
 				plantImage.setVisible(false);
 				plantDescription.setVisible(false);
-
 		}
 	}
 }

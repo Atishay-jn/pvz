@@ -3,7 +3,6 @@ package Game.frontend.GameWindow;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -13,48 +12,19 @@ public class GameWindowController
 {
 	private Stage primaryStage;
 	@FXML
-	private ImageView mover1;
-	@FXML
-	private ImageView mover2;
-	@FXML
-	private ImageView mover3;
-	@FXML
-	private ImageView mover4;
-	@FXML
-	private ImageView mover5;
-	@FXML
 	private Label coinCounter;
 	@FXML
 	private Label sunCounter;
 	@FXML
 	private ProgressBar waveProgress;
 	@FXML
-	private ImageView demoPea;
-	@FXML
-	private ImageView demoZombie;
-	@FXML
-	private ImageView demoSun;
-	@FXML
-	private ImageView demoCoin;
-	@FXML
-	private ImageView slot1;
-	@FXML
 	private AnchorPane pane;
 	private Timer timer;
 
 	void setUp()
 	{
-		mover1.setX(273.0);
-		mover2.setX(268.0);
-		mover3.setX(263.0);
-		mover4.setX(255.0);
-		mover5.setX(250.0);
 		coinCounter.setText("0");
 		sunCounter.setText("0");
-		demoPea.setX(458.0);
-		demoZombie.setX(1200);
-		demoSun.setY(-73);
-		demoCoin.setY(-500);
 	}
 
 	void setPrimaryStage(Stage primaryStage)
@@ -75,31 +45,6 @@ public class GameWindowController
 		System.out.println("pea shooter selected");
 	}
 
-	ImageView getMover1()
-	{
-		return mover1;
-	}
-
-	ImageView getMover2()
-	{
-		return mover2;
-	}
-
-	ImageView getMover3()
-	{
-		return mover3;
-	}
-
-	ImageView getMover4()
-	{
-		return mover4;
-	}
-
-	ImageView getMover5()
-	{
-		return mover5;
-	}
-
 	Label getCoinCounter()
 	{
 		return coinCounter;
@@ -115,31 +60,6 @@ public class GameWindowController
 		return waveProgress;
 	}
 
-	ImageView getDemoPea()
-	{
-		return demoPea;
-	}
-
-	ImageView getDemoZombie()
-	{
-		return demoZombie;
-	}
-
-	ImageView getDemoSun()
-	{
-		return demoSun;
-	}
-
-	ImageView getDemoCoin()
-	{
-		return demoCoin;
-	}
-
-	ImageView getSlot1()
-	{
-		return slot1;
-	}
-
 	public AnchorPane getPane()
 	{
 		return pane;
@@ -148,24 +68,5 @@ public class GameWindowController
 	void setTimer(Timer timer)
 	{
 		this.timer = timer;
-	}
-
-	@FXML
-	private void coinClick()
-	{
-		coinCounter.setText("50");
-		demoCoin.setVisible(false);
-		demoCoin.setDisable(true);
-		GameWindow.coinen = false;
-	}
-
-	@FXML
-	private void sunClick()
-	{
-		//		System.out.println("duhhhhhhhhhhhhhhhhh");
-		sunCounter.setText("50");
-		demoSun.setVisible(false);
-		demoSun.setDisable(true);
-		GameWindow.sunen = false;
 	}
 }

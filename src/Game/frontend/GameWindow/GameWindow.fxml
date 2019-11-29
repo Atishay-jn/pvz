@@ -5,35 +5,17 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="pane" fx:id="pane" prefHeight="710.0" prefWidth="1300.0"
             stylesheets="@GameWindow.css" xmlns="http://javafx.com/javafx/8.0.192"
             fx:controller="Game.frontend.GameWindow.GameWindowController">
-    <ImageView fx:id="mover1" fitHeight="81.0" fitWidth="116.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../assets/backend/lawn_mower.gif"/>
-    </ImageView>
-    <ImageView fx:id="mover2" fitHeight="81.0" fitWidth="116.0" layoutY="170.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/lawn_mower.gif"/>
-    </ImageView>
-    <ImageView fx:id="mover3" fitHeight="81.0" fitWidth="116.0" layoutY="275.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/lawn_mower.gif"/>
-    </ImageView>
-    <ImageView fx:id="mover4" fitHeight="81.0" fitWidth="116.0" layoutY="398.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/lawn_mower.gif"/>
-    </ImageView>
-    <ImageView fx:id="mover5" fitHeight="81.0" fitWidth="116.0" layoutY="513.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/lawn_mower.gif"/>
-    </ImageView>
-    <Label fx:id="coinCounter" layoutX="91.0" layoutY="637.0" prefHeight="49.0" prefWidth="110.0" textFill="WHITE">
+    <Label fx:id="coinCounter" layoutX="80.0" layoutY="637.0" prefHeight="49.0" prefWidth="110.0" textFill="WHITE">
         <font>
             <Font name="Comic Sans MS Bold" size="26.0"/>
         </font>
     </Label>
-    <Label fx:id="sunCounter" layoutX="300.0" layoutY="638.0" prefHeight="49.0" prefWidth="110.0" textFill="WHITE">
+    <Label fx:id="sunCounter" layoutX="275.0" layoutY="638.0" prefHeight="49.0" prefWidth="110.0" textFill="WHITE">
         <font>
             <Font name="Comic Sans MS Bold" size="26.0"/>
         </font>
@@ -42,35 +24,25 @@
                  prefWidth="308.0" progress="0.0"/>
     <Button layoutX="1045.0" layoutY="641.0" mnemonicParsing="false" onMouseClicked="#pauseClick" opacity="0.0"
             prefHeight="49.0" prefWidth="227.0"/>
-    <ImageView fitHeight="64.0" fitWidth="101.0" layoutX="889.0" layoutY="637.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/zombie_normal.gif"/>
-    </ImageView>
-    <ImageView fitHeight="81.0" fitWidth="95.0" layoutX="408.0" layoutY="172.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/pea_shooter.gif"/>
-    </ImageView>
-    <ImageView fx:id="demoPea" fitHeight="36.0" fitWidth="32.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true"
-               visible="false">
-        <Image url="@../../assets/backend/pea.png"/>
-    </ImageView>
-    <ImageView fx:id="demoZombie" fitHeight="150.0" fitWidth="200.0" layoutY="335.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../assets/backend/zombie_normal.gif"/>
-    </ImageView>
-    <ImageView fx:id="demoSun" fitHeight="73.0" fitWidth="70.0" layoutX="624.0" layoutY="10.0"
-               onMouseClicked="#sunClick" pickOnBounds="true" preserveRatio="true" visible="false">
-        <Image url="@../../assets/backend/SUN.png"/>
-    </ImageView>
-    <ImageView fx:id="demoCoin" fitHeight="56.0" fitWidth="70.0" layoutX="943.0" layoutY="12.0"
-               onMouseClicked="#coinClick" pickOnBounds="true" preserveRatio="true" visible="false">
-        <Image url="@../../assets/backend/Pvz2goldcoin.png"/>
-    </ImageView>
-    <ImageView fx:id="slot1" fitHeight="81.0" fitWidth="131.0" layoutX="25.0" layoutY="52.0"
-               onMouseClicked="#slot1click" pickOnBounds="true" preserveRatio="true"/>
-
     <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="415.0" layoutY="636.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@../../assets/backend/shovel.png"/>
     </ImageView>
+    <ImageView fitHeight="49.0" fitWidth="33.0" layoutX="900.0" layoutY="652.0" pickOnBounds="true"
+               preserveRatio="true">
+        <image>
+            <Image url="@../../assets/backend/zombie_normal.gif"/>
+        </image>
+    </ImageView>
+    <ImageView fitHeight="223.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"/>
+    <VBox fx:id="seedSlots" layoutX="14.0" layoutY="49.0" prefHeight="558.0" prefWidth="144.0" spacing="7">
+        <children>
+            <ImageView fx:id="slot1" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
+            <ImageView fx:id="slot2" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
+            <ImageView fx:id="slot3" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
+            <ImageView fx:id="slot4" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
+            <ImageView fx:id="slot5" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
+            <ImageView fx:id="slot6" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
+        </children>
+    </VBox>
 </AnchorPane>

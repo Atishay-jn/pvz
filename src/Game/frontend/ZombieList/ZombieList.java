@@ -45,28 +45,43 @@ public class ZombieList
 			case "Lawn Zombie":
 				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/LawnZombie.gif"));
 				zombieImage.setVisible(true);
-				zombieDescription.setText("");
+				zombieDescription.setText("Lawn Zombie");
 				zombieDescription.setVisible(true);
 				break;
 			case "Traffic Zombie":
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/TrafficZombie.gif"));
+				zombieImage.setVisible(true);
+				zombieDescription.setText("Traffic Zombie");
+				zombieDescription.setVisible(true);
+				break;
 			case "Bucket Zombie":
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BucketZommbie.gif "));
+				zombieImage.setVisible(true);
+				zombieDescription.setText("Bucket Zombie");
+				zombieDescription.setVisible(true);
+				break;
 			case "Rugby Zombie":
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/RugbyZombie.png"));
+				zombieImage.setVisible(true);
+				zombieDescription.setText("Rugby Zombie");
+				zombieDescription.setVisible(true);
+				break;
 			case "Runner Zombie":
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/RunnerZombie.gif "));
+				zombieImage.setVisible(true);
+				zombieDescription.setText("Runner Zombie");
+				zombieDescription.setVisible(true);
+				break;
 			case "Boss Zombie":
+				zombieImage.setImage(new Image("./Game/assets/backend/Zombies/BossZombie.gif "));
+				zombieImage.setVisible(true);
+				zombieDescription.setText("Boss Zombie");
+				zombieDescription.setVisible(true);
+				break;
 			default:
+				zombieImage.setVisible(false);
+				zombieDescription.setVisible(false);
 
-		}
-		if(value.equals("---"))
-		{
-			zombieImage.setVisible(false);
-			zombieDescription.setVisible(false);
-		}
-		else
-		{
-			zombieImage.setImage(new Image("./Game/assets/backend/zombie_normal.gif"));
-			zombieImage.setVisible(true);
-			zombieDescription.setText("Give me brains!!!!");
-			zombieDescription.setVisible(true);
 		}
 	}
 }

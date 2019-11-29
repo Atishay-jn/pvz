@@ -1,9 +1,11 @@
 package Game.frontend.GameWindow;
 
+import Game.backend.Grid.Grid;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.util.Timer;
@@ -11,6 +13,8 @@ import java.util.Timer;
 public class GameWindowController
 {
 	private Stage primaryStage;
+	@FXML
+	private GridPane gridPane;
 	@FXML
 	private Label coinCounter;
 	@FXML

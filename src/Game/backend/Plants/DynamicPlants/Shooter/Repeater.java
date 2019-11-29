@@ -61,4 +61,9 @@ public final class Repeater extends Shooter implements Serializable
 	{
 		return null;
 	}
+
+	public static String getCostImage()
+	{
+		return null;
+	}
 }

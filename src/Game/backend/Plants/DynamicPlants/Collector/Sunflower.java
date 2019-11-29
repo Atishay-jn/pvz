@@ -61,4 +61,9 @@ public final class Sunflower extends Collector implements Serializable
 	{
 		return null;
 	}
+
+	public static String getCostImage()
+	{
+		return null;
+	}
 }

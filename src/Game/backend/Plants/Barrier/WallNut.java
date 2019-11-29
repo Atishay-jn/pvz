@@ -46,4 +46,9 @@ public final class WallNut extends Barrier implements Serializable
 	{
 		return null;
 	}
+
+	public static String getCostImage()
+	{
+		return null;
+	}
 }

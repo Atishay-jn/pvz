@@ -61,4 +61,9 @@ public final class Gun extends Shooter implements Serializable
 	{
 		return null;
 	}
+
+	public static String getCostImage()
+	{
+		return null;
+	}
 }

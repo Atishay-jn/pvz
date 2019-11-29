@@ -61,4 +61,9 @@ public final class TwinSunflower extends Collector implements Serializable
 	{
 		return null;
 	}
+
+	public static String getCostImage()
+	{
+		return null;
+	}
 }

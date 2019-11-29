@@ -64,4 +64,9 @@ public final class PotatoMine extends Bomb implements Serializable
 	{
 		return null;
 	}
+
+	public static String getCostImage()
+	{
+		return null;
+	}
 }

@@ -41,6 +41,15 @@ public class ZombieList
 
 	private static void newChoice(String value)
 	{
+		switch(value) {
+			case "Lawn Zombie":
+				zombieImage.setImage(new Image("./Game/assets/backend/zombie_normal.gif"));
+				zombieImage.setVisible(true);
+				zombieDescription.setText("Give me brains!!!!");
+				zombieDescription.setVisible(true);
+				break;
+			case: ""
+		}
 		if(value.equals("---"))
 		{
 			zombieImage.setVisible(false);

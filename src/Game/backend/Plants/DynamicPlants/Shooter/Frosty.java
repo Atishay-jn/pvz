@@ -45,7 +45,6 @@ public final class Frosty extends Shooter implements Serializable
 		if(cooldown >= maxCooldown)
 			cooldown = maxCooldown;
 	}
-
 	@Override
 	public void resetCooldown()
 	{

@@ -2,7 +2,7 @@ package Game.backend.Exceptions;
 
 public final class LevelNotAvailableException extends CustomException
 {
-	protected LevelNotAvailableException(String message)
+	public LevelNotAvailableException(String message)
 	{
 		super(message);
 	}

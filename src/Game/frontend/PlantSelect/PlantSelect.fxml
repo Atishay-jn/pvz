@@ -22,23 +22,23 @@
     </Button>
     <VBox fx:id="seedSlots" layoutX="59.0" layoutY="63.0" prefHeight="599.0" prefWidth="137.0" spacing="7">
         <children>
-            <ImageView fx:id="slot1" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="slot2" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="slot3" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="slot4" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="slot5" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="slot6" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="slot1" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" onMouseClicked="#slot1Click" preserveRatio="true" />
+            <ImageView fx:id="slot2" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" onMouseClicked="#slot2Click" preserveRatio="true" />
+            <ImageView fx:id="slot3" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" onMouseClicked="#slot3Click" preserveRatio="true" />
+            <ImageView fx:id="slot4" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" onMouseClicked="#slot4Click" preserveRatio="true" />
+            <ImageView fx:id="slot5" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" onMouseClicked="#slot5Click" preserveRatio="true" />
+            <ImageView fx:id="slot6" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" onMouseClicked="#slot6Click" preserveRatio="true" />
         </children>
     </VBox>
-    <ImageView fx:id="op0" fitHeight="119.0" fitWidth="148.0" layoutX="243.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op1" fitHeight="126.0" fitWidth="148.0" layoutX="414.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op2" fitHeight="126.0" fitWidth="148.0" layoutX="586.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op3" fitHeight="126.0" fitWidth="148.0" layoutX="757.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op4" fitHeight="126.0" fitWidth="148.0" layoutX="927.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op5" fitHeight="126.0" fitWidth="148.0" layoutX="1099.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op6" fitHeight="119.0" fitWidth="148.0" layoutX="243.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op7" fitHeight="126.0" fitWidth="148.0" layoutX="414.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op8" fitHeight="126.0" fitWidth="148.0" layoutX="586.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op9" fitHeight="126.0" fitWidth="148.0" layoutX="757.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="op10" fitHeight="126.0" fitWidth="148.0" layoutX="927.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op0" fitHeight="119.0" fitWidth="148.0" layoutX="243.0" layoutY="189.0" onMouseClicked="#op0Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op1" fitHeight="126.0" fitWidth="148.0" layoutX="414.0" layoutY="182.0" onMouseClicked="#op1Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op2" fitHeight="126.0" fitWidth="148.0" layoutX="586.0" layoutY="182.0" onMouseClicked="#op2Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op3" fitHeight="126.0" fitWidth="148.0" layoutX="757.0" layoutY="182.0" onMouseClicked="#op3Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op4" fitHeight="126.0" fitWidth="148.0" layoutX="927.0" layoutY="182.0" onMouseClicked="#op4Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op5" fitHeight="126.0" fitWidth="148.0" layoutX="1099.0" layoutY="182.0" onMouseClicked="#op5Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op6" fitHeight="119.0" fitWidth="148.0" layoutX="243.0" layoutY="396.0" onMouseClicked="#op6Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op7" fitHeight="126.0" fitWidth="148.0" layoutX="414.0" layoutY="392.0" onMouseClicked="#op7Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op8" fitHeight="126.0" fitWidth="148.0" layoutX="586.0" layoutY="392.0" onMouseClicked="#op8Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op9" fitHeight="126.0" fitWidth="148.0" layoutX="757.0" layoutY="392.0" onMouseClicked="#op9Click" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op10" fitHeight="126.0" fitWidth="148.0" layoutX="927.0" layoutY="392.0" onMouseClicked="#op10Click" pickOnBounds="true" preserveRatio="true" />
 </AnchorPane>

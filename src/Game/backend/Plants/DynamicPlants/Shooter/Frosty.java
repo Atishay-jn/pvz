@@ -33,7 +33,8 @@ public final class Frosty extends Shooter implements Serializable
 		cooldown = cd;
 	}
 
-	public static int getCost()
+	@Override
+	public int getCost()
 	{
 		return cost;
 	}
@@ -43,6 +44,12 @@ public final class Frosty extends Shooter implements Serializable
 		cooldown += 1;
 		if(cooldown >= maxCooldown)
 			cooldown = maxCooldown;
+	}
+
+	@Override
+	public void resetCooldown()
+	{
+		cooldown = 0;
 	}
 
 	@Override

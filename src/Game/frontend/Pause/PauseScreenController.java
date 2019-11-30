@@ -1,5 +1,6 @@
 package Game.frontend.Pause;
 
+import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
@@ -37,6 +38,7 @@ public class PauseScreenController
 	private void restartClick() throws Exception
 	{
 		this.window.close();
+		CurrentUser.getUser().setCurrentlyAt(-1);
 		Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
 	}
 }

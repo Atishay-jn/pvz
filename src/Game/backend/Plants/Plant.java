@@ -19,4 +19,8 @@ public abstract class Plant implements Displayable, Serializable
 		this.health -= damage;
 		return this.health <= 0;
 	}
+
+	public abstract int getCost();
+
+	public abstract void resetCooldown();
 }

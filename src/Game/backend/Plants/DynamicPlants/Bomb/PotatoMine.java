@@ -32,12 +32,19 @@ public final class PotatoMine extends Bomb implements Serializable
 		return cooldown;
 	}
 
+	@Override
+	public void resetCooldown()
+	{
+		cooldown = 0;
+	}
+
 	public static void setCooldown(int cd)
 	{
 		cooldown = cd;
 	}
 
-	public static int getCost()
+	@Override
+	public int getCost()
 	{
 		return cost;
 	}

@@ -29,9 +29,16 @@ public final class TallNut extends Barrier implements Serializable
 		cooldown = cd;
 	}
 
-	public static int getCost()
+	@Override
+	public int getCost()
 	{
 		return cost;
+	}
+
+	@Override
+	public void resetCooldown()
+	{
+		cooldown = 0;
 	}
 
 	public static void increment()

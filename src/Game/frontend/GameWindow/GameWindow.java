@@ -6,6 +6,7 @@ import Game.backend.DynamicObjects.Coin;
 import Game.backend.DynamicObjects.DynamicObject;
 import Game.backend.DynamicObjects.DynamicSun;
 import Game.backend.Exceptions.CellOccupiedException;
+import Game.backend.Exceptions.InsufficientSunsException;
 import Game.backend.Grid.Grid;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
@@ -324,6 +325,50 @@ public class GameWindow extends SaveGame
 		}
 	}
 
+	private void fetchPlantImages()
+	{
+		frontendGrid.getChildren().forEach((n) ->
+		{
+			int r = GridPane.getRowIndex(n) == null ? 0 : GridPane.getRowIndex(n);
+			int c = GridPane.getColumnIndex(n) == null ? 0 : GridPane.getColumnIndex(n);
+			if(grid.getRow(r).getCell(c).hasPlant())
+			{
+				Plant p = grid.getRow(r).getCell(c).getPlant();
+				if(((ImageView) n).getImage() != null)
+				{
+					if(p instanceof PotatoMine && ((PotatoMine) p).isImageUpdated())
+					{
+						((ImageView) n).setImage(new Image(p.getImage()));
+						((PotatoMine) p).setImageUpdated(false);
+					}
+				}
+				else
+				{
+					((ImageView) n).setImage(new Image(p.getImage()));
+				}
+			}
+			else
+			{
+				((ImageView) n).setImage(null);
+			}
+		});
+	}
+
+	private void updateRows()
+	{
+		//TODO
+	}
+
+	private void updateWaves()
+	{
+		//TODO
+	}
+
+	private void updateRowsDisplay()
+	{
+		//TODO
+	}
+
 	private void cleanFrame()
 	{
 		//todo
@@ -356,6 +401,10 @@ public class GameWindow extends SaveGame
 			Platform.runLater(() -> updateCooldownDisplay());
 			updateDynamicObjects();
 			updateDynamicObjectsDisplay();
+			Platform.runLater(() -> fetchPlantImages());
+			updateRows();
+			updateWaves();
+			updateRowsDisplay();
 			cleanFrame();
 			Platform.runLater(() -> displayFrame());
 			//			displayFrame();
@@ -384,12 +433,19 @@ public class GameWindow extends SaveGame
 			try
 			{
 				plantFromIndex(controller.getCurrentPlant());
+				user.spendSuns(plant.getCost());
 				if(plant != null)
 					grid.plant(row, col, plant);
+				plant.resetCooldown();
 			}
 			catch(CellOccupiedException ignored)
 			{
 				System.out.println("Can't plant at: " + row + " " + col);
+			}
+			catch(InsufficientSunsException e)
+			{
+				System.out.println(e.getMessage());
+				plant = null;
 			}
 		}
 

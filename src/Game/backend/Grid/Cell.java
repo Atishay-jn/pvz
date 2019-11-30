@@ -12,6 +12,12 @@ import java.io.Serializable;
 public final class Cell implements Serializable
 {
 	private static final long serialVersionUID = 1;
+
+	public Plant getPlant()
+	{
+		return plant;
+	}
+
 	private Plant plant;
 
 	public Cell()

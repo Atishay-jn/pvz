@@ -84,8 +84,8 @@ public final class Levels
 //		wave = Runner3(wave);
 //		levels.get(1).addWave(wave);
 		wave = new Wave(2, 150);
-		wave = Vanilla3(wave);
-		wave = Vanilla3(wave);
+		wave = Vanilla0(wave);
+		wave = Vanilla0(wave);
 		levels.get(2).addWave(wave);
 		wave = new Wave(3, -1);
 		wave = Runner2(wave);
@@ -114,7 +114,7 @@ public final class Levels
 		wave = Traffic2(wave);
 		levels.get(3).addWave(wave);
 		wave = new Wave(3, -1);
-		wave = Traffic3(wave);
+		wave = Traffic0(wave);
 		levels.get(3).addWave(wave);
 //		wave = new Wave(4, -1);
 //		wave = Runner0(wave);
@@ -181,7 +181,7 @@ public final class Levels
 		levels.get(5).addWave(wave);
 		wave = new Wave(3, 600);
 		wave = Vanilla4(wave);
-		wave = Vanilla3(wave);
+		wave = Vanilla2(wave);
 		levels.get(5).addWave(wave);
 		wave = new Wave(4, 300);
 		wave = Traffic(wave);

@@ -88,4 +88,9 @@ public class GameWindowController
 	{
 		return seedSlots;
 	}
+
+	public GridPane getGridPane()
+	{
+		return gridPane;
+	}
 }

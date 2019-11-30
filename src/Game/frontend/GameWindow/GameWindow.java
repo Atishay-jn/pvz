@@ -10,6 +10,7 @@ import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
 import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
 import Game.backend.Plants.DynamicPlants.Shooter.*;
 import Game.backend.User.SaveGame;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,7 +18,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -34,6 +37,7 @@ public class GameWindow extends SaveGame
 	private Timer timer;
 	private VBox seedSlots = null;
 	private ImageView demoZombie;
+	private GridPane frontendGrid = null;
 	private ArrayList<ImageView> standby = new ArrayList<>();
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 
@@ -87,11 +91,13 @@ public class GameWindow extends SaveGame
 		waveProgress = controller.getWaveProgress();
 		pane = controller.getPane();
 		seedSlots = controller.getSeedSlots();
+		frontendGrid = controller.getGridPane();
 	}
 
 	private void initialize()
 	{
 		initializeSlots();
+		initializePlane();
 	}
 
 	private void initializeSlots()
@@ -147,6 +153,13 @@ public class GameWindow extends SaveGame
 					break;
 			}
 		}
+	}
+
+	private void initializePlane()
+	{
+		if(frontendGrid == null)
+			System.out.println("Null");
+		frontendGrid.getChildren().forEach((n) -> n.setOnMouseClicked(new cellHandler(GridPane.getRowIndex(n), GridPane.getColumnIndex(n))));
 	}
 
 	private void updateCooldown()
@@ -250,6 +263,24 @@ public class GameWindow extends SaveGame
 			//			Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));
 			//			if(demoZombie.getX() < 360)
 			//				Platform.runLater(() -> pane.getChildren().remove(demoZombie));
+		}
+	}
+
+	private class cellHandler implements EventHandler<MouseEvent>
+	{
+		private int row;
+		private int col;
+
+		cellHandler(int row, int col)
+		{
+			this.row = row;
+			this.col = col;
+		}
+
+		@Override
+		public void handle(MouseEvent event)
+		{
+			System.out.println(row + " " + col);
 		}
 	}
 }

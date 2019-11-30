@@ -1,5 +1,6 @@
 package Game.frontend.Shop;
 
+import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,6 +25,13 @@ public class ShopController
 
 	void setPrimaryStage(Stage primaryStage)
 	{
+		String str = "";
+		int k = CurrentUser.getUser().getCoins();
+		while(k>0) {
+			str = ((char)k%10) + str;
+			k /= 10;
+		}
+		coinCounter.setText(str);
 		this.primaryStage = primaryStage;
 	}
 

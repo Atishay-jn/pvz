@@ -132,11 +132,13 @@ public final class Row implements Serializable
 			{
 				if(!((CellBlast) p).isActivated())
 				{
+//					System.out.println("in if");
 					int xVal = p.getxVal();
 					for(Zombie z : this.incoming)
 					{
 						if(abs(z.getxVal() - xVal) <= 10)
 						{
+							System.out.println("working");
 							((CellBlast) p).setActivated(true);
 							this.toRemove.add(z);
 							this.incoming.remove(z);

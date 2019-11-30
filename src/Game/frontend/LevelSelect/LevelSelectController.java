@@ -1,5 +1,6 @@
 package Game.frontend.LevelSelect;
 
+import Game.backend.Exceptions.LevelNotAvailableException;
 import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,65 +30,65 @@ public class LevelSelectController
 	@FXML
 	private void level1Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(1);
-		play();
+		play(1);
 	}
 
 	@FXML
 	private void level2Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(2);
-		play();
+		play(2);
 	}
 
 	@FXML
 	private void level3Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(3);
-		play();
+		play(3);
 	}
 
 	@FXML
 	private void level4Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(4);
-		play();
+		play(4);
 	}
 
 	@FXML
 	private void level5Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(5);
-		play();
+		play(5);
 	}
 
 	@FXML
 	private void level6Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(6);
-		play();
+		play(6);
 	}
 
 	@FXML
 	private void level7Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(7);
-		play();
+		play(7);
 	}
 
 	@FXML
 	private void level8Click() throws Exception
 	{
-		CurrentUser.getUser().setCurrentLevel(8);
-		play();
+		play(8);
 	}
 
-	private void play() throws Exception
+	private void play(int num) throws Exception
 	{
-		Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
-		//		if(CurrentUser.getUser().getCurrentLevel() == CurrentUser.getUser().getLevels())
-		//			Game.frontend.GameWindow.GameWindow.getInstance().run(primaryStage);
-		//		else
-		//			Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
+		System.out.println("Chosen level: " + num);
+		try
+		{
+			if(CurrentUser.getUser().getLevels() < num)
+				throw new LevelNotAvailableException("Not yet unlocked");
+			CurrentUser.getUser().setCurrentLevel(num);
+			System.out.println("Playing: " + num);
+			Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
+		}
+		catch(LevelNotAvailableException e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 }

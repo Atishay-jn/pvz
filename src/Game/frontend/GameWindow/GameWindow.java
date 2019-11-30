@@ -12,6 +12,8 @@ import Game.backend.Exceptions.ZombiesAteYourBrainsException;
 import Game.backend.Grid.Grid;
 import Game.backend.Grid.Row;
 import Game.backend.LawnMover;
+import Game.backend.Level.Level;
+import Game.backend.Level.Levels;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
 import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
@@ -59,6 +61,7 @@ public class GameWindow extends SaveGame
 	private Plant plant;
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 	private ArrayList<ImageView> toRemove = new ArrayList<>();
+	private Level curLevel = null;
 	private static int[] rowYVal = {130, 245, 365, 480, 600};
 	private static int[] colXVal = {360, 460, 575, 667, 767, 870, 963, 1066, 1179};
 
@@ -119,6 +122,8 @@ public class GameWindow extends SaveGame
 
 	private void initialize() throws IOException, ClassNotFoundException
 	{
+		Levels.initialize();
+		curLevel = Levels.getLevel(user.getCurrentLevel());
 		initializeSlots();
 		initializePlane();
 		initializeGrid();

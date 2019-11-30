@@ -10,6 +10,10 @@ public final class Level
 	private int number;
 	private int reward;
 
+	Level() {
+		wave = new ArrayList<Wave>(10);
+	}
+
 	public void setReward(int reward) {
 		this.reward = reward;
 	}

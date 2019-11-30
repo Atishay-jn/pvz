@@ -55,7 +55,6 @@ public class GameWindow extends SaveGame
 	private AnchorPane pane = null;
 	private Timer timer;
 	private VBox seedSlots = null;
-	private ImageView demoZombie;
 	private GridPane frontendGrid = null;
 	private Grid grid = null;
 	private Plant plant;
@@ -110,10 +109,6 @@ public class GameWindow extends SaveGame
 
 	private void fetchObjects()
 	{
-		demoZombie = controller.getDemoZombie();
-		demoZombie.toFront();
-		demoZombie.setX(1200);
-		demoZombie.setY(0);
 		coinCounter = controller.getCoinCounter();
 		sunCounter = controller.getSunCounter();
 		waveProgress = controller.getWaveProgress();
@@ -139,7 +134,7 @@ public class GameWindow extends SaveGame
 			user.setCurrentWaveNumber(0);
 		if(user.getCurrentWaveNumber() < curLevel.getNumWaves() - 1)
 		{
-			System.out.println("Fetching Wave: " + user.getCurrentWaveNumber());
+			System.out.println("Fetching Wave: " + user.getCurrentWaveNumber() + " out of " + curLevel.getNumWaves());
 			curWave = curLevel.getWave(user.getCurrentWaveNumber());
 			user.setWaveCountdown(curWave.getNextCountdown());
 		}
@@ -485,7 +480,7 @@ public class GameWindow extends SaveGame
 		for(int i = 0; i < 5; i++)
 		{
 			Row r = grid.getRow(i);
-			ArrayList<Projectile> projectiles = r.getProjectiles();
+			ArrayList<Projectile> projectiles = new ArrayList<>(r.getProjectiles());
 			for(Projectile p : projectiles)
 			{
 				if(!currentFrame.containsKey(p))
@@ -672,7 +667,7 @@ public class GameWindow extends SaveGame
 		user.setCurrentlyAt(user.getCurrentLevel());
 		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("UserFiles/" + user.getName() + "/grid.txt")))
 		{
-			out.writeObject(user);
+			out.writeObject(grid);
 		}
 		catch(IOException e)
 		{

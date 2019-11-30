@@ -4,7 +4,6 @@ import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -30,8 +29,6 @@ public class GameWindowController
 	private AnchorPane pane;
 	private Timer timer;
 	@FXML
-	private ImageView demoZombie;
-	@FXML
 	private VBox seedSlots;
 	@FXML
 	private boolean shovel = false;
@@ -47,11 +44,6 @@ public class GameWindowController
 
 	public void usedCurrentPlant() {
 		currentPlant = -1;
-	}
-
-	public ImageView getDemoZombie()
-	{
-		return demoZombie;
 	}
 
 	void setUp()

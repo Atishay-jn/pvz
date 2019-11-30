@@ -72,6 +72,8 @@ public class ResumeGame extends CurrentUser
 			try
 			{
 				this.deserialize(value);
+				System.out.println(user.getName());
+				System.out.println(user.getCurrentlyAt());
 			}
 			catch(Exception e)
 			{

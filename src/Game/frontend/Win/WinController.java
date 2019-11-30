@@ -19,14 +19,8 @@ public class WinController
 	}
 
 	@FXML
-	private void restartClick()
+	private void restartClick() throws Exception
 	{
-		//TODO
-	}
-
-	@FXML
-	private void nextLevelClick()
-	{
-		//TODO
+		Game.frontend.LevelSelect.LevelSelect.getInstance().run(primaryStage);
 	}
 }

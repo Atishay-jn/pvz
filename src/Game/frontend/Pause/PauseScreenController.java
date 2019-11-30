@@ -1,6 +1,8 @@
 package Game.frontend.Pause;
 
 import Game.backend.User.CurrentUser;
+import Game.backend.User.SaveGame;
+import Game.frontend.GameWindow.GameWindow;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
@@ -23,6 +25,9 @@ public class PauseScreenController
 	private void mainMenuClick() throws Exception
 	{
 		this.window.close();
+		CurrentUser.getUser().setCurrentlyAt(CurrentUser.getUser().getCurrentLevel());
+		SaveGame.serialize();
+		GameWindow.getInstance().saveGrid();
 		Game.frontend.MainMenu.MainMenu.getInstance().run(primaryStage);
 	}
 

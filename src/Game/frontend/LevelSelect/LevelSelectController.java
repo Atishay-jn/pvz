@@ -15,7 +15,9 @@ public class LevelSelectController
 	public void setPrimaryStage(Stage primaryStage) throws Exception
 	{
 		this.primaryStage = primaryStage;
-		if(CurrentUser.getUser().getCurrentlyAt() != -1) {
+		System.out.println("Current level: " + CurrentUser.getUser().getCurrentlyAt());
+		if(CurrentUser.getUser().getCurrentlyAt() != -1)
+		{
 			Game.frontend.GameWindow.GameWindow.getInstance().run(primaryStage);
 		}
 		levelIndicator.setText("Your level: " + CurrentUser.getUser().getLevels());

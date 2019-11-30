@@ -1,8 +1,12 @@
 package Game.backend.Grid;
 
 import Game.backend.Displayable;
+import Game.backend.Exceptions.PlantNotPresentException;
 import Game.backend.Exceptions.ZombiesAteYourBrainsException;
 import Game.backend.LawnMover;
+import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
+import Game.backend.Plants.DynamicPlants.Bomb.PotatoMine;
+import Game.backend.Projectiles.Bomb.Bomb;
 import Game.backend.Projectiles.Bomb.CellBlast;
 import Game.backend.Projectiles.Bomb.RowBlast;
 import Game.backend.Projectiles.Projectile;
@@ -77,7 +81,7 @@ public final class Row implements Serializable
 		this.cells.forEach((Cell c) ->
 		{
 			Projectile p = c.produce();
-			if(p != null)
+			if(p != null && !(p instanceof Bomb))
 				this.projectiles.add(p);
 		});
 
@@ -109,52 +113,66 @@ public final class Row implements Serializable
 		}
 
 		//Handle bomb case
-		this.projectiles.forEach((Projectile p) ->
+		Projectile pro;
+		for(Cell c : this.cells)
+		{
+			if(c.getPlant() instanceof Jalapeno)
+			{
+				pro = c.produce();
+				this.toRemove.addAll(this.incoming);
+				this.incoming.clear();
+				try
+				{
+					c.clean();
+				}
+				catch(PlantNotPresentException e)
+				{
+					e.printStackTrace();
+				}
+				this.projectiles.add(pro);
+			}
+		}
+		for(Cell c : this.cells)
+		{
+			if(c.getPlant() instanceof PotatoMine && c.produce() != null)
+			{
+				int xVal = c.produce().getxVal();
+				ArrayList<Zombie> toRemoveBlasted = new ArrayList<>();
+				for(Zombie z : this.incoming)
+				{
+					if(abs(z.getxVal() - xVal) <= 10)
+					{
+						this.toRemove.add(z);
+						toRemoveBlasted.add(z);
+					}
+				}
+				if(!toRemoveBlasted.isEmpty())
+					this.projectiles.add(c.produce());
+				this.incoming.removeAll(toRemoveBlasted);
+			}
+		}
+		Projectile toRemove = null;
+		for(Projectile p : this.projectiles)
 		{
 			if(p instanceof RowBlast)
 			{
-				if(!((RowBlast) p).isActivated())
+				if(((RowBlast) p).update())
 				{
-					((RowBlast) p).setActivated(true);
-					this.toRemove.addAll(this.incoming);
-					this.incoming.clear();
-				}
-				else
-				{
-					if(((RowBlast) p).update())
-					{
 						this.toRemove.add(p);
-						this.projectiles.remove(p);
-					}
+					toRemove = p;
 				}
 			}
 			else if(p instanceof CellBlast)
 			{
-				if(!((CellBlast) p).isActivated())
+				if(((CellBlast) p).update())
 				{
-//					System.out.println("in if");
-					int xVal = p.getxVal();
-					for(Zombie z : this.incoming)
-					{
-						if(abs(z.getxVal() - xVal) <= 10)
-						{
-							System.out.println("working");
-							((CellBlast) p).setActivated(true);
-							this.toRemove.add(z);
-							this.incoming.remove(z);
-						}
-					}
-				}
-				else
-				{
-					if(((CellBlast) p).update())
-					{
-						this.toRemove.add(p);
-						this.projectiles.remove(p);
-					}
+					this.toRemove.add(p);
+					toRemove = p;
 				}
 			}
-		});
+		}
+		if(toRemove != null)
+			this.projectiles.remove(toRemove);
 
 		//Handle collision
 		ArrayList<Zombie> toRemoveCollidedZombies = new ArrayList<>();

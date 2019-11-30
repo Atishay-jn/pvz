@@ -1,5 +1,6 @@
 package Game.backend.Level;
 
+import Game.backend.Grid.Grid;
 import Game.backend.Zombies.TrafficZombie;
 import Game.backend.Zombies.VanillaZombie;
 
@@ -18,37 +19,38 @@ public final class Levels
 			levels.add(l);
 		}
 		Wave wave = new Wave(1,700);
-		wave.setRow1Zombie(new VanillaZombie());
+		wave.setRow1Zombie(new VanillaZombie(Grid.rowYVal[1]));
 		levels.get(0).addWave(wave);
 		levels.get(1).addWave(wave);
 		levels.get(2).addWave(wave);
-		wave = new Wave(1,700);
-		wave.setRow1Zombie(new VanillaZombie());
-		wave.setRow3Zombie(new VanillaZombie());
-		levels.get(3).addWave(wave);
-		levels.get(4).addWave(wave);
-		levels.get(5).addWave(wave);
-		wave = new Wave(1,700);
-		wave.setRow1Zombie(new TrafficZombie());
-		wave.setRow4Zombie(new VanillaZombie());
-		levels.get(6).addWave(wave);
-		levels.get(7).addWave(wave);
 		wave = new Wave(2,700);
-		wave.setRow4Zombie(new VanillaZombie(1200));
+		wave.setRow1Zombie(new VanillaZombie(Grid.rowYVal[1]));
 		levels.get(0).addWave(wave);
-		wave.setRow3Zombie(new VanillaZombie(1200));
 		levels.get(1).addWave(wave);
-		levels.get(2).addWave(wave);
-		wave.setRow2Zombie(new TrafficZombie(1200));
-		levels.get(3).addWave(wave);
-		levels.get(4).addWave(wave);
-		wave.setRow4Zombie(new VanillaZombie(1200));
-		levels.get(4).addWave(wave);
-		levels.get(5).addWave(wave);
-		levels.get(6).addWave(wave);
-		levels.get(7).addWave(wave);
-		wave = new Wave(3,800);
-		wave.setRow3Zombie(new TrafficZombie(1200));
+		wave = new Wave(3,700);
+		wave.setRow3Zombie(new VanillaZombie(Grid.rowYVal[3]));
+		levels.get(0).addWave(wave);
+		wave = new Wave(4,700);
+		wave.setRow3Zombie(new VanillaZombie(Grid.rowYVal[3]));
+		wave.setRow2Zombie(new VanillaZombie(Grid.rowYVal[2]));
+		wave.setRow0Zombie(new VanillaZombie(Grid.rowYVal[0]));
+		levels.get(0).addWave(wave);
+		wave = new Wave(5, 700);
+		wave.setRow1Zombie(new TrafficZombie(Grid.rowYVal[1]));
+		wave.setRow0Zombie(new TrafficZombie(Grid.rowYVal[0]));
+		wave.setRow3Zombie(new VanillaZombie(Grid.rowYVal[3]));
+		wave.setRow2Zombie(new VanillaZombie(Grid.rowYVal[2]));
+		wave.setRow4Zombie(new VanillaZombie(Grid.rowYVal[4]));
+		levels.get(0).addWave(wave);
+		wave = new Wave(6,-1);
+		wave.setRow0Zombie(new TrafficZombie(Grid.rowYVal[0]));
+		wave.setRow1Zombie(new TrafficZombie(Grid.rowYVal[1]));
+		wave.setRow2Zombie(new TrafficZombie(Grid.rowYVal[2]));
+		wave.setRow3Zombie(new TrafficZombie(Grid.rowYVal[3]));
+		wave.setRow4Zombie(new TrafficZombie(Grid.rowYVal[4]));
+		levels.get(0).addWave(wave);
+		wave = new Wave(3,700);
+
 	}
 
 	public static Level getLevel(int idx)

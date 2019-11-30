@@ -159,7 +159,14 @@ public class GameWindow extends SaveGame
 	{
 		if(frontendGrid == null)
 			System.out.println("Null");
-		frontendGrid.getChildren().forEach((n) -> n.setOnMouseClicked(new cellHandler(GridPane.getRowIndex(n), GridPane.getColumnIndex(n))));
+		frontendGrid.getChildren().forEach((n) ->
+		{
+			//			System.out.println(GridPane.getRowIndex(n) + " " + GridPane.getColumnIndex(n));
+			int r = GridPane.getRowIndex(n) == null ? 0 : GridPane.getRowIndex(n);
+			int c = GridPane.getColumnIndex(n) == null ? 0 : GridPane.getColumnIndex(n);
+			n.setOnMouseClicked(new cellHandler(r, c));
+			//			System.out.println(r + " " + c);
+		});
 	}
 
 	private void updateCooldown()

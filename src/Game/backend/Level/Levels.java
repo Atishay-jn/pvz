@@ -17,6 +17,14 @@ public final class Levels
 			l = new Level();
 			levels.add(l);
 		}
+		levels.get(0).setReward(1);
+		levels.get(1).setReward(3);
+		levels.get(2).setReward(6);
+		levels.get(3).setReward(7);
+		levels.get(4).setReward(0);
+		levels.get(5).setReward(2);
+		levels.get(6).setReward(0);
+		levels.get(7).setReward(5);
 		Wave wave = new Wave(1,700);
 		wave = Vanilla1(wave);
 		levels.get(0).addWave(wave);

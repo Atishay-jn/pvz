@@ -8,7 +8,11 @@ public final class Level
 {
 	private ArrayList<Wave> wave;
 	private int number;
-	private Plant reward;
+	private int reward;
+
+	public void setReward(int reward) {
+		this.reward = reward;
+	}
 
 	public void addWave(Wave w) {
 		wave.add(w);
@@ -24,7 +28,7 @@ public final class Level
 		return number;
 	}
 
-	public Plant getReward()
+	public int getReward()
 	{
 		return reward;
 	}

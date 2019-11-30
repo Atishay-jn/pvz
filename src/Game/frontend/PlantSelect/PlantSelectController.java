@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class PlantSelectController
@@ -94,6 +95,9 @@ public class PlantSelectController
 		op9.setImage(new Image(PeaShooter.getCostImage()));
 		op10.setImage(new Image(Repeater.getCostImage()));
 		plants = CurrentUser.getUser().getPlantUnlocked();
+		boolean[] temp = new boolean[11];
+		System.arraycopy(plants, 0, temp, 0, 11);
+		plants = temp;
 		setOpacity();
 	}
 

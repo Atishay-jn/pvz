@@ -50,7 +50,6 @@ public class GameWindow extends SaveGame
 	private GridPane frontendGrid = null;
 	private Grid grid = null;
 	private Plant plant;
-	private ArrayList<ImageView> standby = new ArrayList<>();
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 	private ArrayList<ImageView> toRemove = new ArrayList<>();
 
@@ -305,14 +304,12 @@ public class GameWindow extends SaveGame
 		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
 		{
 			if(currentFrame.containsKey(dyOb))
+			{
 				currentFrame.get(dyOb).setY(dyOb.getyVal());
+			}
 			else
 			{
-				ImageView iv;
-				if(standby.isEmpty())
-					iv = new ImageView();
-				else
-					iv = standby.remove(0);
+				ImageView iv = new ImageView();
 				iv.setX(dyOb.getxVal());
 				iv.setY(dyOb.getyVal());
 				iv.setFitHeight(DynamicObject.height);
@@ -460,7 +457,6 @@ public class GameWindow extends SaveGame
 			user.getCurrentDynamicObjects().remove(obj);
 			ImageView iv = currentFrame.remove(obj);
 			toRemove.add(iv);
-			standby.add(iv);
 		}
 	}
 }

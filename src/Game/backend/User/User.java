@@ -130,6 +130,7 @@ public final class User implements Serializable
 
 	public void resetStats()
 	{
+		this.currentlyAt = -1;
 		this.currentWaveNumber = -1;
 		this.waveCountdown = 0;
 		this.currentSuns = 0;
@@ -170,5 +171,15 @@ public final class User implements Serializable
 	public void collectCoins(int coins)
 	{
 		this.coins += coins;
+	}
+
+	public void setLevels(int levels)
+	{
+		this.levels = levels;
+	}
+
+	public void unlock(int idx)
+	{
+		this.plantUnlocked[idx] = true;
 	}
 }

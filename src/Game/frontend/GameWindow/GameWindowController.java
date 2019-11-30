@@ -74,6 +74,7 @@ public class GameWindowController
 	{
 		CurrentUser.getUser().setCurrentlyAt(CurrentUser.getUser().getCurrentLevel());
 		timer.cancel();
+		GameWindow.getInstance().saveGrid();
 		Game.frontend.Pause.PauseScreen.getInstance().run(primaryStage);
 	}
 

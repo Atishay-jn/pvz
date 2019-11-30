@@ -1,5 +1,6 @@
 package Game.frontend.Loose;
 
+import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
@@ -19,9 +20,9 @@ public class LooseController
 	}
 
 	@FXML
-	private void restartClick()
+	private void restartClick() throws Exception
 	{
-		//TODO: connect
-		System.out.println("restarting");
+		CurrentUser.getUser().setCurrentlyAt(-1);
+		Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
 	}
 }

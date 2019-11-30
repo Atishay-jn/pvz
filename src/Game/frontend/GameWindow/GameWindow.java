@@ -42,9 +42,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.*;
 
 public class GameWindow extends SaveGame
@@ -67,6 +65,7 @@ public class GameWindow extends SaveGame
 	private Wave curWave = null;
 	private static int[] rowYVal = {130, 245, 365, 480, 600};
 	private static int[] colXVal = {360, 460, 575, 667, 767, 870, 963, 1066, 1179};
+	private Stage stage;
 
 	private GameWindow()
 	{
@@ -88,7 +87,7 @@ public class GameWindow extends SaveGame
 
 	public void run(Stage primaryStage) throws Exception
 	{
-
+		stage = primaryStage;
 		FXMLLoader loader = new FXMLLoader(GameWindow.class.getResource("GameWindow.fxml"));
 		Parent root = loader.load();
 		controller = loader.getController();
@@ -557,19 +556,30 @@ public class GameWindow extends SaveGame
 
 	private void checkForWin()
 	{
-		//TODO
+		if(curWave == null)
+		{
+			boolean won = true;
+			for(int i = 0; i < 5; i++)
+			{
+				won &= grid.getRow(i).getIncoming().isEmpty();
+			}
+			if(won)
+				win();
+		}
 	}
 
 	private void displayFrame()
 	{
 		coinCounter.setText(Integer.toString(user.getCoins()));
 		sunCounter.setText(Integer.toString(user.getCurrentSuns()));
-		for(ImageView iv : toRemove)
+		ArrayList<ImageView> toRemoveCopy = new ArrayList<>(toRemove);
+		for(ImageView iv : toRemoveCopy)
 		{
 			pane.getChildren().remove(iv);
 		}
-		toRemove.clear();
-		for(Map.Entry<Displayable, ImageView> e : currentFrame.entrySet())
+		toRemove.removeAll(toRemoveCopy);
+		HashMap<Displayable, ImageView> currentFrameCopy = new HashMap<>(currentFrame);
+		for(Map.Entry<Displayable, ImageView> e : currentFrameCopy.entrySet())
 		{
 			if(!pane.getChildren().contains(e.getValue()))
 				pane.getChildren().add(e.getValue());
@@ -578,12 +588,56 @@ public class GameWindow extends SaveGame
 
 	private void loose()
 	{
-		//TODO
+		timer.cancel();
+		user.resetStats();
+		try
+		{
+			serialize();
+		}
+		catch(IOException e)
+		{
+			System.out.println("Error saving");
+		}
+		Platform.runLater(() ->
+		{
+			try
+			{
+
+				Game.frontend.Loose.Loose.getInstance().run(stage);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		});
 	}
 
 	private void win()
 	{
-		//TODO
+		timer.cancel();
+		user.resetStats();
+		user.setLevels(user.getCurrentLevel() + 1);
+		user.unlock(curLevel.getReward());
+		try
+		{
+			serialize();
+		}
+		catch(IOException e)
+		{
+			System.out.println("Error saving");
+		}
+		Platform.runLater(() ->
+		{
+			try
+			{
+
+				Game.frontend.Win.Win.getInstance().run(stage);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		});
 	}
 
 	public class updater extends TimerTask
@@ -613,6 +667,71 @@ public class GameWindow extends SaveGame
 		}
 	}
 
+	public void saveGrid()
+	{
+		user.setCurrentlyAt(user.getCurrentLevel());
+		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("UserFiles/" + user.getName() + "/grid.txt")))
+		{
+			out.writeObject(user);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	private class dynamicHandler implements EventHandler<MouseEvent>
+	{
+		Displayable obj;
+
+		dynamicHandler(Displayable obj)
+		{
+			//			System.out.println("Created");
+			this.obj = obj;
+		}
+
+		@Override
+		public void handle(MouseEvent event)
+		{
+			//			System.out.println("Clicked");
+			if(obj instanceof DynamicSun)
+				user.collectSun(50);
+			else
+				user.collectCoins(50);
+			user.getCurrentDynamicObjects().remove(obj);
+			if(currentFrame.containsKey(obj))
+			{
+				ImageView iv = currentFrame.remove(obj);
+				toRemove.add(iv);
+			}
+		}
+	}
+
+	private class produceHandler implements EventHandler<MouseEvent>
+	{
+		int row;
+		Projectile p;
+
+		public produceHandler(int row, Projectile p)
+		{
+			this.row = row;
+			this.p = p;
+		}
+
+		@Override
+		public void handle(MouseEvent event)
+		{
+			Produce produce = (Produce) p;
+			user.collectSun(produce.getValue());
+			grid.removeProduce(row, p);
+			if(currentFrame.containsKey(p))
+			{
+				ImageView iv = currentFrame.remove(p);
+				toRemove.add(iv);
+			}
+		}
+	}
+
 	private class cellHandler implements EventHandler<MouseEvent>
 	{
 		private int row;
@@ -637,13 +756,17 @@ public class GameWindow extends SaveGame
 					plant.resetCooldown();
 					controller.usedCurrentPlant();
 				}
-				else if(controller.isShovel()) {
-					try {
-						grid.clean(row,col);
+				else if(controller.isShovel())
+				{
+					try
+					{
+						grid.clean(row, col);
 					}
-					catch(PlantNotPresentException ignored) {
+					catch(PlantNotPresentException ignored)
+					{
 					}
-					finally {
+					finally
+					{
 						controller.usedShovel();
 					}
 				}
@@ -700,58 +823,6 @@ public class GameWindow extends SaveGame
 					break;
 				default:
 					plant = null;
-			}
-		}
-	}
-
-	private class dynamicHandler implements EventHandler<MouseEvent>
-	{
-		Displayable obj;
-
-		dynamicHandler(Displayable obj)
-		{
-			//			System.out.println("Created");
-			this.obj = obj;
-		}
-
-		@Override
-		public void handle(MouseEvent event)
-		{
-			//			System.out.println("Clicked");
-			if(obj instanceof DynamicSun)
-				user.collectSun(50);
-			else
-				user.collectCoins(50);
-			user.getCurrentDynamicObjects().remove(obj);
-			if(currentFrame.containsKey(obj))
-			{
-				ImageView iv = currentFrame.remove(obj);
-				toRemove.add(iv);
-			}
-		}
-	}
-
-	private class produceHandler implements EventHandler<MouseEvent>
-	{
-		int row;
-		Projectile p;
-
-		public produceHandler(int row, Projectile p)
-		{
-			this.row = row;
-			this.p = p;
-		}
-
-		@Override
-		public void handle(MouseEvent event)
-		{
-			Produce produce = (Produce) p;
-			user.collectSun(produce.getValue());
-			grid.removeProduce(row, p);
-			if(currentFrame.containsKey(p))
-			{
-				ImageView iv = currentFrame.remove(p);
-				toRemove.add(iv);
 			}
 		}
 	}

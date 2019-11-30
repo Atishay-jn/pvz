@@ -74,7 +74,7 @@ public class GameWindow extends SaveGame
 	{
 		timer = new Timer();
 		controller.setTimer(timer);
-		timer.schedule(new updater(), 0, 20);
+		timer.schedule(new updater(), 0, 40);
 	}
 
 	public void run(Stage primaryStage) throws Exception
@@ -93,6 +93,8 @@ public class GameWindow extends SaveGame
 		timer = new Timer();
 		controller.setTimer(timer);
 		timer.schedule(new Game.frontend.GameWindow.GameWindow.updater(), 0, 40);
+
+		currentFrame.clear();
 
 		primaryStage.setScene(new Scene(root, Main.width, Main.height));
 		primaryStage.show();

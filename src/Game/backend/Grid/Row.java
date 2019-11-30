@@ -35,6 +35,7 @@ public final class Row implements Serializable
 		this.incoming = new ArrayList<>();
 		this.projectiles = new ArrayList<>();
 		this.lawnMover = new LawnMover(_boundary, _yVal);
+		this.toRemove = new ArrayList<>();
 		this.boundary = _boundary;
 		this.number = _num;
 		this.yVal = _yVal;
@@ -63,6 +64,11 @@ public final class Row implements Serializable
 	public void addIncoming(Zombie z)
 	{
 		this.incoming.add(z);
+	}
+
+	public ArrayList<Displayable> getToRemove()
+	{
+		return toRemove;
 	}
 
 	public void update() throws ZombiesAteYourBrainsException
@@ -108,12 +114,14 @@ public final class Row implements Serializable
 				if(!((RowBlast) p).isActivated())
 				{
 					((RowBlast) p).setActivated(true);
+					this.toRemove.addAll(this.incoming);
 					this.incoming.clear();
 				}
 				else
 				{
 					if(((RowBlast) p).update())
 					{
+						this.toRemove.add(p);
 						this.projectiles.remove(p);
 					}
 				}
@@ -128,6 +136,7 @@ public final class Row implements Serializable
 						if(abs(z.getxVal() - xVal) <= 10)
 						{
 							((CellBlast) p).setActivated(true);
+							this.toRemove.add(z);
 							this.incoming.remove(z);
 						}
 					}
@@ -136,6 +145,7 @@ public final class Row implements Serializable
 				{
 					if(((CellBlast) p).update())
 					{
+						this.toRemove.add(p);
 						this.projectiles.remove(p);
 					}
 				}
@@ -153,6 +163,7 @@ public final class Row implements Serializable
 						this.projectiles.remove(p);
 						if(z.takeDamage(p))
 						{
+							this.toRemove.add(z);
 							this.incoming.remove(z);
 						}
 					}
@@ -164,6 +175,7 @@ public final class Row implements Serializable
 		{
 			if(this.lawnMover.getxVal() > z.getxVal())
 			{
+				this.toRemove.add(z);
 				this.incoming.remove(z);
 			}
 		}

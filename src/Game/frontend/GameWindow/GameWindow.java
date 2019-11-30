@@ -418,7 +418,14 @@ public class GameWindow extends SaveGame
 
 	private void cleanFrame()
 	{
-		//todo
+		ArrayList<Displayable> toRemove = new ArrayList<>();
+		toRemove.addAll(grid.getRow(0).getToRemove());
+		toRemove.addAll(grid.getRow(1).getToRemove());
+		toRemove.addAll(grid.getRow(2).getToRemove());
+		toRemove.addAll(grid.getRow(3).getToRemove());
+		toRemove.addAll(grid.getRow(4).getToRemove());
+		for(Displayable d : toRemove)
+			currentFrame.remove(d);
 	}
 
 	private void checkForWin()

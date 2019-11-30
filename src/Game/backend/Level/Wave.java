@@ -62,4 +62,9 @@ public final class Wave
 	{
 		return nextCountdown;
 	}
+
+	public int getNumber()
+	{
+		return number;
+	}
 }

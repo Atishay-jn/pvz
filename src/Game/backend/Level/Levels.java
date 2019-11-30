@@ -8,14 +8,11 @@ import java.util.ArrayList;
 public final class Levels
 {
 	private static ArrayList<Level> levels;
-
-	static
-	{
+//	static {
+//		levels = new ArrayList<Level>();
+//	}
+	public static void initialize() {
 		levels = new ArrayList<Level>();
-	}
-
-	public static void initialize()
-	{
 		Level l;
 		for(int i = 0; i < 8; i++)
 		{

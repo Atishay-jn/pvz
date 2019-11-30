@@ -1,5 +1,6 @@
 package Game.frontend.GameWindow;
 
+import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -49,6 +50,7 @@ public class GameWindowController
 	@FXML
 	private void pauseClick() throws Exception
 	{
+		CurrentUser.getUser().setCurrentlyAt(CurrentUser.getUser().getCurrentLevel());
 		timer.cancel();
 		Game.frontend.Pause.PauseScreen.getInstance().run(primaryStage);
 	}

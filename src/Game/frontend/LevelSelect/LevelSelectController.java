@@ -8,9 +8,12 @@ public class LevelSelectController
 {
 	private Stage primaryStage;
 
-	public void setPrimaryStage(Stage primaryStage)
+	public void setPrimaryStage(Stage primaryStage) throws Exception
 	{
 		this.primaryStage = primaryStage;
+		if(CurrentUser.getUser().getCurrentlyAt() != -1) {
+			Game.frontend.GameWindow.GameWindow.getInstance().run(primaryStage);
+		}
 	}
 
 	@FXML

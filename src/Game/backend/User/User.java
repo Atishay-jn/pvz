@@ -15,6 +15,7 @@ public final class User implements Serializable
 	private String name;
 	private int levels;
 	private int coins;
+	private int currentlyAt = -1;
 	private boolean[] plantUnlocked = new boolean[11];
 	private LinkedHashMap<Integer, Integer> selectedPlants = new LinkedHashMap<>();
 	private int currentWaveNumber;
@@ -33,6 +34,14 @@ public final class User implements Serializable
 		this.currentWaveNumber = -1;
 		this.waveCountdown = 0;
 		this.currentSuns = -1;
+	}
+	
+	public int getCurrentlyAt() {
+		return currentlyAt;
+	}
+
+	public void setCurrentlyAt(int currentlyAt) {
+		this.currentlyAt = currentlyAt;
 	}
 
 	public boolean[] getPlantUnlocked()

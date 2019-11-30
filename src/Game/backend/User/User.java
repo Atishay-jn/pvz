@@ -19,6 +19,7 @@ public final class User implements Serializable
 	private int currentWaveNumber;
 	private int waveCountdown;
 	private int currentSuns;
+	private int currentLevel;
 	private ArrayList<DynamicObject> currentDynamicObjects = new ArrayList<>();
 
 	public User(String name)
@@ -101,5 +102,23 @@ public final class User implements Serializable
 	public void setWaveCountdown(int waveCountdown)
 	{
 		this.waveCountdown = waveCountdown;
+	}
+
+	public void resetStats()
+	{
+		this.currentWaveNumber = -1;
+		this.waveCountdown = 0;
+		this.currentSuns = -1;
+		this.currentDynamicObjects.clear();
+	}
+
+	public int getCurrentLevel()
+	{
+		return currentLevel;
+	}
+
+	public void setCurrentLevel(int currentLevel)
+	{
+		this.currentLevel = currentLevel;
 	}
 }

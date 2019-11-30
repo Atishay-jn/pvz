@@ -3,7 +3,6 @@ package Game.frontend.GameWindow;
 import Game.Main;
 import Game.backend.Displayable;
 import Game.backend.User.SaveGame;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -81,10 +80,10 @@ public class GameWindow extends SaveGame
 		public void run()
 		{
 			//			System.out.println(demoZombie.getImage().equals(new Image("Game/assets/backend/Zombies/LawnZombie.gif")));
-			//			System.out.println(demoZombie.getX());
-			Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));
-			if(demoZombie.getX() < 360)
-				Platform.runLater(() -> pane.getChildren().remove(demoZombie));
+			//			//			System.out.println(demoZombie.getX());
+			//			Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));
+			//			if(demoZombie.getX() < 360)
+			//				Platform.runLater(() -> pane.getChildren().remove(demoZombie));
 		}
 	}
 }

@@ -41,6 +41,8 @@ public final class Cell implements Serializable
 
 	public Projectile produce()
 	{
+		if(this.plant == null)
+			return null;
 		if(this.plant instanceof Barrier)
 			return null;
 		DynamicPlant d = (DynamicPlant) this.plant;

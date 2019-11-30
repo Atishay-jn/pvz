@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public final class Grid implements Serializable
 {
 	private static final long serialVersionUID = 1;
-	public static int[] rowYVal = {130, 245, 365, 180, 600};
+	public static int[] rowYVal = {130, 245, 365, 480, 600};
 	public static int[] rowBoundary = {375, 370, 360, 350, 340};
 	private ArrayList<Row> rows;
 

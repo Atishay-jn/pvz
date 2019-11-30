@@ -30,9 +30,9 @@ public final class LawnMover implements Displayable, Serializable
 			this.xVal = 1400;
 	}
 
-	public boolean isOutOfFrame()
+	public boolean isInsideFrame()
 	{
-		return this.outOfFrame;
+		return !this.outOfFrame;
 	}
 
 	public void setOutOfFrame(boolean outOfFrame)

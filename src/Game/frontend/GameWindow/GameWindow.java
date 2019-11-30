@@ -322,7 +322,6 @@ public class GameWindow extends SaveGame
 				iv.setFitWidth(DynamicObject.width);
 				iv.setOnMouseClicked(new dynamicHandler(dyOb));
 				iv.setImage(new Image(dyOb.getImage()));
-				iv.toFront();
 				iv.setVisible(true);
 				iv.setDisable(false);
 				currentFrame.put(dyOb, iv);
@@ -387,29 +386,31 @@ public class GameWindow extends SaveGame
 		for(int i = 0; i < 5; i++)
 		{
 			Row r = grid.getRow(i);
-			if(r.getLawnMover() != null)
+			LawnMover mover = r.getLawnMover();
+			if(currentFrame.containsKey(mover))
 			{
-				if(!r.getLawnMover().isOutOfFrame() && r.getLawnMover().isImageUpdated())
+				if(mover.isImageUpdated())
 				{
-					if(!currentFrame.containsKey(r.getLawnMover()))
-					{
-						LawnMover mover = r.getLawnMover();
-						ImageView iv = new ImageView();
-						iv.setX(mover.getxVal());
-						iv.setY(mover.getyVal());
-						iv.setFitHeight(LawnMover.height);
-						iv.setFitWidth(LawnMover.width);
-						iv.setImage(new Image(mover.getImage()));
-						iv.setVisible(true);
-						iv.setDisable(false);
-						currentFrame.put(r.getLawnMover(), iv);
-					}
+					mover.setImageUpdated(false);
+					currentFrame.get(mover).setImage(new Image(mover.getImage()));
 				}
-				else if(!r.getLawnMover().isOutOfFrame() && !r.getLawnMover().isImageUpdated())
+			}
+			else
+			{
+				if(mover.isInsideFrame())
 				{
-					currentFrame.get(r.getLawnMover()).setImage(new Image(r.getLawnMover().getImage()));
-					r.getLawnMover().setImageUpdated(false);
+					ImageView iv = new ImageView();
+					iv.setX(mover.getxVal());
+					iv.setY(mover.getyVal());
+					iv.setFitHeight(LawnMover.height);
+					iv.setFitWidth(LawnMover.width);
+					iv.setImage(new Image(mover.getImage()));
+					iv.setVisible(true);
+					iv.setDisable(false);
+					currentFrame.put(mover, iv);
 				}
+				else
+					currentFrame.remove(mover);
 			}
 		}
 		//TODO
@@ -418,6 +419,11 @@ public class GameWindow extends SaveGame
 	private void cleanFrame()
 	{
 		//todo
+	}
+
+	private void checkForWin()
+	{
+		//TODO
 	}
 
 	private void displayFrame()
@@ -447,30 +453,6 @@ public class GameWindow extends SaveGame
 		//TODO
 	}
 
-	private class dynamicHandler implements EventHandler<MouseEvent>
-	{
-		Displayable obj;
-
-		dynamicHandler(Displayable obj)
-		{
-			System.out.println("Created");
-			this.obj = obj;
-		}
-
-		@Override
-		public void handle(MouseEvent event)
-		{
-			System.out.println("Clicked");
-			if(obj instanceof DynamicSun)
-				user.collectSun(50);
-			else
-				user.collectCoins(50);
-			user.getCurrentDynamicObjects().remove(obj);
-			ImageView iv = currentFrame.remove(obj);
-			toRemove.add(iv);
-		}
-	}
-
 	public class updater extends TimerTask
 	{
 		@Override
@@ -482,10 +464,11 @@ public class GameWindow extends SaveGame
 			updateDynamicObjects();
 			updateDynamicObjectsDisplay();
 			Platform.runLater(() -> fetchPlantImages());
-			//			updateRows();
+			updateRows();
 			//			updateWaves();
-			//			updateRowsDisplay();
+			updateRowsDisplay();
 			cleanFrame();
+			checkForWin();
 			Platform.runLater(() -> displayFrame());
 			//			displayFrame();
 			//			System.out.println(demoZombie.getImage().equals(new Image("Game/assets/backend/Zombies/LawnZombie.gif")));
@@ -513,10 +496,12 @@ public class GameWindow extends SaveGame
 			try
 			{
 				plantFromIndex(controller.getCurrentPlant());
-				user.spendSuns(plant.getCost());
 				if(plant != null)
+				{
+					user.spendSuns(plant.getCost());
 					grid.plant(row, col, plant);
-				plant.resetCooldown();
+					plant.resetCooldown();
+				}
 			}
 			catch(CellOccupiedException ignored)
 			{
@@ -571,6 +556,30 @@ public class GameWindow extends SaveGame
 				default:
 					plant = null;
 			}
+		}
+	}
+
+	private class dynamicHandler implements EventHandler<MouseEvent>
+	{
+		Displayable obj;
+
+		dynamicHandler(Displayable obj)
+		{
+			System.out.println("Created");
+			this.obj = obj;
+		}
+
+		@Override
+		public void handle(MouseEvent event)
+		{
+			System.out.println("Clicked");
+			if(obj instanceof DynamicSun)
+				user.collectSun(50);
+			else
+				user.collectCoins(50);
+			user.getCurrentDynamicObjects().remove(obj);
+			ImageView iv = currentFrame.remove(obj);
+			toRemove.add(iv);
 		}
 	}
 }

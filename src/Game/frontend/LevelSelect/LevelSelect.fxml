@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="pane" onMouseClicked="#level6Click" prefHeight="710.0"
-            prefWidth="1300.0"
-            stylesheets="@LevelSelect.css" xmlns="http://javafx.com/javafx/8.0.192"
+            prefWidth="1300.0" stylesheets="@LevelSelect.css" xmlns="http://javafx.com/javafx/8.0.192"
             fx:controller="Game.frontend.LevelSelect.LevelSelectController">
     <Button layoutX="494.0" layoutY="604.0" mnemonicParsing="false" onMouseClicked="#backClick" opacity="0.0"
             prefHeight="63.0" prefWidth="286.0"/>
@@ -25,4 +24,9 @@
             prefHeight="143.0" prefWidth="151.0"/>
     <Button layoutX="212.0" layoutY="397.0" mnemonicParsing="false" onMouseClicked="#level5Click" opacity="0.0"
             prefHeight="143.0" prefWidth="151.0"/>
+    <Label fx:id="levelIndicator" layoutX="924.0" layoutY="69.0" text="Your Level: " textFill="RED">
+        <font>
+            <Font name="System Bold" size="39.0"/>
+        </font>
+    </Label>
 </AnchorPane>

@@ -2,11 +2,14 @@ package Game.frontend.LevelSelect;
 
 import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class LevelSelectController
 {
 	private Stage primaryStage;
+	@FXML
+	private Label levelIndicator;
 
 	public void setPrimaryStage(Stage primaryStage) throws Exception
 	{
@@ -14,6 +17,7 @@ public class LevelSelectController
 		if(CurrentUser.getUser().getCurrentlyAt() != -1) {
 			Game.frontend.GameWindow.GameWindow.getInstance().run(primaryStage);
 		}
+		levelIndicator.setText("Your level: " + CurrentUser.getUser().getLevels());
 	}
 
 	@FXML

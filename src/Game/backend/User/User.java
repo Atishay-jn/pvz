@@ -59,6 +59,10 @@ public final class User implements Serializable
 		return selectedPlants;
 	}
 
+	public void setSelectedPlants(HashMap<Integer,Integer> map) {
+		selectedPlants = new HashMap<Integer, Integer>(map);
+	}
+
 	public int getCurrentWaveNumber()
 	{
 		return currentWaveNumber;

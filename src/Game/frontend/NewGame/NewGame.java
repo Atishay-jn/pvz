@@ -16,6 +16,9 @@ public class NewGame extends CurrentUser
 			uniqueInstance = new NewGame();
 		return uniqueInstance;
 	}
+	public Game.backend.User.User getUser() {
+		return user;
+	}
 	public void run(Stage primaryStage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader(NewGame.class.getResource("NewGame.fxml"));

@@ -6,6 +6,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import Game.backend.User.User;
+import Game.backend.User.CurrentUser;
 
 public class NewGameController
 {
@@ -18,7 +20,7 @@ public class NewGameController
 	private ImageView zombieImage;
 	@FXML
 	private AnchorPane pane;
-
+	private String input;
 
 	void setPrimaryStage(Stage primaryStage)
 	{
@@ -29,6 +31,8 @@ public class NewGameController
 	@FXML
 	private void newUserClick() throws Exception
 	{
+		User user = new User(input);
+		CurrentUser.setUser(user);
 		Game.frontend.LevelSelect.LevelSelect.getInstance().run(primaryStage);
 	}
 
@@ -41,7 +45,7 @@ public class NewGameController
 	@FXML
 	private void usernameKeyRelease()
 	{
-		String input = usernameTextBox.getText();
+		this.input = usernameTextBox.getText();
 		boolean isDisabled = input.isEmpty() || !input.matches("[a-zA-Z0-9]+");
 		addUserButton.setDisable(isDisabled);
 	}

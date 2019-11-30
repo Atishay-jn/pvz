@@ -57,7 +57,7 @@ public class ResumeGame extends CurrentUser
 
 	private void deserialize(String name) throws IOException, ClassNotFoundException
 	{
-		try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("UserFiles/" + name + "/userdata.text")))
+		try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("UserFiles/" + name + "/userdata.txt")))
 		{
 			user = (User) in.readObject();
 		}

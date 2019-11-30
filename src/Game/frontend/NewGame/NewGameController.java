@@ -2,6 +2,7 @@ package Game.frontend.NewGame;
 
 import Game.backend.Exceptions.UsernameExistsException;
 import Game.backend.User.CurrentUser;
+import Game.backend.User.SaveGame;
 import Game.backend.User.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,6 +33,7 @@ public class NewGameController
 			throw new UsernameExistsException("User already exists");
 		User user = new User(input);
 		CurrentUser.setUser(user);
+		SaveGame.serialize();
 		Game.frontend.LevelSelect.LevelSelect.getInstance().run(primaryStage);
 	}
 

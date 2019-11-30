@@ -1,15 +1,16 @@
 package Game.frontend.PlantSelect;
 
-import Game.frontend.GameWindow.GameWindow;
+import Game.backend.Plants.Barrier.TallNut;
+import Game.backend.Plants.Barrier.WallNut;
+import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
+import Game.backend.Plants.DynamicPlants.Bomb.PotatoMine;
+import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
+import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
+import Game.backend.Plants.DynamicPlants.Shooter.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import Game.backend.Plants.DynamicPlants.Collector.*;
-import Game.backend.Plants.DynamicPlants.Bomb.*;
-import Game.backend.Plants.DynamicPlants.Shooter.*;
-import Game.backend.Plants.Barrier.*;
-import sun.lwawt.macosx.CSystemTray;
 
 public class PlantSelectController
 {

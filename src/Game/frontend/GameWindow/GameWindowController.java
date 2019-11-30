@@ -48,6 +48,14 @@ public class GameWindowController
 		return shovel;
 	}
 
+	public void usedShovel() {
+		shovel = false;
+	}
+
+	public void usedCurrentPlant() {
+		currentPlant = -1;
+	}
+
 	public ImageView getDemoZombie()
 	{
 		return demoZombie;

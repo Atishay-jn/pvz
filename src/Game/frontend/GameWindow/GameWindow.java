@@ -555,13 +555,16 @@ public class GameWindow extends SaveGame
 					user.spendSuns(plant.getCost());
 					grid.plant(row, col, plant);
 					plant.resetCooldown();
+					controller.usedCurrentPlant();
 				}
 				else if(controller.isShovel()) {
 					try {
 						grid.clean(row,col);
 					}
 					catch(PlantNotPresentException ignored) {
-						System.out.println(ignored);
+					}
+					finally {
+						controller.usedShovel();
 					}
 				}
 			}

@@ -12,8 +12,8 @@ public abstract class Projectile implements Displayable, Serializable
 
 	public Projectile(int _xVal, int _yVal)
 	{
-		this.yVal = _yVal;
-		this.xVal = _xVal;
+		this.yVal = _yVal-82;
+		this.xVal = _xVal+70;
 	}
 
 	public int getxVal()

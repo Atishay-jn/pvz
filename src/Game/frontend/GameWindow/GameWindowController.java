@@ -1,15 +1,26 @@
 package Game.frontend.GameWindow;
 
+import Game.backend.Plants.Barrier.TallNut;
+import Game.backend.Plants.Barrier.WallNut;
+import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
+import Game.backend.Plants.DynamicPlants.Bomb.PotatoMine;
+import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
+import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
+import Game.backend.Plants.DynamicPlants.Shooter.*;
+import Game.backend.Plants.Plant;
 import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Timer;
 
 public class GameWindowController
@@ -30,6 +41,7 @@ public class GameWindowController
 	private ImageView demoZombie;
 	@FXML
 	private VBox seedSlots;
+	private int currentPlant = -1;
 
 	public ImageView getDemoZombie()
 	{
@@ -53,12 +65,6 @@ public class GameWindowController
 		CurrentUser.getUser().setCurrentlyAt(CurrentUser.getUser().getCurrentLevel());
 		timer.cancel();
 		Game.frontend.Pause.PauseScreen.getInstance().run(primaryStage);
-	}
-
-	@FXML
-	private void slot1click()
-	{
-		System.out.println("pea shooter selected");
 	}
 
 	Label getCoinCounter()
@@ -95,4 +101,114 @@ public class GameWindowController
 	{
 		return gridPane;
 	}
+
+	@FXML
+	private void slot6click(MouseEvent mouseEvent)
+	{
+		LinkedHashMap<Integer,Integer> h = CurrentUser.getUser().getSelectedPlants();
+		int count = 6;
+		for(Map.Entry<Integer,Integer> e: h.entrySet()) {
+			count --;
+			if(count == 0) {
+				currentPlant = e.getKey();
+			}
+		}
+	}
+
+	@FXML
+	private void slot5click(MouseEvent mouseEvent)
+	{
+		LinkedHashMap<Integer,Integer> h = CurrentUser.getUser().getSelectedPlants();
+		int count = 5;
+		for(Map.Entry<Integer,Integer> e: h.entrySet()) {
+			count --;
+			if(count == 0) {
+				currentPlant = e.getKey();
+			}
+		}
+	}
+
+	@FXML
+	private void slot4click(MouseEvent mouseEvent)
+	{
+		LinkedHashMap<Integer,Integer> h = CurrentUser.getUser().getSelectedPlants();
+		int count = 4;
+		for(Map.Entry<Integer,Integer> e: h.entrySet()) {
+			count --;
+			if(count == 0) {
+				currentPlant = e.getKey();
+			}
+		}
+	}
+
+	@FXML
+	private void slot3click(MouseEvent mouseEvent)
+	{
+		LinkedHashMap<Integer,Integer> h = CurrentUser.getUser().getSelectedPlants();
+		int count = 3;
+		for(Map.Entry<Integer,Integer> e: h.entrySet()) {
+			count --;
+			if(count == 0) {
+				currentPlant = e.getKey();
+			}
+		}
+	}
+
+	@FXML
+	private void slot2click(MouseEvent mouseEvent)
+	{
+		LinkedHashMap<Integer,Integer> h = CurrentUser.getUser().getSelectedPlants();
+		int count = 2;
+		for(Map.Entry<Integer,Integer> e: h.entrySet()) {
+			count --;
+			if(count == 0) {
+				currentPlant = e.getKey();
+			}
+		}
+	}
+
+	@FXML
+	private void slot1click(MouseEvent mouseEvent)
+	{
+		LinkedHashMap<Integer,Integer> h = CurrentUser.getUser().getSelectedPlants();
+		int count = 1;
+		for(Map.Entry<Integer,Integer> e: h.entrySet()) {
+			count --;
+			if(count == 0) {
+				currentPlant = e.getKey();
+			}
+		}
+	}
+
+//	private void plantFromIndex(int index) {
+	//		switch(index) {
+	//			case 0: currentPlant = new TallNut();
+	//			case 1:	currentPlant = new WallNut();
+	//			case 2: currentPlant = new Jalapeno();
+	//			case 3: currentPlant = new PotatoMine();
+	//				op = PotatoMine.getCooldown() == PotatoMine.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//			case 4: currentPlant = new Sunflower();
+	//				op = Sunflower.getCooldown() == Sunflower.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//			case 5: currentPlant = new TwinSunflower();
+	//				op = TwinSunflower.getCooldown() == TwinSunflower.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//			case 6: currentPlant = new Firey();
+	//				op = Firey.getCooldown() == Firey.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//			case 7:
+	//				op = Frosty.getCooldown() == Frosty.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//			case 8:
+	//				op = Gun.getCooldown() == Gun.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//			case 9:
+	//				op = PeaShooter.getCooldown() == PeaShooter.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//			case 10:
+	//				op = Repeater.getCooldown() == Repeater.getMaxCooldown() ? 1.0 : 0.5;
+	//				break;
+	//		}
+//	}
 }

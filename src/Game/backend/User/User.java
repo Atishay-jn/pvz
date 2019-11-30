@@ -37,7 +37,7 @@ public final class User implements Serializable
 		this.currentSuns = -1;
 		this.fallCounter = 0;
 	}
-	
+
 	public int getCurrentlyAt() {
 		return currentlyAt;
 	}
@@ -66,12 +66,12 @@ public final class User implements Serializable
 		return coins;
 	}
 
-	public HashMap<Integer, Integer> getSelectedPlants()
+	public LinkedHashMap<Integer, Integer> getSelectedPlants()
 	{
 		return selectedPlants;
 	}
 
-	public void setSelectedPlants(HashMap<Integer,Integer> map) {
+	public void setSelectedPlants(LinkedHashMap<Integer,Integer> map) {
 		selectedPlants = new LinkedHashMap<>(map);
 	}
 

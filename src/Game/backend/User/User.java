@@ -71,7 +71,7 @@ public final class User implements Serializable
 		return selectedPlants;
 	}
 
-	public void setSelectedPlants(LinkedHashMap<Integer,Integer> map) {
+	public void setSelectedPlants(HashMap<Integer,Integer> map) {
 		selectedPlants = new LinkedHashMap<>(map);
 	}
 

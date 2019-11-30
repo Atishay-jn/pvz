@@ -54,6 +54,10 @@ public class GameWindowController
 		sunCounter.setText("0");
 	}
 
+	public int getCurrentPlant() {
+		return currentPlant;
+	}
+
 	void setPrimaryStage(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
@@ -180,35 +184,4 @@ public class GameWindowController
 		}
 	}
 
-//	private void plantFromIndex(int index) {
-	//		switch(index) {
-	//			case 0: currentPlant = new TallNut();
-	//			case 1:	currentPlant = new WallNut();
-	//			case 2: currentPlant = new Jalapeno();
-	//			case 3: currentPlant = new PotatoMine();
-	//				op = PotatoMine.getCooldown() == PotatoMine.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//			case 4: currentPlant = new Sunflower();
-	//				op = Sunflower.getCooldown() == Sunflower.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//			case 5: currentPlant = new TwinSunflower();
-	//				op = TwinSunflower.getCooldown() == TwinSunflower.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//			case 6: currentPlant = new Firey();
-	//				op = Firey.getCooldown() == Firey.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//			case 7:
-	//				op = Frosty.getCooldown() == Frosty.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//			case 8:
-	//				op = Gun.getCooldown() == Gun.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//			case 9:
-	//				op = PeaShooter.getCooldown() == PeaShooter.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//			case 10:
-	//				op = Repeater.getCooldown() == Repeater.getMaxCooldown() ? 1.0 : 0.5;
-	//				break;
-	//		}
-//	}
 }

@@ -5,6 +5,7 @@ import Game.backend.Displayable;
 import Game.backend.DynamicObjects.Coin;
 import Game.backend.DynamicObjects.DynamicObject;
 import Game.backend.DynamicObjects.DynamicSun;
+import Game.backend.Exceptions.CellOccupiedException;
 import Game.backend.Grid.Grid;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
@@ -13,6 +14,7 @@ import Game.backend.Plants.DynamicPlants.Bomb.PotatoMine;
 import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
 import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
 import Game.backend.Plants.DynamicPlants.Shooter.*;
+import Game.backend.Plants.Plant;
 import Game.backend.User.SaveGame;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -47,6 +49,7 @@ public class GameWindow extends SaveGame
 	private ImageView demoZombie;
 	private GridPane frontendGrid = null;
 	private Grid grid = null;
+	private Plant plant;
 	private ArrayList<ImageView> standby = new ArrayList<>();
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 	private ArrayList<ImageView> toRemove = new ArrayList<>();
@@ -283,13 +286,18 @@ public class GameWindow extends SaveGame
 	}
 
 	private void updateDynamicObjects()
+
+
+
+
+	
 	{
 		Random generator = new Random();
 		user.setFallCounter(user.getFallCounter() + 1);
 		if(user.getFallCounter() % 150 == 0)
 			user.getCurrentDynamicObjects().add(new DynamicSun(0, (400 + generator.nextInt(500))));
 		if(user.getFallCounter() % 500 == 0)
-			user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))));
+user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))));
 		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
 			dyOb.update();
 	}
@@ -373,7 +381,43 @@ public class GameWindow extends SaveGame
 		@Override
 		public void handle(MouseEvent event)
 		{
-			System.out.println(row + " " + col);
+try
+			{
+				plantFromIndex(controller.getCurrentPlant());
+				if(plant!=null)
+					grid.plant(row, col, plant);
+			}
+			catch(CellOccupiedException ignored) {
+				System.out.println("Can't plant at: "+row+" "+col);
+			}
+		}
+
+		private void plantFromIndex(int index) {
+			switch(index) {
+				case 0: plant = new TallNut();
+				break;
+				case 1:	plant = new WallNut();
+				break;
+				case 2: plant = new Jalapeno(row,col);
+				break;
+				case 3: plant = new PotatoMine(row,col);
+				break;
+				case 4: plant = new Sunflower(row,col);
+				break;
+				case 5: plant = new TwinSunflower(row,col);
+				break;
+				case 6: plant = new Firey(row,col);
+				break;
+				case 7: plant = new Frosty(row,col);
+				break;
+				case 8: plant = new Gun(row,col);
+				break;
+				case 9: plant = new PeaShooter(row,col);
+				break;
+				case 10: plant = new Repeater(row,col);
+				break;
+				default: plant = null;
+			}
 		}
 	}
 

@@ -88,6 +88,7 @@ public final class Row implements Serializable
 		}
 
 		//Move projectiles
+		ArrayList<Projectile> toBeRemoved = new ArrayList<>();
 		this.projectiles.forEach((Projectile p) ->
 		{
 			if(p instanceof Warhead)
@@ -95,9 +96,10 @@ public final class Row implements Serializable
 			if(p.getxVal() >= 1400)
 			{
 				toRemove.add(p);
-				this.projectiles.remove(p);
+				toBeRemoved.add(p);
 			}
 		});
+		this.projectiles.removeAll(toBeRemoved);
 
 		//Move mover
 		{

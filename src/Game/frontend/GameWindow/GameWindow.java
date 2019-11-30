@@ -303,6 +303,22 @@ public class GameWindow extends SaveGame
 			user.getCurrentDynamicObjects().add(new Coin((400 + generator.nextInt(500)), 0));
 		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
 			dyOb.update();
+		//TODO
+		ArrayList<DynamicObject> toBeCleared = new ArrayList<>();
+		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
+		{
+			if(!dyOb.isAvailable())
+			{
+				toBeCleared.add(dyOb);
+				if(currentFrame.containsKey(dyOb))
+				{
+					ImageView iv = currentFrame.remove(dyOb);
+					toRemove.add(iv);
+				}
+			}
+		}
+		for(DynamicObject dyOb : toBeCleared)
+			user.getCurrentDynamicObjects().remove(dyOb);
 	}
 
 	private void updateDynamicObjectsDisplay()
@@ -572,14 +588,14 @@ public class GameWindow extends SaveGame
 
 		dynamicHandler(Displayable obj)
 		{
-			System.out.println("Created");
+			//			System.out.println("Created");
 			this.obj = obj;
 		}
 
 		@Override
 		public void handle(MouseEvent event)
 		{
-			System.out.println("Clicked");
+			//			System.out.println("Clicked");
 			if(obj instanceof DynamicSun)
 				user.collectSun(50);
 			else

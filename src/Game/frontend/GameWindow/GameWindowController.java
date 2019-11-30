@@ -6,6 +6,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.Timer;
@@ -26,6 +27,8 @@ public class GameWindowController
 	private Timer timer;
 	@FXML
 	private ImageView demoZombie;
+	@FXML
+	private VBox seedSlots;
 
 	public ImageView getDemoZombie()
 	{
@@ -79,5 +82,10 @@ public class GameWindowController
 	void setTimer(Timer timer)
 	{
 		this.timer = timer;
+	}
+
+	public VBox getSeedSlots()
+	{
+		return seedSlots;
 	}
 }

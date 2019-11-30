@@ -38,11 +38,13 @@ public final class User implements Serializable
 		this.fallCounter = 0;
 	}
 
-	public int getCurrentlyAt() {
+	public int getCurrentlyAt()
+	{
 		return currentlyAt;
 	}
 
-	public void setCurrentlyAt(int currentlyAt) {
+	public void setCurrentlyAt(int currentlyAt)
+	{
 		this.currentlyAt = currentlyAt;
 	}
 
@@ -71,13 +73,19 @@ public final class User implements Serializable
 		return selectedPlants;
 	}
 
-	public void setSelectedPlants(HashMap<Integer,Integer> map) {
+	public void setSelectedPlants(HashMap<Integer, Integer> map)
+	{
 		selectedPlants = new LinkedHashMap<>(map);
 	}
 
 	public int getCurrentWaveNumber()
 	{
 		return currentWaveNumber;
+	}
+
+	public void setCurrentWaveNumber(int currentWaveNumber)
+	{
+		this.currentWaveNumber = currentWaveNumber;
 	}
 
 	public int getCurrentSuns()

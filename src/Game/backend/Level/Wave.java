@@ -57,4 +57,9 @@ public final class Wave
 		}
 		return null;
 	}
+
+	public int getNextCountdown()
+	{
+		return nextCountdown;
+	}
 }

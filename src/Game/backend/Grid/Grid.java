@@ -5,6 +5,7 @@ import Game.backend.Exceptions.PlantNotPresentException;
 import Game.backend.Level.Wave;
 import Game.backend.Plants.Plant;
 import Game.backend.Projectiles.Projectile;
+import Game.backend.Zombies.Zombie;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +30,14 @@ public final class Grid implements Serializable
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			//TODO
+			ArrayList<Zombie> zombies = wave.getZombies(i);
+			if(zombies == null)
+				return;
+			for(Zombie z : zombies)
+			{
+				System.out.println("Adding zombie on row: " + i);
+				this.getRow(i).addIncoming(z.clone());
+			}
 		}
 	}
 

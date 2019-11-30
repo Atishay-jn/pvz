@@ -14,6 +14,7 @@ import Game.backend.Grid.Row;
 import Game.backend.LawnMover;
 import Game.backend.Level.Level;
 import Game.backend.Level.Levels;
+import Game.backend.Level.Wave;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
 import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
@@ -25,6 +26,7 @@ import Game.backend.Plants.Plant;
 import Game.backend.Projectiles.Produce.Produce;
 import Game.backend.Projectiles.Projectile;
 import Game.backend.User.SaveGame;
+import Game.backend.Zombies.Zombie;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -62,6 +64,7 @@ public class GameWindow extends SaveGame
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 	private ArrayList<ImageView> toRemove = new ArrayList<>();
 	private Level curLevel = null;
+	private Wave curWave = null;
 	private static int[] rowYVal = {130, 245, 365, 480, 600};
 	private static int[] colXVal = {360, 460, 575, 667, 767, 870, 963, 1066, 1179};
 
@@ -122,11 +125,25 @@ public class GameWindow extends SaveGame
 
 	private void initialize() throws IOException, ClassNotFoundException
 	{
-		Levels.initialize();
-		curLevel = Levels.getLevel(user.getCurrentLevel());
+		initializeWave();
 		initializeSlots();
 		initializePlane();
 		initializeGrid();
+	}
+
+	private void initializeWave()
+	{
+		Levels.initialize();
+		curLevel = Levels.getLevel(user.getCurrentLevel());
+		if(user.getCurrentlyAt() == -1)
+			user.setCurrentWaveNumber(1);
+		if(user.getCurrentWaveNumber() < curLevel.getNumWaves() - 1)
+		{
+			curWave = curLevel.getWave(user.getCurrentWaveNumber());
+			user.setWaveCountdown(curWave.getNextCountdown());
+		}
+		else
+			curWave = null;
 	}
 
 	private void initializeSlots()
@@ -403,7 +420,27 @@ public class GameWindow extends SaveGame
 
 	private void updateWaves()
 	{
-		//TODO
+		//		System.out.println(user.getCurrentWaveNumber() + " " + user.getWaveCountdown());
+		user.updateWaveCountdown();
+		int nextWaveNumber = user.getCurrentWaveNumber() + 1;
+		if(nextWaveNumber < curLevel.getNumWaves())
+		{
+			if(user.getWaveCountdown() <= 0)
+			{
+				user.setCurrentWaveNumber(nextWaveNumber);
+				curWave = curLevel.getWave(nextWaveNumber);
+				user.setWaveCountdown(curWave.getNextCountdown());
+				grid.addZombies(curWave);
+			}
+		}
+		else
+			curWave = null;
+	}
+
+	private void updateWaveDisplay()
+	{
+		float progress = (float) user.getCurrentWaveNumber() / (curLevel.getNumWaves() - 1);
+		waveProgress.setProgress(progress);
 	}
 
 	private void updateRowsDisplay()
@@ -420,6 +457,8 @@ public class GameWindow extends SaveGame
 					mover.setImageUpdated(false);
 					currentFrame.get(mover).setImage(new Image(mover.getImage()));
 				}
+				else
+					currentFrame.get(mover).setX(mover.getxVal());
 			}
 			else
 			{
@@ -469,18 +508,48 @@ public class GameWindow extends SaveGame
 		}
 
 		//Zombies
+		for(int i = 0; i < 5; i++)
+		{
+			Row r = grid.getRow(i);
+			ArrayList<Zombie> zombies = r.getIncoming();
+			for(Zombie z : zombies)
+			{
+				if(!currentFrame.containsKey(z))
+				{
+					ImageView iv = new ImageView();
+					iv.setX(z.getxVal());
+					iv.setY(z.getyVal());
+					iv.setFitHeight(Zombie.height);
+					iv.setFitWidth(Zombie.width);
+					iv.setImage(new Image(z.getImage()));
+					iv.setVisible(true);
+					iv.setDisable(false);
+					currentFrame.put(z, iv);
+				}
+				else
+				{
+					currentFrame.get(z).setX(z.getxVal());
+				}
+			}
+		}
 	}
 
 	private void cleanFrame()
 	{
-		ArrayList<Displayable> toRemove = new ArrayList<>();
-		toRemove.addAll(grid.getRow(0).getToRemove());
-		toRemove.addAll(grid.getRow(1).getToRemove());
-		toRemove.addAll(grid.getRow(2).getToRemove());
-		toRemove.addAll(grid.getRow(3).getToRemove());
-		toRemove.addAll(grid.getRow(4).getToRemove());
-		for(Displayable d : toRemove)
-			currentFrame.remove(d);
+		ArrayList<Displayable> toRemoveNew = new ArrayList<>();
+		toRemoveNew.addAll(grid.getRow(0).getToRemove());
+		toRemoveNew.addAll(grid.getRow(1).getToRemove());
+		toRemoveNew.addAll(grid.getRow(2).getToRemove());
+		toRemoveNew.addAll(grid.getRow(3).getToRemove());
+		toRemoveNew.addAll(grid.getRow(4).getToRemove());
+		for(Displayable d : toRemoveNew)
+		{
+			if(currentFrame.containsKey(d))
+			{
+				ImageView iv = currentFrame.remove(d);
+				toRemove.add(iv);
+			}
+		}
 	}
 
 	private void checkForWin()
@@ -496,10 +565,9 @@ public class GameWindow extends SaveGame
 		{
 			pane.getChildren().remove(iv);
 		}
+		toRemove.clear();
 		for(Map.Entry<Displayable, ImageView> e : currentFrame.entrySet())
 		{
-			//			if(!pane.getChildren().contains(e.getValue()));
-			//				Platform.runLater(() -> pane.getChildren().add(e.getValue()));
 			if(!pane.getChildren().contains(e.getValue()))
 				pane.getChildren().add(e.getValue());
 		}
@@ -527,7 +595,8 @@ public class GameWindow extends SaveGame
 			updateDynamicObjectsDisplay();
 			Platform.runLater(() -> fetchPlantImages());
 			updateRows();
-			//			updateWaves();
+			updateWaves();
+			Platform.runLater(() -> updateWaveDisplay());
 			updateRowsDisplay();
 			cleanFrame();
 			checkForWin();

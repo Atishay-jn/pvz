@@ -103,7 +103,7 @@ public abstract class Zombie implements Displayable, Serializable, Cloneable
 		}
 	}
 
-	protected int getyVal()
+	public int getyVal()
 	{
 		return yVal;
 	}

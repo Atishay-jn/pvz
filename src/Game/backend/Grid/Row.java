@@ -173,20 +173,27 @@ public final class Row implements Serializable
 		}
 
 		//Handle collision with mover
+		ArrayList<Zombie> zombieToRemove = new ArrayList<>();
 		for(Zombie z : this.incoming)
 		{
 			if(this.lawnMover.getxVal() > z.getxVal())
 			{
+				System.out.println("Zombie collided");
 				this.toRemove.add(z);
-				this.incoming.remove(z);
+				System.out.println(this.toRemove.size());
+				zombieToRemove.add(z);
 			}
 		}
+		this.incoming.removeAll(zombieToRemove);
 
 		//Handle Mover
 		for(Zombie z : this.incoming)
 		{
-			if(this.lawnMover != null && (z.getxVal() - this.boundary < 5))
+			if(this.lawnMover.isInsideFrame() && (z.getxVal() - this.boundary < 5))
+			{
+				System.out.println("Mover on row: " + this.number);
 				this.lawnMover.setActivated(true);
+			}
 		}
 
 		//Handle Zombie eating

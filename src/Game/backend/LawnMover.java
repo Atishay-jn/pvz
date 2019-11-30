@@ -8,16 +8,18 @@ public final class LawnMover implements Displayable, Serializable
 	public static final int height = 90;
 	public static final int width = 110;
 	private int xVal;
-	private int _yVal;
+	private int yVal;
 	private boolean activated;
 	private boolean imageUpdated;
+	private boolean outOfFrame;
 
 	public LawnMover(int _xVal, int _yVal)
 	{
 		this.activated = false;
 		this.xVal = _xVal - width;
-		this._yVal = _yVal - height;
+		this.yVal = _yVal - height;
 		this.imageUpdated = false;
+		this.outOfFrame = false;
 	}
 
 	public void update()
@@ -28,10 +30,17 @@ public final class LawnMover implements Displayable, Serializable
 			this.xVal = 1400;
 	}
 
-	public boolean outOfFrame()
+	public boolean isOutOfFrame()
 	{
-		return this.xVal >= 1400;
+		return this.outOfFrame;
 	}
+
+	public void setOutOfFrame(boolean outOfFrame)
+	{
+		this.outOfFrame = outOfFrame;
+	}
+
+
 
 	public int getxVal()
 	{
@@ -62,8 +71,8 @@ public final class LawnMover implements Displayable, Serializable
 		this.imageUpdated = imageUpdated;
 	}
 
-	public int get_yVal()
+	public int getyVal()
 	{
-		return _yVal;
+		return yVal;
 	}
 }

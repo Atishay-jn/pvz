@@ -1,10 +1,8 @@
 package Game.backend.Grid;
 
-import Game.backend.Exceptions.CellOccupiedException;
-import Game.backend.Exceptions.PlantNotPresentException;
+import Game.backend.Displayable;
 import Game.backend.Exceptions.ZombiesAteYourBrainsException;
 import Game.backend.LawnMover;
-import Game.backend.Plants.Plant;
 import Game.backend.Projectiles.Bomb.CellBlast;
 import Game.backend.Projectiles.Bomb.RowBlast;
 import Game.backend.Projectiles.Projectile;
@@ -22,6 +20,7 @@ public final class Row implements Serializable
 	private ArrayList<Cell> cells;
 	private ArrayList<Zombie> incoming;
 	private ArrayList<Projectile> projectiles;
+	private ArrayList<Displayable> toRemove;
 	private static int[] cellXVal = {360, 460, 575, 667, 767, 870, 963, 1066, 1179};
 	private LawnMover lawnMover;
 	private int number;
@@ -39,16 +38,6 @@ public final class Row implements Serializable
 		this.boundary = _boundary;
 		this.number = _num;
 		this.yVal = _yVal;
-	}
-
-	public void plant(Plant p, int col) throws CellOccupiedException
-	{
-		this.cells.get(col).plant(p);
-	}
-
-	public void cleanCell(int col) throws PlantNotPresentException
-	{
-		this.cells.get(col).clean();
 	}
 
 	public Cell getCell(int col)
@@ -99,6 +88,7 @@ public final class Row implements Serializable
 				((Warhead) p).update();
 			if(p.getxVal() >= 1400)
 			{
+				toRemove.add(p);
 				this.projectiles.remove(p);
 			}
 		});
@@ -107,7 +97,7 @@ public final class Row implements Serializable
 		{
 			this.lawnMover.update();
 			if(this.lawnMover.getxVal() >= 1400)
-				this.lawnMover = null;
+				this.lawnMover.setOutOfFrame(true);
 		}
 
 		//Handle bomb case

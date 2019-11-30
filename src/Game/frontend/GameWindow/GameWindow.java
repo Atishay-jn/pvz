@@ -7,7 +7,10 @@ import Game.backend.DynamicObjects.DynamicObject;
 import Game.backend.DynamicObjects.DynamicSun;
 import Game.backend.Exceptions.CellOccupiedException;
 import Game.backend.Exceptions.InsufficientSunsException;
+import Game.backend.Exceptions.ZombiesAteYourBrainsException;
 import Game.backend.Grid.Grid;
+import Game.backend.Grid.Row;
+import Game.backend.LawnMover;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
 import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
@@ -53,6 +56,8 @@ public class GameWindow extends SaveGame
 	private Plant plant;
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 	private ArrayList<ImageView> toRemove = new ArrayList<>();
+	private static int[] rowYVal = {130, 245, 365, 180, 600};
+	private static int[] colXVal = {360, 460, 575, 667, 767, 870, 963, 1066, 1179};
 
 	private GameWindow()
 	{
@@ -356,7 +361,20 @@ public class GameWindow extends SaveGame
 
 	private void updateRows()
 	{
-		//TODO
+		try
+		{
+			grid.getRow(0).update();
+			grid.getRow(1).update();
+			grid.getRow(2).update();
+			grid.getRow(3).update();
+			grid.getRow(4).update();
+		}
+		catch(ZombiesAteYourBrainsException e)
+		{
+			System.out.println(e.getMessage());
+			timer.cancel();
+			loose();
+		}
 	}
 
 	private void updateWaves()
@@ -366,6 +384,34 @@ public class GameWindow extends SaveGame
 
 	private void updateRowsDisplay()
 	{
+		for(int i = 0; i < 5; i++)
+		{
+			Row r = grid.getRow(i);
+			if(r.getLawnMover() != null)
+			{
+				if(!r.getLawnMover().isOutOfFrame() && r.getLawnMover().isImageUpdated())
+				{
+					if(!currentFrame.containsKey(r.getLawnMover()))
+					{
+						LawnMover mover = r.getLawnMover();
+						ImageView iv = new ImageView();
+						iv.setX(mover.getxVal());
+						iv.setY(mover.getyVal());
+						iv.setFitHeight(LawnMover.height);
+						iv.setFitWidth(LawnMover.width);
+						iv.setImage(new Image(mover.getImage()));
+						iv.setVisible(true);
+						iv.setDisable(false);
+						currentFrame.put(r.getLawnMover(), iv);
+					}
+				}
+				else if(!r.getLawnMover().isOutOfFrame() && !r.getLawnMover().isImageUpdated())
+				{
+					currentFrame.get(r.getLawnMover()).setImage(new Image(r.getLawnMover().getImage()));
+					r.getLawnMover().setImageUpdated(false);
+				}
+			}
+		}
 		//TODO
 	}
 
@@ -391,6 +437,40 @@ public class GameWindow extends SaveGame
 		}
 	}
 
+	private void loose()
+	{
+		//TODO
+	}
+
+	private void win()
+	{
+		//TODO
+	}
+
+	private class dynamicHandler implements EventHandler<MouseEvent>
+	{
+		Displayable obj;
+
+		dynamicHandler(Displayable obj)
+		{
+			System.out.println("Created");
+			this.obj = obj;
+		}
+
+		@Override
+		public void handle(MouseEvent event)
+		{
+			System.out.println("Clicked");
+			if(obj instanceof DynamicSun)
+				user.collectSun(50);
+			else
+				user.collectCoins(50);
+			user.getCurrentDynamicObjects().remove(obj);
+			ImageView iv = currentFrame.remove(obj);
+			toRemove.add(iv);
+		}
+	}
+
 	public class updater extends TimerTask
 	{
 		@Override
@@ -402,9 +482,9 @@ public class GameWindow extends SaveGame
 			updateDynamicObjects();
 			updateDynamicObjectsDisplay();
 			Platform.runLater(() -> fetchPlantImages());
-			updateRows();
-			updateWaves();
-			updateRowsDisplay();
+			//			updateRows();
+			//			updateWaves();
+			//			updateRowsDisplay();
 			cleanFrame();
 			Platform.runLater(() -> displayFrame());
 			//			displayFrame();
@@ -451,6 +531,8 @@ public class GameWindow extends SaveGame
 
 		private void plantFromIndex(int index)
 		{
+			int _x = colXVal[col];
+			int _y = rowYVal[row];
 			switch(index)
 			{
 				case 0:
@@ -460,59 +542,35 @@ public class GameWindow extends SaveGame
 					plant = new WallNut();
 					break;
 				case 2:
-					plant = new Jalapeno(row, col);
+					plant = new Jalapeno(_x, _y);
 					break;
 				case 3:
-					plant = new PotatoMine(row, col);
+					plant = new PotatoMine(_x, _y);
 					break;
 				case 4:
-					plant = new Sunflower(row, col);
+					plant = new Sunflower(_x, _y);
 					break;
 				case 5:
-					plant = new TwinSunflower(row, col);
+					plant = new TwinSunflower(_x, _y);
 					break;
 				case 6:
-					plant = new Firey(row, col);
+					plant = new Firey(_x, _y);
 					break;
 				case 7:
-					plant = new Frosty(row, col);
+					plant = new Frosty(_x, _y);
 					break;
 				case 8:
-					plant = new Gun(row, col);
+					plant = new Gun(_x, _y);
 					break;
 				case 9:
-					plant = new PeaShooter(row, col);
+					plant = new PeaShooter(_x, _y);
 					break;
 				case 10:
-					plant = new Repeater(row, col);
+					plant = new Repeater(_x, _y);
 					break;
 				default:
 					plant = null;
 			}
-		}
-	}
-
-	private class dynamicHandler implements EventHandler<MouseEvent>
-	{
-		Displayable obj;
-
-		dynamicHandler(Displayable obj)
-		{
-			System.out.println("Created");
-			this.obj = obj;
-		}
-
-		@Override
-		public void handle(MouseEvent event)
-		{
-			System.out.println("Clicked");
-			if(obj instanceof DynamicSun)
-				user.collectSun(50);
-			else
-				user.collectCoins(50);
-			user.getCurrentDynamicObjects().remove(obj);
-			ImageView iv = currentFrame.remove(obj);
-			toRemove.add(iv);
 		}
 	}
 }

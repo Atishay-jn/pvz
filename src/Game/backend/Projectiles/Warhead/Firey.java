@@ -9,7 +9,7 @@ public final class Firey extends Warhead implements Serializable
 	public Firey(int _xVal, int _yVal)
 	{
 		super(_xVal, _yVal);
-		this.speed = 5;
+		this.speed = 7;
 		this.damage = 100;
 	}
 

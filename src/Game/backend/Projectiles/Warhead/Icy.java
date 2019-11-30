@@ -9,7 +9,7 @@ public final class Icy extends Warhead implements Serializable
 	public Icy(int _xVal, int _yVal)
 	{
 		super(_xVal, _yVal);
-		this.speed = 5;
+		this.speed = 7;
 		this.damage = 50;
 	}
 

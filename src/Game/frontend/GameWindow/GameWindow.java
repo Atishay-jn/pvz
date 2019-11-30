@@ -197,41 +197,41 @@ public class GameWindow extends SaveGame
 		int slotIndex = 0;
 		for(Map.Entry<Integer, Integer> en : user.getSelectedPlants().entrySet())
 		{
-			double op = 0;
+			double op = 0.5;
 			switch(en.getKey())
 			{
 				case 0:
-					op = TallNut.getCooldown() == TallNut.getMaxCooldown() ? 1.0 : 0.0;
+					op = TallNut.getCooldown() == TallNut.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 1:
-					op = WallNut.getCooldown() == WallNut.getMaxCooldown() ? 1.0 : 0.0;
+					op = WallNut.getCooldown() == WallNut.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 2:
-					op = Jalapeno.getCooldown() == Jalapeno.getMaxCooldown() ? 1.0 : 0.0;
+					op = Jalapeno.getCooldown() == Jalapeno.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 3:
-					op = PotatoMine.getCooldown() == PotatoMine.getMaxCooldown() ? 1.0 : 0.0;
+					op = PotatoMine.getCooldown() == PotatoMine.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 4:
-					op = Sunflower.getCooldown() == Sunflower.getMaxCooldown() ? 1.0 : 0.0;
+					op = Sunflower.getCooldown() == Sunflower.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 5:
-					op = TwinSunflower.getCooldown() == TwinSunflower.getMaxCooldown() ? 1.0 : 0.0;
+					op = TwinSunflower.getCooldown() == TwinSunflower.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 6:
-					op = Firey.getCooldown() == Firey.getMaxCooldown() ? 1.0 : 0.0;
+					op = Firey.getCooldown() == Firey.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 7:
-					op = Frosty.getCooldown() == Frosty.getMaxCooldown() ? 1.0 : 0.0;
+					op = Frosty.getCooldown() == Frosty.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 8:
-					op = Gun.getCooldown() == Gun.getMaxCooldown() ? 1.0 : 0.0;
+					op = Gun.getCooldown() == Gun.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 9:
-					op = PeaShooter.getCooldown() == PeaShooter.getMaxCooldown() ? 1.0 : 0.0;
+					op = PeaShooter.getCooldown() == PeaShooter.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 				case 10:
-					op = Repeater.getCooldown() == Repeater.getMaxCooldown() ? 1.0 : 0.0;
+					op = Repeater.getCooldown() == Repeater.getMaxCooldown() ? 1.0 : 0.5;
 					break;
 			}
 			seedSlots.getChildren().get(slotIndex++).setOpacity(op);

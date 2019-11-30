@@ -23,6 +23,7 @@ public final class User implements Serializable
 	private int currentSuns;
 	private int currentLevel;
 	private ArrayList<DynamicObject> currentDynamicObjects = new ArrayList<>();
+	private int fallCounter;
 
 	public User(String name)
 	{
@@ -34,6 +35,7 @@ public final class User implements Serializable
 		this.currentWaveNumber = -1;
 		this.waveCountdown = 0;
 		this.currentSuns = -1;
+		this.fallCounter = 0;
 	}
 	
 	public int getCurrentlyAt() {
@@ -124,6 +126,7 @@ public final class User implements Serializable
 		this.waveCountdown = 0;
 		this.currentSuns = -1;
 		this.currentDynamicObjects.clear();
+		this.fallCounter = 0;
 	}
 
 	public void unlockPlant(int idx)
@@ -139,5 +142,25 @@ public final class User implements Serializable
 	public void setCurrentLevel(int currentLevel)
 	{
 		this.currentLevel = currentLevel;
+	}
+
+	public int getFallCounter()
+	{
+		return fallCounter;
+	}
+
+	public void setFallCounter(int fallCounter)
+	{
+		this.fallCounter = fallCounter;
+	}
+
+	public void collectSun(int suns)
+	{
+		this.currentSuns += suns;
+	}
+
+	public void collectCoins(int coins)
+	{
+		this.coins += coins;
 	}
 }

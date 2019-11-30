@@ -2,6 +2,8 @@ package Game.frontend.GameWindow;
 
 import Game.Main;
 import Game.backend.Displayable;
+import Game.backend.DynamicObjects.Coin;
+import Game.backend.DynamicObjects.DynamicSun;
 import Game.backend.Grid.Grid;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
@@ -167,11 +169,9 @@ public class GameWindow extends SaveGame
 			System.out.println("Null");
 		frontendGrid.getChildren().forEach((n) ->
 		{
-			//			System.out.println(GridPane.getRowIndex(n) + " " + GridPane.getColumnIndex(n));
 			int r = GridPane.getRowIndex(n) == null ? 0 : GridPane.getRowIndex(n);
 			int c = GridPane.getColumnIndex(n) == null ? 0 : GridPane.getColumnIndex(n);
 			n.setOnMouseClicked(new cellHandler(r, c));
-			//			System.out.println(r + " " + c);
 		});
 	}
 
@@ -278,6 +278,16 @@ public class GameWindow extends SaveGame
 		}
 	}
 
+	private void updateDynamicPlants()
+	{
+		Random generator = new Random();
+		user.setFallCounter(user.getFallCounter() + 1);
+		if(user.getFallCounter() % 150 == 0)
+			user.getCurrentDynamicObjects().addAll(new DynamicSun(0, (400 + generator.nextInt(500)));
+		if(user.getFallCounter() % 500 == 0)
+			user.getCurrentDynamicObjects().addAll(new Coin(0, (400 + generator.nextInt(500)));
+	}
+
 	public class updater extends TimerTask
 	{
 		@Override
@@ -285,6 +295,7 @@ public class GameWindow extends SaveGame
 		{
 			updateCooldown();
 			updateCooldownDisplay();
+			updateDynamicPlants();
 			//			System.out.println(demoZombie.getImage().equals(new Image("Game/assets/backend/Zombies/LawnZombie.gif")));
 			//			//			System.out.println(demoZombie.getX());
 			//			Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));
@@ -308,6 +319,26 @@ public class GameWindow extends SaveGame
 		public void handle(MouseEvent event)
 		{
 			grid.plant(row, col, p);
+		}
+	}
+
+	private class dynamicHandler implements EventHandler<MouseEvent>
+	{
+		Displayable obj;
+
+		dynamicHandler(Displayable obj)
+		{
+			this.obj = obj;
+		}
+
+		@Override
+		public void handle(MouseEvent event)
+		{
+			if(obj instanceof DynamicSun)
+				user.collectSun(50);
+			else
+				user.collectCoins(50);
+			user.getCurrentDynamicObjects().remove(obj);
 		}
 	}
 }

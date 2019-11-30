@@ -25,7 +25,7 @@
     </Label>
     <ProgressBar fx:id="waveProgress" layoutX="585.0" layoutY="663.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="308.0" progress="0.0" />
     <Button layoutX="1045.0" layoutY="641.0" mnemonicParsing="false" onMouseClicked="#pauseClick" opacity="0.0" prefHeight="49.0" prefWidth="227.0" />
-    <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="415.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="shovel" fitHeight="56.0" fitWidth="57.0" layoutX="415.0" layoutY="636.0" onMouseClicked="#shovelClick" pickOnBounds="true" preserveRatio="true">
         <Image url="@../../assets/backend/Object/Shovel.png" />
     </ImageView>
     <ImageView fitHeight="49.0" fitWidth="33.0" layoutX="900.0" layoutY="652.0" pickOnBounds="true" preserveRatio="true">

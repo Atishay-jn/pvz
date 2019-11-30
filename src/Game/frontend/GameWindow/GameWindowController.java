@@ -41,7 +41,12 @@ public class GameWindowController
 	private ImageView demoZombie;
 	@FXML
 	private VBox seedSlots;
+	private boolean shovel = false;
 	private int currentPlant = -1;
+
+	public boolean isShovel() {
+		return shovel;
+	}
 
 	public ImageView getDemoZombie()
 	{
@@ -182,6 +187,16 @@ public class GameWindowController
 				currentPlant = e.getKey();
 			}
 		}
+	}
+
+	@FXML
+	private void shovelClick(MouseEvent mouseEvent) {
+		if(!shovel) {
+			shovel = true;
+			currentPlant = -1;
+		}
+		else
+			shovel = false;
 	}
 
 }

@@ -7,6 +7,7 @@ import Game.backend.DynamicObjects.DynamicObject;
 import Game.backend.DynamicObjects.DynamicSun;
 import Game.backend.Exceptions.CellOccupiedException;
 import Game.backend.Exceptions.InsufficientSunsException;
+import Game.backend.Exceptions.PlantNotPresentException;
 import Game.backend.Exceptions.ZombiesAteYourBrainsException;
 import Game.backend.Grid.Grid;
 import Game.backend.Grid.Row;
@@ -554,6 +555,14 @@ public class GameWindow extends SaveGame
 					user.spendSuns(plant.getCost());
 					grid.plant(row, col, plant);
 					plant.resetCooldown();
+				}
+				else if(controller.isShovel()) {
+					try {
+						grid.clean(row,col);
+					}
+					catch(PlantNotPresentException ignored) {
+						System.out.println(ignored);
+					}
 				}
 			}
 			catch(CellOccupiedException ignored)

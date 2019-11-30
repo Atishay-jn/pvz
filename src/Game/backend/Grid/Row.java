@@ -204,4 +204,9 @@ public final class Row implements Serializable
 			}
 		}
 	}
+
+	public void removeProduce(Projectile p)
+	{
+		this.projectiles.remove(p);
+	}
 }

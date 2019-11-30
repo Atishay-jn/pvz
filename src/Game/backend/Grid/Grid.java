@@ -4,6 +4,7 @@ import Game.backend.Exceptions.CellOccupiedException;
 import Game.backend.Exceptions.PlantNotPresentException;
 import Game.backend.Level.Wave;
 import Game.backend.Plants.Plant;
+import Game.backend.Projectiles.Projectile;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,5 +46,10 @@ public final class Grid implements Serializable
 	public void clean(int row, int col) throws PlantNotPresentException
 	{
 		this.rows.get(row).getCell(col).clean();
+	}
+
+	public void removeProduce(int row, Projectile p)
+	{
+		this.rows.get(row).removeProduce(p);
 	}
 }

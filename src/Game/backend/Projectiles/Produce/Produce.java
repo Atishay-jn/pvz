@@ -22,6 +22,8 @@ public abstract class Produce extends Projectile implements Serializable
 		return width;
 	}
 
+	public abstract int getValue();
+
 	public Produce(int _xVal, int _yVal)
 	{
 		super(_xVal, _yVal);

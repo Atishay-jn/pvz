@@ -20,6 +20,7 @@ import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
 import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
 import Game.backend.Plants.DynamicPlants.Shooter.*;
 import Game.backend.Plants.Plant;
+import Game.backend.Projectiles.Produce.Produce;
 import Game.backend.Projectiles.Projectile;
 import Game.backend.User.SaveGame;
 import javafx.application.Platform;
@@ -76,7 +77,7 @@ public class GameWindow extends SaveGame
 	{
 		timer = new Timer();
 		controller.setTimer(timer);
-		timer.schedule(new updater(), 0, 40);
+		timer.schedule(new updater(), 0, 80);
 	}
 
 	public void run(Stage primaryStage) throws Exception
@@ -94,7 +95,7 @@ public class GameWindow extends SaveGame
 
 		timer = new Timer();
 		controller.setTimer(timer);
-		timer.schedule(new Game.frontend.GameWindow.GameWindow.updater(), 0, 40);
+		timer.schedule(new Game.frontend.GameWindow.GameWindow.updater(), 0, 80);
 
 		currentFrame.clear();
 
@@ -451,6 +452,8 @@ public class GameWindow extends SaveGame
 					iv.setImage(new Image(p.getImage()));
 					iv.setVisible(true);
 					iv.setDisable(false);
+					if(p instanceof Produce)
+						iv.setOnMouseClicked(new produceHandler(i, p));
 					currentFrame.put(p, iv);
 				}
 				else
@@ -646,6 +649,31 @@ public class GameWindow extends SaveGame
 			if(currentFrame.containsKey(obj))
 			{
 				ImageView iv = currentFrame.remove(obj);
+				toRemove.add(iv);
+			}
+		}
+	}
+
+	private class produceHandler implements EventHandler<MouseEvent>
+	{
+		int row;
+		Projectile p;
+
+		public produceHandler(int row, Projectile p)
+		{
+			this.row = row;
+			this.p = p;
+		}
+
+		@Override
+		public void handle(MouseEvent event)
+		{
+			Produce produce = (Produce) p;
+			user.collectSun(produce.getValue());
+			grid.removeProduce(row, p);
+			if(currentFrame.containsKey(p))
+			{
+				ImageView iv = currentFrame.remove(p);
 				toRemove.add(iv);
 			}
 		}

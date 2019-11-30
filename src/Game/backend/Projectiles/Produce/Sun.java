@@ -7,6 +7,12 @@ public final class Sun extends Produce implements Serializable
 	private static final long serialVersionUID = 1;
 	public static final int value = 50;
 
+	@Override
+	public int getValue()
+	{
+		return value;
+	}
+
 	public Sun(int _xVal, int _yVal)
 	{
 		super(_xVal, _yVal);

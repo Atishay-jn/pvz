@@ -1,18 +1,15 @@
 package Game.backend.User;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public abstract class SaveGame extends CurrentUser
 {
 	public static void serialize() throws IOException {
-		ObjectOutputStream out = null;
-		try {
-			out = new ObjectOutputStream(new FileOutputStream("UserFiles/"+user.getName()+"/"+"userdata.text"));
-			out.writeObject(user);
-		}
-		finally
+		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("UserFiles/" + user.getName() + "/userdata.text")))
 		{
-			out.close();
+			out.writeObject(user);
 		}
 	}
 }

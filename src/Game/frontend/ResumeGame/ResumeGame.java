@@ -2,11 +2,17 @@ package Game.frontend.ResumeGame;
 
 import Game.Main;
 import Game.backend.User.CurrentUser;
+import Game.backend.User.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class ResumeGame extends CurrentUser
 {
@@ -36,8 +42,25 @@ public class ResumeGame extends CurrentUser
 
 	private void setUpChoices()
 	{
-		userChoice.getItems().addAll("User1", "User2", "User3", "User4", "User5", "---");
+		File dir = new File("UserFiles");
+		File[] directoryListing = dir.listFiles();
+		if(directoryListing != null)
+		{
+			for(File child : directoryListing)
+			{
+				userChoice.getItems().add(child.getName());
+			}
+		}
+		userChoice.getItems().add("---");
 		userChoice.setValue("---");
+	}
+
+	private void deserialize(String name) throws IOException, ClassNotFoundException
+	{
+		try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("UserFiles/" + name + "/userdata.text")))
+		{
+			user = (User) in.readObject();
+		}
 	}
 
 	private void newChoice(String value)
@@ -45,6 +68,16 @@ public class ResumeGame extends CurrentUser
 		if(value.equals("---"))
 			controller.updateButtonState(true);
 		else
+		{
+			try
+			{
+				this.deserialize(value);
+			}
+			catch(Exception e)
+			{
+				System.out.println("Error while resuming");
+			}
 			controller.updateButtonState(false);
+		}
 	}
 }

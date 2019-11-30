@@ -1,13 +1,14 @@
 package Game.frontend.NewGame;
 
+import Game.backend.Exceptions.UsernameExistsException;
+import Game.backend.User.CurrentUser;
+import Game.backend.User.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import Game.backend.User.User;
-import Game.backend.User.CurrentUser;
+
+import java.io.File;
 
 public class NewGameController
 {
@@ -16,10 +17,6 @@ public class NewGameController
 	@FXML
 	private TextField usernameTextBox;
 	private Stage primaryStage;
-	@FXML
-	private ImageView zombieImage;
-	@FXML
-	private AnchorPane pane;
 	private String input;
 
 	void setPrimaryStage(Stage primaryStage)
@@ -31,6 +28,8 @@ public class NewGameController
 	@FXML
 	private void newUserClick() throws Exception
 	{
+		if(!new File("UserFiles/" + input).mkdir())
+			throw new UsernameExistsException("User already exists");
 		User user = new User(input);
 		CurrentUser.setUser(user);
 		Game.frontend.LevelSelect.LevelSelect.getInstance().run(primaryStage);
@@ -47,6 +46,9 @@ public class NewGameController
 	{
 		this.input = usernameTextBox.getText();
 		boolean isDisabled = input.isEmpty() || !input.matches("[a-zA-Z0-9]+");
+		File user_dir = new File("UserFiles/" + input);
+		if(user_dir.exists())
+			isDisabled = true;
 		addUserButton.setDisable(isDisabled);
 	}
 }

@@ -19,6 +19,7 @@ import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
 import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
 import Game.backend.Plants.DynamicPlants.Shooter.*;
 import Game.backend.Plants.Plant;
+import Game.backend.Projectiles.Projectile;
 import Game.backend.User.SaveGame;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -56,7 +57,7 @@ public class GameWindow extends SaveGame
 	private Plant plant;
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 	private ArrayList<ImageView> toRemove = new ArrayList<>();
-	private static int[] rowYVal = {130, 245, 365, 180, 600};
+	private static int[] rowYVal = {130, 245, 365, 480, 600};
 	private static int[] colXVal = {360, 460, 575, 667, 767, 870, 963, 1066, 1179};
 
 	private GameWindow()
@@ -305,7 +306,6 @@ public class GameWindow extends SaveGame
 			user.getCurrentDynamicObjects().add(new Coin((400 + generator.nextInt(500)), 0));
 		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
 			dyOb.update();
-		//TODO
 		ArrayList<DynamicObject> toBeCleared = new ArrayList<>();
 		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
 		{
@@ -401,6 +401,7 @@ public class GameWindow extends SaveGame
 
 	private void updateRowsDisplay()
 	{
+		//LawnMovers
 		for(int i = 0; i < 5; i++)
 		{
 			Row r = grid.getRow(i);
@@ -431,7 +432,34 @@ public class GameWindow extends SaveGame
 					currentFrame.remove(mover);
 			}
 		}
-		//TODO
+
+		//Projectiles
+		for(int i = 0; i < 5; i++)
+		{
+			Row r = grid.getRow(i);
+			ArrayList<Projectile> projectiles = r.getProjectiles();
+			for(Projectile p : projectiles)
+			{
+				if(!currentFrame.containsKey(p))
+				{
+					ImageView iv = new ImageView();
+					iv.setX(p.getxVal());
+					iv.setY(p.getyVal());
+					iv.setFitHeight(p.getHeight());
+					iv.setFitWidth(p.getWidth());
+					iv.setImage(new Image(p.getImage()));
+					iv.setVisible(true);
+					iv.setDisable(false);
+					currentFrame.put(p, iv);
+				}
+				else
+				{
+					currentFrame.get(p).setX(p.getxVal());
+				}
+			}
+		}
+
+		//Zombies
 	}
 
 	private void cleanFrame()

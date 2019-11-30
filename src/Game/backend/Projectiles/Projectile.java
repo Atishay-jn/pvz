@@ -26,6 +26,10 @@ public abstract class Projectile implements Displayable, Serializable
 		this.xVal = xVal;
 	}
 
+	public abstract int getHeight();
+
+	public abstract int getWidth();
+
 	public int getyVal()
 	{
 		return yVal;

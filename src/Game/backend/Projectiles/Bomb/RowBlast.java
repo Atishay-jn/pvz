@@ -14,6 +14,18 @@ public final class RowBlast extends Bomb implements Serializable
 	}
 
 	@Override
+	public int getHeight()
+	{
+		return height;
+	}
+
+	@Override
+	public int getWidth()
+	{
+		return width;
+	}
+
+	@Override
 	public String getImage()
 	{
 		return "Game/assets/backend/Projectiles/Bomb/RowFire.gif";

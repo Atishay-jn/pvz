@@ -10,6 +10,18 @@ public abstract class Produce extends Projectile implements Serializable
 	public static final int width = 90;
 	public static final int height = 55;
 
+	@Override
+	public int getHeight()
+	{
+		return height;
+	}
+
+	@Override
+	public int getWidth()
+	{
+		return width;
+	}
+
 	public Produce(int _xVal, int _yVal)
 	{
 		super(_xVal, _yVal);

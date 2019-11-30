@@ -28,4 +28,16 @@ public abstract class Warhead extends Projectile implements Serializable
 		if(this.xVal >= 1400)
 			this.xVal = 1400;
 	}
+
+	@Override
+	public int getHeight()
+	{
+		return height;
+	}
+
+	@Override
+	public int getWidth()
+	{
+		return width;
+	}
 }

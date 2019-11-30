@@ -18,6 +18,7 @@ public class Win extends SaveGame
 	}
 	public void run(Stage primaryStage) throws Exception
 	{
+		SaveGame.serialize();
 		FXMLLoader loader = new FXMLLoader(Win.class.getResource("Win.fxml"));
 		Parent root = loader.load();
 		WinController controller = loader.getController();

@@ -112,6 +112,11 @@ public final class User implements Serializable
 		this.currentDynamicObjects.clear();
 	}
 
+	public void unlockPlant(int idx)
+	{
+		this.plantUnlocked[idx] = true;
+	}
+
 	public int getCurrentLevel()
 	{
 		return currentLevel;

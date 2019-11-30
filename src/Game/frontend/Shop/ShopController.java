@@ -33,12 +33,6 @@ public class ShopController
 		Game.frontend.PlantSelect.PlantSelect.getInstance().run(primaryStage);
 	}
 
-	@FXML
-	private void buyClick()
-	{
-		System.out.println("Bought");
-	}
-
 	public Label getCoinCounter()
 	{
 		return coinCounter;

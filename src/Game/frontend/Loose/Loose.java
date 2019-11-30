@@ -18,6 +18,7 @@ public class Loose extends SaveGame
 	}
 	public void run(Stage primaryStage) throws Exception
 	{
+		SaveGame.serialize();
 		FXMLLoader loader = new FXMLLoader(Loose.class.getResource("Loose.fxml"));
 		Parent root = loader.load();
 		LooseController controller = loader.getController();

@@ -2,58 +2,43 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="pane" prefHeight="710.0" prefWidth="1300.0"
-            stylesheets="@PlantSelect.css" xmlns="http://javafx.com/javafx/8.0.192"
-            fx:controller="Game.frontend.PlantSelect.PlantSelectController">
+
+<AnchorPane id="pane" prefHeight="710.0" prefWidth="1300.0" stylesheets="@PlantSelect.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game.frontend.PlantSelect.PlantSelectController">
     <Label layoutX="1102.0" layoutY="370.0" prefHeight="145.0" prefWidth="148.0" text="Coming Soon !" textFill="WHITE">
         <font>
-            <Font name="Comic Sans MS Bold" size="21.0"/>
+            <Font name="Comic Sans MS Bold" size="21.0" />
         </font>
     </Label>
-    <Button layoutX="268.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#backClick" opacity="0.0"
-            prefHeight="66.0" prefWidth="242.0" text="Button"/>
-    <Button layoutX="912.0" layoutY="590.0" mnemonicParsing="false" onMouseClicked="#shopClick" opacity="0.0"
-            prefHeight="66.0" prefWidth="242.0" text="Button"/>
-    <Button layoutX="592.0" layoutY="588.0" mnemonicParsing="false" onMouseClicked="#playClick" opacity="0.0"
-            prefHeight="66.0" prefWidth="252.0">
+    <Button layoutX="268.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#backClick" opacity="0.0" prefHeight="66.0" prefWidth="242.0" text="Button" />
+    <Button layoutX="912.0" layoutY="590.0" mnemonicParsing="false" onMouseClicked="#shopClick" opacity="0.0" prefHeight="66.0" prefWidth="242.0" text="Button" />
+    <Button layoutX="592.0" layoutY="588.0" mnemonicParsing="false" onMouseClicked="#playClick" opacity="0.0" prefHeight="66.0" prefWidth="252.0">
         <font>
-            <Font name="Comic Sans MS Bold" size="2.0"/>
+            <Font name="Comic Sans MS Bold" size="2.0" />
         </font>
     </Button>
     <VBox fx:id="seedSlots" layoutX="59.0" layoutY="63.0" prefHeight="599.0" prefWidth="137.0" spacing="7">
         <children>
-            <ImageView fx:id="slot1" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
-            <ImageView fx:id="slot2" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
-            <ImageView fx:id="slot3" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
-            <ImageView fx:id="slot4" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
-            <ImageView fx:id="slot5" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
-            <ImageView fx:id="slot6" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true"/>
+            <ImageView fx:id="slot1" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="slot2" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="slot3" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="slot4" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="slot5" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="slot6" fitHeight="80.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
         </children>
     </VBox>
-    <ImageView fx:id="op1" fitHeight="145.0" fitWidth="148.0" layoutX="243.0" layoutY="163.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op2" fitHeight="145.0" fitWidth="148.0" layoutX="414.0" layoutY="163.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op3" fitHeight="145.0" fitWidth="148.0" layoutX="586.0" layoutY="163.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op4" fitHeight="145.0" fitWidth="148.0" layoutX="757.0" layoutY="163.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op5" fitHeight="145.0" fitWidth="148.0" layoutX="927.0" layoutY="163.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op6" fitHeight="145.0" fitWidth="148.0" layoutX="1099.0" layoutY="163.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op7" fitHeight="145.0" fitWidth="148.0" layoutX="243.0" layoutY="373.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op8" fitHeight="145.0" fitWidth="148.0" layoutX="414.0" layoutY="373.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op9" fitHeight="145.0" fitWidth="148.0" layoutX="586.0" layoutY="373.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op10" fitHeight="145.0" fitWidth="148.0" layoutX="757.0" layoutY="373.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <ImageView fx:id="op11" fitHeight="145.0" fitWidth="148.0" layoutX="927.0" layoutY="373.0" pickOnBounds="true"
-               preserveRatio="true"/>
+    <ImageView fx:id="op0" fitHeight="119.0" fitWidth="148.0" layoutX="243.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op1" fitHeight="126.0" fitWidth="148.0" layoutX="414.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op2" fitHeight="126.0" fitWidth="148.0" layoutX="586.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op3" fitHeight="126.0" fitWidth="148.0" layoutX="757.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op4" fitHeight="126.0" fitWidth="148.0" layoutX="927.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op5" fitHeight="126.0" fitWidth="148.0" layoutX="1099.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op6" fitHeight="119.0" fitWidth="148.0" layoutX="243.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op7" fitHeight="126.0" fitWidth="148.0" layoutX="414.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op8" fitHeight="126.0" fitWidth="148.0" layoutX="586.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op9" fitHeight="126.0" fitWidth="148.0" layoutX="757.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="op10" fitHeight="126.0" fitWidth="148.0" layoutX="927.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
 </AnchorPane>

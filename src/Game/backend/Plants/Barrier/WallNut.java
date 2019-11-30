@@ -43,7 +43,7 @@ public final class WallNut extends Barrier implements Serializable
 
 	public static String getCostImage()
 	{
-		return "Game/assets/backend/Plants/Barrier/Wallnut/WallnutCost.svg";
+		return "Game/assets/backend/Plants/Barrier/Wallnut/WallnutCost.gif";
 	}
 
 	@Override

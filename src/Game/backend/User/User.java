@@ -7,6 +7,7 @@ import Game.backend.Exceptions.InsufficientSunsException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public final class User implements Serializable
 {
@@ -15,7 +16,7 @@ public final class User implements Serializable
 	private int levels;
 	private int coins;
 	private boolean[] plantUnlocked = new boolean[11];
-	private HashMap<Integer, Integer> selectedPlants = new HashMap<>();
+	private LinkedHashMap<Integer, Integer> selectedPlants = new LinkedHashMap<>();
 	private int currentWaveNumber;
 	private int waveCountdown;
 	private int currentSuns;
@@ -60,7 +61,7 @@ public final class User implements Serializable
 	}
 
 	public void setSelectedPlants(HashMap<Integer,Integer> map) {
-		selectedPlants = new HashMap<Integer, Integer>(map);
+		selectedPlants = new LinkedHashMap<>(map);
 	}
 
 	public int getCurrentWaveNumber()

@@ -134,11 +134,13 @@ public class GameWindow extends SaveGame
 	private void initializeWave()
 	{
 		Levels.initialize();
+		System.out.println("Fetching level: " + user.getCurrentLevel());
 		curLevel = Levels.getLevel(user.getCurrentLevel());
 		if(user.getCurrentlyAt() == -1)
-			user.setCurrentWaveNumber(1);
+			user.setCurrentWaveNumber(0);
 		if(user.getCurrentWaveNumber() < curLevel.getNumWaves() - 1)
 		{
+			System.out.println("Fetching Wave: " + user.getCurrentWaveNumber());
 			curWave = curLevel.getWave(user.getCurrentWaveNumber());
 			user.setWaveCountdown(curWave.getNextCountdown());
 		}
@@ -427,6 +429,7 @@ public class GameWindow extends SaveGame
 		{
 			if(user.getWaveCountdown() <= 0)
 			{
+				System.out.println("Fetching wave: " + nextWaveNumber);
 				user.setCurrentWaveNumber(nextWaveNumber);
 				curWave = curLevel.getWave(nextWaveNumber);
 				user.setWaveCountdown(curWave.getNextCountdown());

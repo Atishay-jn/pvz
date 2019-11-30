@@ -1,13 +1,5 @@
 package Game.frontend.GameWindow;
 
-import Game.backend.Plants.Barrier.TallNut;
-import Game.backend.Plants.Barrier.WallNut;
-import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
-import Game.backend.Plants.DynamicPlants.Bomb.PotatoMine;
-import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
-import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
-import Game.backend.Plants.DynamicPlants.Shooter.*;
-import Game.backend.Plants.Plant;
 import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -41,6 +33,7 @@ public class GameWindowController
 	private ImageView demoZombie;
 	@FXML
 	private VBox seedSlots;
+	@FXML
 	private boolean shovel = false;
 	private int currentPlant = -1;
 

@@ -549,6 +549,6 @@ public final class Levels
 
 	public static Level getLevel(int idx)
 	{
-		return levels.get(idx + 1);
+		return levels.get(idx - 1);
 	}
 }

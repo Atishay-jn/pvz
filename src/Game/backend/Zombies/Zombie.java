@@ -10,7 +10,7 @@ import java.io.Serializable;
 public abstract class Zombie implements Displayable, Serializable, Cloneable
 {
 	private static final long serialVersionUID = 1;
-	public static final int width = 200;
+	public static final int width = 90;
 	public static final int height = 150;
 	boolean frozen;
 	private int health;

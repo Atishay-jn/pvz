@@ -25,19 +25,19 @@ public final class Wave
 	}
 
 	public void setRow1Zombie(Zombie z) {
-		row0Zombie.add(z);
+		row1Zombie.add(z);
 	}
 
 	public void setRow2Zombie(Zombie z) {
-		row0Zombie.add(z);
+		row2Zombie.add(z);
 	}
 
 	public void setRow3Zombie(Zombie z) {
-		row0Zombie.add(z);
+		row3Zombie.add(z);
 	}
 
 	public void setRow4Zombie(Zombie z) {
-		row0Zombie.add(z);
+		row4Zombie.add(z);
 	}
 
 	public ArrayList<Zombie> getZombies(int idx)

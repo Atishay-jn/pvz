@@ -155,6 +155,8 @@ public final class Row implements Serializable
 		});
 
 		//Handle collision
+		ArrayList<Zombie> toRemoveCollidedZombies = new ArrayList<>();
+		ArrayList<Projectile> toRemoveCollidedProjectiles = new ArrayList<>();
 		for(Projectile p : this.projectiles)
 		{
 			if(p instanceof Warhead)
@@ -162,23 +164,27 @@ public final class Row implements Serializable
 				for(Zombie z : this.incoming)
 					if(z.getxVal() - p.getxVal() < 2)
 					{
-						this.projectiles.remove(p);
+						toRemoveCollidedProjectiles.add(p);
+						this.toRemove.add(p);
 						if(z.takeDamage(p))
 						{
 							this.toRemove.add(z);
-							this.incoming.remove(z);
+							toRemoveCollidedZombies.add(z);
 						}
 					}
 			}
 		}
+		this.projectiles.removeAll(toRemoveCollidedProjectiles);
+		this.incoming.removeAll(toRemoveCollidedZombies);
 
 		//Handle collision with mover
 		ArrayList<Zombie> zombieToRemove = new ArrayList<>();
 		for(Zombie z : this.incoming)
 		{
-			if(this.lawnMover.getxVal() > z.getxVal())
+			if(this.lawnMover.getxVal() > z.getxVal() && this.lawnMover.isInsideFrame())
 			{
-				System.out.println("Zombie collided");
+				System.out.println("Zombie collided on row " + this.number + " with xVal" + this.lawnMover.getxVal());
+				System.out.print("Size: " + this.toRemove.size() + " ");
 				this.toRemove.add(z);
 				System.out.println(this.toRemove.size());
 				zombieToRemove.add(z);

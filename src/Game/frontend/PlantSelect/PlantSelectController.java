@@ -161,8 +161,8 @@ public class PlantSelectController
 	@FXML
 	private void playClick() throws Exception
 	{
-		for(Map.Entry e: selected.entrySet())
-			System.out.println(e.getKey()+" "+e.getValue());
+//		for(Map.Entry e: selected.entrySet())
+//			System.out.println(e.getKey()+" "+e.getValue());
 		CurrentUser.getUser().setSelectedPlants(selected);
 		Game.frontend.GameWindow.GameWindow.getInstance().run(primaryStage);
 	}

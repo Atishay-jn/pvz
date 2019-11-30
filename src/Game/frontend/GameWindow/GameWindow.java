@@ -2,6 +2,7 @@ package Game.frontend.GameWindow;
 
 import Game.Main;
 import Game.backend.Displayable;
+import Game.backend.Grid.Grid;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
 import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
@@ -24,6 +25,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.*;
 
 public class GameWindow extends SaveGame
@@ -38,6 +42,7 @@ public class GameWindow extends SaveGame
 	private VBox seedSlots = null;
 	private ImageView demoZombie;
 	private GridPane frontendGrid = null;
+	private Grid grid = null;
 	private ArrayList<ImageView> standby = new ArrayList<>();
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
 
@@ -94,10 +99,11 @@ public class GameWindow extends SaveGame
 		frontendGrid = controller.getGridPane();
 	}
 
-	private void initialize()
+	private void initialize() throws IOException, ClassNotFoundException
 	{
 		initializeSlots();
 		initializePlane();
+		initializeGrid();
 	}
 
 	private void initializeSlots()
@@ -167,6 +173,20 @@ public class GameWindow extends SaveGame
 			n.setOnMouseClicked(new cellHandler(r, c));
 			//			System.out.println(r + " " + c);
 		});
+	}
+
+	private void initializeGrid() throws IOException, ClassNotFoundException
+	{
+		if(user.getCurrentlyAt() == -1)
+			grid = new Grid();
+		else
+		{
+			String userName = user.getName();
+			try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("UserFiles/" + userName + "/grid.txt")))
+			{
+				grid = (Grid) in.readObject();
+			}
+		}
 	}
 
 	private void updateCooldown()
@@ -287,7 +307,7 @@ public class GameWindow extends SaveGame
 		@Override
 		public void handle(MouseEvent event)
 		{
-			System.out.println(row + " " + col);
+			grid.plant(row, col, p);
 		}
 	}
 }

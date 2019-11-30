@@ -320,6 +320,7 @@ user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))))
 				iv.setFitHeight(DynamicObject.height);
 				iv.setFitWidth(DynamicObject.width);
 				iv.setOnMouseClicked(new dynamicHandler(dyOb));
+				iv.setImage(new Image(dyOb.getImage()));
 				currentFrame.put(dyOb, iv);
 			}
 		}
@@ -352,7 +353,7 @@ user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))))
 		@Override
 		public void run()
 		{
-			System.out.println(currentFrame.size());
+			System.out.println(currentFrame.size() + pane.getChildren().size());
 			updateCooldown();
 			updateCooldownDisplay();
 			updateDynamicObjects();

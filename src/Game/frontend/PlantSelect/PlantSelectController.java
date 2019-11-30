@@ -1,6 +1,5 @@
 package Game.frontend.PlantSelect;
 
-
 import Game.backend.Exceptions.NoSlotLeftException;
 import Game.backend.Plants.Barrier.TallNut;
 import Game.backend.Plants.Barrier.WallNut;
@@ -16,8 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 public class PlantSelectController
 {
@@ -76,14 +74,14 @@ public class PlantSelectController
 
 	private boolean[] plants;
 	private boolean[] slots = new boolean[6];
-	private HashMap<Integer, Integer> selected;
+	private LinkedHashMap<Integer, Integer> selected;
 
 	void setPrimaryStage(Stage primaryStage)
 	{
 		for(int i=0;i<6;i++)
 			slots[i] = false;
 		this.primaryStage = primaryStage;
-		selected = new HashMap<Integer, Integer>();
+		selected = new LinkedHashMap<>();
 		op0.setImage(new Image(TallNut.getCostImage()));
 		op1.setImage(new Image(WallNut.getCostImage()));
 		op2.setImage(new Image(Jalapeno.getCostImage()));

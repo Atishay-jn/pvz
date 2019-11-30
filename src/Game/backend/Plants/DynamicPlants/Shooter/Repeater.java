@@ -56,7 +56,7 @@ public final class Repeater extends Shooter implements Serializable
 	public Projectile produce()
 	{
 		this.counter++;
-		if(this.counter >= 50)
+		if(this.counter >= 25)
 			this.counter = 0;
 		if(this.counter == 0)
 			return new Game.backend.Projectiles.Warhead.Normal(this.xVal, this.yVal);

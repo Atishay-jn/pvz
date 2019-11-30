@@ -9,7 +9,7 @@ public final class Normal extends Warhead implements Serializable
 	public Normal(int _xVal, int _yVal)
 	{
 		super(_xVal, _yVal);
-		this.speed = 3;
+		this.speed = 5;
 		this.damage = 50;
 	}
 

@@ -56,7 +56,7 @@ public final class Frosty extends Shooter implements Serializable
 	public Projectile produce()
 	{
 		this.counter++;
-		if(this.counter >= 100)
+		if(this.counter >= 50)
 			this.counter = 0;
 		if(this.counter == 0)
 			return new Game.backend.Projectiles.Warhead.Icy(this.xVal, this.yVal);

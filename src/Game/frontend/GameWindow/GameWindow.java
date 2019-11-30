@@ -287,17 +287,13 @@ public class GameWindow extends SaveGame
 
 	private void updateDynamicObjects()
 
-
-
-
-	
 	{
 		Random generator = new Random();
 		user.setFallCounter(user.getFallCounter() + 1);
 		if(user.getFallCounter() % 150 == 0)
-			user.getCurrentDynamicObjects().add(new DynamicSun(0, (400 + generator.nextInt(500))));
+			user.getCurrentDynamicObjects().add(new DynamicSun((400 + generator.nextInt(500)), 0));
 		if(user.getFallCounter() % 500 == 0)
-user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))));
+			user.getCurrentDynamicObjects().add(new Coin((400 + generator.nextInt(500)), 0));
 		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
 			dyOb.update();
 	}
@@ -321,6 +317,9 @@ user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))))
 				iv.setFitWidth(DynamicObject.width);
 				iv.setOnMouseClicked(new dynamicHandler(dyOb));
 				iv.setImage(new Image(dyOb.getImage()));
+				iv.toFront();
+				iv.setVisible(true);
+				iv.setDisable(false);
 				currentFrame.put(dyOb, iv);
 			}
 		}
@@ -333,11 +332,11 @@ user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))))
 
 	private void displayFrame()
 	{
-		coinCounter.setText(Integer.toString(user.getCoins()));
-		sunCounter.setText(Integer.toString(user.getCurrentSuns()));
+		Platform.runLater(() -> coinCounter.setText(Integer.toString(user.getCoins())));
+		Platform.runLater(() -> sunCounter.setText(Integer.toString(user.getCurrentSuns())));
 		for(ImageView iv : toRemove)
 		{
-			pane.getChildren().remove(iv);
+			Platform.runLater(() -> pane.getChildren().remove(iv));
 		}
 		for(Map.Entry<Displayable, ImageView> e : currentFrame.entrySet())
 		{
@@ -382,42 +381,57 @@ user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))))
 		@Override
 		public void handle(MouseEvent event)
 		{
-try
+			try
 			{
 				plantFromIndex(controller.getCurrentPlant());
-				if(plant!=null)
+				if(plant != null)
 					grid.plant(row, col, plant);
 			}
-			catch(CellOccupiedException ignored) {
-				System.out.println("Can't plant at: "+row+" "+col);
+			catch(CellOccupiedException ignored)
+			{
+				System.out.println("Can't plant at: " + row + " " + col);
 			}
 		}
 
-		private void plantFromIndex(int index) {
-			switch(index) {
-				case 0: plant = new TallNut();
-				break;
-				case 1:	plant = new WallNut();
-				break;
-				case 2: plant = new Jalapeno(row,col);
-				break;
-				case 3: plant = new PotatoMine(row,col);
-				break;
-				case 4: plant = new Sunflower(row,col);
-				break;
-				case 5: plant = new TwinSunflower(row,col);
-				break;
-				case 6: plant = new Firey(row,col);
-				break;
-				case 7: plant = new Frosty(row,col);
-				break;
-				case 8: plant = new Gun(row,col);
-				break;
-				case 9: plant = new PeaShooter(row,col);
-				break;
-				case 10: plant = new Repeater(row,col);
-				break;
-				default: plant = null;
+		private void plantFromIndex(int index)
+		{
+			switch(index)
+			{
+				case 0:
+					plant = new TallNut();
+					break;
+				case 1:
+					plant = new WallNut();
+					break;
+				case 2:
+					plant = new Jalapeno(row, col);
+					break;
+				case 3:
+					plant = new PotatoMine(row, col);
+					break;
+				case 4:
+					plant = new Sunflower(row, col);
+					break;
+				case 5:
+					plant = new TwinSunflower(row, col);
+					break;
+				case 6:
+					plant = new Firey(row, col);
+					break;
+				case 7:
+					plant = new Frosty(row, col);
+					break;
+				case 8:
+					plant = new Gun(row, col);
+					break;
+				case 9:
+					plant = new PeaShooter(row, col);
+					break;
+				case 10:
+					plant = new Repeater(row, col);
+					break;
+				default:
+					plant = null;
 			}
 		}
 	}
@@ -428,12 +442,14 @@ try
 
 		dynamicHandler(Displayable obj)
 		{
+			System.out.println("Created");
 			this.obj = obj;
 		}
 
 		@Override
 		public void handle(MouseEvent event)
 		{
+			System.out.println("Clicked");
 			if(obj instanceof DynamicSun)
 				user.collectSun(50);
 			else

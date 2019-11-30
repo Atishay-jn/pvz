@@ -300,7 +300,7 @@ public class GameWindow extends SaveGame
 
 	{
 		Random generator = new Random();
-		user.setFallCounter(user.getFallCounter() + 1);
+		user.setFallCounter((user.getFallCounter() + 1) % 1000);
 		if(user.getFallCounter() % 150 == 0)
 			user.getCurrentDynamicObjects().add(new DynamicSun((400 + generator.nextInt(500)), 0));
 		if(user.getFallCounter() % 500 == 0)
@@ -643,8 +643,11 @@ public class GameWindow extends SaveGame
 			else
 				user.collectCoins(50);
 			user.getCurrentDynamicObjects().remove(obj);
-			ImageView iv = currentFrame.remove(obj);
-			toRemove.add(iv);
+			if(currentFrame.containsKey(obj))
+			{
+				ImageView iv = currentFrame.remove(obj);
+				toRemove.add(iv);
+			}
 		}
 	}
 }

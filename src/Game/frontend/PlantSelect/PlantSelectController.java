@@ -1,6 +1,15 @@
 package Game.frontend.PlantSelect;
 
 
+import Game.backend.Exceptions.NoSlotLeftException;
+import Game.backend.Plants.Barrier.TallNut;
+import Game.backend.Plants.Barrier.WallNut;
+import Game.backend.Plants.DynamicPlants.Bomb.Jalapeno;
+import Game.backend.Plants.DynamicPlants.Bomb.PotatoMine;
+import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
+import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
+import Game.backend.Plants.DynamicPlants.Shooter.*;
+import Game.backend.User.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

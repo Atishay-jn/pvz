@@ -184,10 +184,12 @@ public class GameWindow extends SaveGame
 	private void initializeGrid() throws IOException, ClassNotFoundException
 	{
 		if(user.getCurrentlyAt() == -1)
-			grid = new Grid();
-		else
 		{
 			user.resetStats();
+			grid = new Grid();
+		}
+		else
+		{
 			String userName = user.getName();
 			try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("UserFiles/" + userName + "/grid.txt")))
 			{
@@ -332,18 +334,18 @@ public class GameWindow extends SaveGame
 
 	private void displayFrame()
 	{
-		Platform.runLater(() -> coinCounter.setText(Integer.toString(user.getCoins())));
-		Platform.runLater(() -> sunCounter.setText(Integer.toString(user.getCurrentSuns())));
+		coinCounter.setText(Integer.toString(user.getCoins()));
+		sunCounter.setText(Integer.toString(user.getCurrentSuns()));
 		for(ImageView iv : toRemove)
 		{
-			Platform.runLater(() -> pane.getChildren().remove(iv));
+			pane.getChildren().remove(iv);
 		}
 		for(Map.Entry<Displayable, ImageView> e : currentFrame.entrySet())
 		{
 			//			if(!pane.getChildren().contains(e.getValue()));
 			//				Platform.runLater(() -> pane.getChildren().add(e.getValue()));
 			if(!pane.getChildren().contains(e.getValue()))
-				Platform.runLater(() -> pane.getChildren().add(e.getValue()));
+				pane.getChildren().add(e.getValue());
 		}
 	}
 
@@ -352,13 +354,14 @@ public class GameWindow extends SaveGame
 		@Override
 		public void run()
 		{
-			System.out.println(currentFrame.size() + pane.getChildren().size());
+			//			System.out.println(currentFrame.size() + pane.getChildren().size());
 			updateCooldown();
-			updateCooldownDisplay();
+			Platform.runLater(() -> updateCooldownDisplay());
 			updateDynamicObjects();
 			updateDynamicObjectsDisplay();
 			cleanFrame();
-			displayFrame();
+			Platform.runLater(() -> displayFrame());
+			//			displayFrame();
 			//			System.out.println(demoZombie.getImage().equals(new Image("Game/assets/backend/Zombies/LawnZombie.gif")));
 			//			//			System.out.println(demoZombie.getX());
 			//			Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));

@@ -3,6 +3,7 @@ package Game.frontend.GameWindow;
 import Game.Main;
 import Game.backend.Displayable;
 import Game.backend.DynamicObjects.Coin;
+import Game.backend.DynamicObjects.DynamicObject;
 import Game.backend.DynamicObjects.DynamicSun;
 import Game.backend.Grid.Grid;
 import Game.backend.Plants.Barrier.TallNut;
@@ -13,6 +14,7 @@ import Game.backend.Plants.DynamicPlants.Collector.Sunflower;
 import Game.backend.Plants.DynamicPlants.Collector.TwinSunflower;
 import Game.backend.Plants.DynamicPlants.Shooter.*;
 import Game.backend.User.SaveGame;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,6 +49,7 @@ public class GameWindow extends SaveGame
 	private Grid grid = null;
 	private ArrayList<ImageView> standby = new ArrayList<>();
 	private HashMap<Displayable, ImageView> currentFrame = new HashMap<>();
+	private ArrayList<ImageView> toRemove = new ArrayList<>();
 
 	private GameWindow()
 	{
@@ -181,6 +184,7 @@ public class GameWindow extends SaveGame
 			grid = new Grid();
 		else
 		{
+			user.resetStats();
 			String userName = user.getName();
 			try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("UserFiles/" + userName + "/grid.txt")))
 			{
@@ -278,14 +282,61 @@ public class GameWindow extends SaveGame
 		}
 	}
 
-	private void updateDynamicPlants()
+	private void updateDynamicObjects()
 	{
 		Random generator = new Random();
 		user.setFallCounter(user.getFallCounter() + 1);
 		if(user.getFallCounter() % 150 == 0)
-			user.getCurrentDynamicObjects().addAll(new DynamicSun(0, (400 + generator.nextInt(500)));
+			user.getCurrentDynamicObjects().add(new DynamicSun(0, (400 + generator.nextInt(500))));
 		if(user.getFallCounter() % 500 == 0)
-			user.getCurrentDynamicObjects().addAll(new Coin(0, (400 + generator.nextInt(500)));
+			user.getCurrentDynamicObjects().add(new Coin(0, (400 + generator.nextInt(500))));
+		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
+			dyOb.update();
+	}
+
+	private void updateDynamicObjectsDisplay()
+	{
+		for(DynamicObject dyOb : user.getCurrentDynamicObjects())
+		{
+			if(currentFrame.containsKey(dyOb))
+				currentFrame.get(dyOb).setY(dyOb.getyVal());
+			else
+			{
+				ImageView iv;
+				if(standby.isEmpty())
+					iv = new ImageView();
+				else
+					iv = standby.remove(0);
+				iv.setX(dyOb.getxVal());
+				iv.setY(dyOb.getyVal());
+				iv.setFitHeight(DynamicObject.height);
+				iv.setFitWidth(DynamicObject.width);
+				iv.setOnMouseClicked(new dynamicHandler(dyOb));
+				currentFrame.put(dyOb, iv);
+			}
+		}
+	}
+
+	private void cleanFrame()
+	{
+		//todo
+	}
+
+	private void displayFrame()
+	{
+		coinCounter.setText(Integer.toString(user.getCoins()));
+		sunCounter.setText(Integer.toString(user.getCurrentSuns()));
+		for(ImageView iv : toRemove)
+		{
+			pane.getChildren().remove(iv);
+		}
+		for(Map.Entry<Displayable, ImageView> e : currentFrame.entrySet())
+		{
+			//			if(!pane.getChildren().contains(e.getValue()));
+			//				Platform.runLater(() -> pane.getChildren().add(e.getValue()));
+			if(!pane.getChildren().contains(e.getValue()))
+				Platform.runLater(() -> pane.getChildren().add(e.getValue()));
+		}
 	}
 
 	public class updater extends TimerTask
@@ -293,9 +344,13 @@ public class GameWindow extends SaveGame
 		@Override
 		public void run()
 		{
+			System.out.println(currentFrame.size());
 			updateCooldown();
 			updateCooldownDisplay();
-			updateDynamicPlants();
+			updateDynamicObjects();
+			updateDynamicObjectsDisplay();
+			cleanFrame();
+			displayFrame();
 			//			System.out.println(demoZombie.getImage().equals(new Image("Game/assets/backend/Zombies/LawnZombie.gif")));
 			//			//			System.out.println(demoZombie.getX());
 			//			Platform.runLater(() -> demoZombie.setX(demoZombie.getX() - 1));
@@ -318,7 +373,7 @@ public class GameWindow extends SaveGame
 		@Override
 		public void handle(MouseEvent event)
 		{
-			grid.plant(row, col, p);
+			System.out.println(row + " " + col);
 		}
 	}
 
@@ -339,6 +394,9 @@ public class GameWindow extends SaveGame
 			else
 				user.collectCoins(50);
 			user.getCurrentDynamicObjects().remove(obj);
+			ImageView iv = currentFrame.remove(obj);
+			toRemove.add(iv);
+			standby.add(iv);
 		}
 	}
 }

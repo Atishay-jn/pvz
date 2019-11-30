@@ -14,12 +14,12 @@ public abstract class DynamicObject implements Displayable, Serializable
 	int timeout = 0;
 	int maxTimeout;
 
-	protected int getxVal()
+	public int getxVal()
 	{
 		return this.xVal;
 	}
 
-	protected int getyVal()
+	public int getyVal()
 	{
 		return this.yVal;
 	}
